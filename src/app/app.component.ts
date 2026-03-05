@@ -2,11 +2,21 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'app-header',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'pedy-acai-angular';
+  constructor(
+    // private ngSelectConfig: NgSelectConfig
+  ) {
+    // this.ngSelectConfig.notFoundText = 'Nenhum item encontrado';
+    // this.ngSelectConfig.loadingText = "Carregando..."
+    // this.ngSelectConfig.appearance = 'outline';
+    // this.ngSelectConfig.appendTo = 'body';
+  }
 }
