@@ -1,0 +1,108 @@
+<section class="featured-products">
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge">Seleção Premium</span>
+            <h2>
+                OS MAIS <span class="highlight">DESEJADOS.</span>
+            </h2>
+            <a routerLink="/cardapio" class="view-all">
+                VER TODOS OS PRODUTOS
+                <i class="bi bi-caret-right-fill view-icon"></i>
+            </a>
+        </div>
+
+        <div class="grid-products">
+            <div class="featured-large">
+                <div class="bg-offset"></div>
+                <div class="product-card">
+                    <img [src]="featuredProducts[0].image" [alt]="featuredProducts[0].name" />
+                    <div class="product-info">
+                        <div class="top">
+                            <div class="stars">
+                                <ng-container *ngFor="let star of [1,2,3,4,5]">
+                                    <span class="star">★</span>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <h3>{{ featuredProducts[0].name }}</h3>
+                        <p>{{ featuredProducts[0].description }}</p>
+                        <div class="bottom">
+                            <span class="price">R$ {{ featuredProducts[0].price.toFixed(2) }}</span>
+                            <a [routerLink]="'/pagamento/' + featuredProducts[0].id" class="buy-btn">
+                                PEDIR AGORA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-small">
+                <div *ngFor="let product of featuredProducts.slice(1,3)">
+                    <div class="bg-offset"></div>
+                    <div class="product-card-small">
+                        <div class="image-wrapper">
+                            <img [src]="product.image" [alt]="product.name" />
+                        </div>
+                        <div class="product-info">
+                            <h4>{{ product.name }}</h4>
+                            <p>{{ product.description }}</p>
+                            <div class="bottom">
+                                <span class="price">R$ {{ product.price.toFixed(2) }}</span>
+                                <a [routerLink]="'/pagamento/' + product.id" class="icon-btn">
+                                    <i class="bi bi-cart3 icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 
+<!-- About Section --
+<section class="about-section">
+  <div class="background-accent"></div>
+
+  <div class="container grid-two">
+    <div class="about-image">
+      <div class="bg-offset"></div>
+      <div class="image-wrapper">
+        <img src="https://picsum.photos/seed/about-shop/800/1000" alt="Nossa Loja"/>
+      </div>
+      <div class="badge-rotating">
+        <p>10+</p>
+        <span>Anos de Tradição</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="badge">NOSSA HISTÓRIA</div>
+      <h2>
+        FEITO COM <span class="highlight">PAIXÃO.</span>
+      </h2>
+      <p>
+        Nascemos da paixão por criar momentos doces e refrescantes...
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-box">
+            🚚
+            <h4>Entrega Rápida</h4>
+            <p>Média de 30 min</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-box">
+            🛡️
+            <h4>Qualidade</h4>
+            <p>Garantia de sabor</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
