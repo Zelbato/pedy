@@ -3,12 +3,13 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { HeroComponent } from './hero/hero.component';
 import { MenuComponent } from './menu/menu.component';
+import { AboutComponent } from './about/about.component';
 import { FooterComponent } from "../shared/footer/footer.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent,HeroComponent,MenuComponent, FooterComponent,
+  imports: [HeaderComponent, HeroComponent, MenuComponent, AboutComponent, FooterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

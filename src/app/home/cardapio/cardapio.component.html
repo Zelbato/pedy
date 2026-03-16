@@ -1,57 +1,160 @@
 <div class="menu-page">
-    <div class="container">
+    <div class="menu-hero">
+        <h1>
+            O Sabor da <span>Felicidade</span>
+        </h1>
+        <p>
+            Explore nosso cardápio artesanal ou crie sua própria combinação perfeita.
+        </p>
+    </div>
 
-        <!-- Header -->
-        <div class="header">
-            <div>
-                <h1>Nosso Cardápio</h1>
-                <p>Escolha sua felicidade em forma de doce</p>
+    <div class="menu-container">
+        <section class="custom-section">
+            <div class="section-header">
+                <div class="line"></div>
+                <span>Personalize sua Experiência</span>
             </div>
+            <h2>Monte seu Copo</h2>
 
-            <!-- Search -->
-            <div class="search-box">
-                <input type="text" placeholder="Buscar produto..." [(ngModel)]="searchQuery" />
-            </div>
-        </div>
-
-        <!-- Categories -->
-        <div class="categories">
-            <button *ngFor="let cat of categories" (click)="selectCategory(cat.id)"
-                [class.active]="activeCategory === cat.id">
-                {{ cat.label }}
-            </button>
-        </div>
-
-        <!-- Products Grid -->
-        <div class="products-grid">
-            <div *ngFor="let product of filteredProducts()" class="product-card">
-                <div class="card-shadow"></div>
-                <div class="card-content">
-                    <div class="card-image">
-                        <img [src]="product.image" [alt]="product.name" />
-                        <div class="category-label">{{ product.category }}</div>
+            <div class="custom-grid">
+                <div class="card">
+                    <div class="step-title">
+                        <span class="step">1</span>
+                        <h3>ESCOLHA A BASE</h3>
                     </div>
-                    <div class="card-body">
+
+                    <div class="options">
+                        <button *ngFor="let type of customTypes" (click)="customType = type"
+                            [class.active]="customType.id === type.id">
+                            <span>{{ type.label }}</span>
+                            <span class="price">R$ {{ type.price }}</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="step-title">
+                        <span class="step">2</span>
+                        <h3>SELECIONE O TAMANHO</h3>
+                    </div>
+
+                    <div class="sizes">
+                        <button *ngFor="let size of customSizes" (click)="customSize = size"
+                            [class.active]="customSize.id === size.id">
+                            {{ size.label }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="step-title space">
+                        <div class="complem">
+                            <span class="step">3</span>
+                            <h3>COMPLEMENTO</h3>
+                        </div>
+
+                        <span class="counter">
+                            {{ selectedIngredients.length }}/3
+                        </span>
+                    </div>
+
+                    <div class="ingredients">
+                        <button class="btn-ingredients" *ngFor="let ing of ingredients" (click)="toggleIngredient(ing)"
+                            [class.active]="isSelected(ing)">
+                            <span class="name">
+                                {{ ing.label }}
+                            </span>
+                            <span class="price">
+                                R$ {{ ing.price }}
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="summary">
+                    <h3>Seu Copo</h3>
+                    <div class="summary-list">
+                        <div class="row">
+                            <span class="label">{{ customType.label }} {{ customSize.label }}</span>
+                            <span class="price">
+                                R$ {{ customType.price * customSize.multiplier }}
+                            </span>
+                        </div>
+
+                        <div class="row small" *ngFor="let ing of selectedIngredients">
+                            <span>{{ ing.label }}</span>
+                            <span class="price">R$ {{ ing.price }}</span>
+                        </div>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <strong>
+                            R$ {{ customTotal }}
+                        </strong>
+                    </div>
+                    <button class="buy-btn">
+                        Pedir Agora <i class="bi bi-arrow-right icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="menu-top">
+                <div>
+                    <div class="section-header">
+                        <div class="line"></div>
+                        <span>Favoritos da Galera</span>
+                    </div>
+                    <h2>Prontos para Você</h2>
+                </div>
+
+                <div class="menu-controls">
+                    <div class="search-box">
+                        <i class="bi bi-search icon"></i>
+                        <input type="text" placeholder="O que você procura?" [(ngModel)]="searchQuery" />
+                    </div>
+
+                    <div class="categories">
+                        <button *ngFor="let cat of categories" (click)="activeCategory = cat.id"
+                            [class.active]="activeCategory === cat.id">
+                            {{ cat.label }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" *ngFor="let product of filteredProducts">
+                    <div class="image">
+                        <img [src]="product.image" [alt]="product.name">
+                        <span class="category">{{ product.category }}</span>
+                    </div>
+
+                    <div class="product-info">
                         <h3>{{ product.name }}</h3>
                         <p>{{ product.description }}</p>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span>Preço</span>
-                                <span>R$ {{ product.price.toFixed(2) }}</span>
+
+                        <div class="product-footer">
+                            <div class="top-row">
+                                <div class="price-label">A PARTIR DE</div>
+                                <button class="buy-btn" (click)="handleBuy(product.id)">
+                                    <i class="bi bi-bag icon"></i>
+                                </button>
                             </div>
-                            <button (click)="handleBuy(product.id)">
-                                Comprar
-                            </button>
+                            <div class="price">R$ {{ product.price | number:'1.2-2' }}</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Nenhum produto -->
-        <div *ngIf="filteredProducts().length === 0" class="no-products">
-            <p>Nenhum produto encontrado :(</p>
-        </div>
 
+            <div *ngIf="filteredProducts.length === 0" class="empty">
+                <p>Nenhum item encontrado na busca.</p>
+                <button class="filter" (click)="searchQuery=''; activeCategory='all'">
+                    Limpar filtros
+                </button>
+            </div>
+        </section>
     </div>
 </div>
