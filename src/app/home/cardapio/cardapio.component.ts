@@ -1,67 +1,126 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
+// import { Product } from '../../models/product.model';
+import { PRODUCTS, CUSTOM_CUP_OPTIONS } from '../../constants/product';
+
+type Category = 'sorvete' | 'açai' | 'milkshake' | 'picole' | 'pote';
 
 interface Product {
   id: string;
   name: string;
   description: string;
-  category: string;
   price: number;
+  category: Category;
   image: string;
 }
 
-type Category = 'all' | 'sorvete' | 'açai' | 'milkshake' | 'picole' | 'pote';
-
-
 @Component({
   selector: 'app-cardapio',
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-  ],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './cardapio.component.html',
-  styleUrl: './cardapio.component.scss'
+  styleUrls: ['./cardapio.component.scss']
 })
 export class CardapioComponent {
 
-  searchQuery: string = '';
-  activeCategory: string = 'all';
+  constructor(private router: Router) { }
 
-  categories = [
+
+  categories: { id: Category | 'all'; label: string }[] = [
     { id: 'all', label: 'Todos' },
     { id: 'sorvete', label: 'Sorvetes' },
-    { id: 'acai', label: 'Açaí' },
+    { id: 'açai', label: 'Açaí' },
     { id: 'milkshake', label: 'Milkshakes' },
     { id: 'picole', label: 'Picolés' },
     { id: 'pote', label: 'Potes' },
   ];
 
-  products: Product[] = [
-    { id: '1', name: 'Sorvete Chocolate', description: 'Delicioso sorvete', category: 'sorvete', price: 12.5, image: 'assets/img/sorvete1.jpg' },
-    { id: '2', name: 'Açaí com Granola', description: 'Açaí fresco com granola', category: 'acai', price: 18, image: 'assets/img/acai1.jpg' },
-    { id: '3', name: 'Milkshake Morango', description: 'Milkshake cremoso', category: 'milkshake', price: 15, image: 'assets/img/milkshake1.jpg' },
-  ];
-
-  selectCategory(catId: string) {
-    this.activeCategory = catId;
-  }
+  activeCategory: Category | 'all' = 'all';
+  searchQuery = '';
 
 
-  filteredProducts(): Product[] {
+  products: any[] = PRODUCTS;
+
+  get filteredProducts(): Product[] {
+
     return this.products.filter(product => {
-      const matchesCategory = this.activeCategory === 'all' || product.category === this.activeCategory;
-      const matchesSearch = product.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+
+      const matchesCategory =
+        this.activeCategory === 'all' ||
+        product.category === this.activeCategory;
+
+      const matchesSearch =
+        product.name.toLowerCase()
+          .includes(this.searchQuery.toLowerCase());
+
       return matchesCategory && matchesSearch;
+
     });
+
   }
+
 
   handleBuy(productId: string) {
-    console.log('Comprar produto', productId);
-    // Se você tiver rota de pagamento:
-    // this.router.navigate([`/pagamento/${productId}`]);
+    this.router.navigate(['/pagamento', productId]);
+  }
+
+
+  customTypes = CUSTOM_CUP_OPTIONS.types;
+  customSizes = CUSTOM_CUP_OPTIONS.sizes;
+  ingredients = CUSTOM_CUP_OPTIONS.ingredients;
+
+  customType = this.customTypes[0];
+  customSize = this.customSizes[0];
+
+  selectedIngredients: any[] = [];
+
+  toggleIngredient(ingredient: any) {
+
+    const exists = this.selectedIngredients.find(
+      i => i.id === ingredient.id
+    );
+
+    if (exists) {
+
+      this.selectedIngredients =
+        this.selectedIngredients.filter(
+          i => i.id !== ingredient.id
+        );
+
+      return;
+
+    }
+
+    if (this.selectedIngredients.length < 3) {
+      this.selectedIngredients.push(ingredient);
+    }
+
+  }
+
+  isSelected(ingredient: any): boolean {
+
+    return this.selectedIngredients.some(
+      i => i.id === ingredient.id
+    );
+
+  }
+
+  get customTotal(): number {
+
+    const basePrice =
+      this.customType.price *
+      this.customSize.multiplier;
+
+    const ingredientsPrice =
+      this.selectedIngredients.reduce(
+        (acc, curr) => acc + curr.price,
+        0
+      );
+
+    return basePrice + ingredientsPrice;
+
   }
 
 }
