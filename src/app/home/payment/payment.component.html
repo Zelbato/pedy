@@ -1,0 +1,191 @@
+<div class="payment-page">
+    @if (isSuccess()) {
+    <div class="success-screen">
+        <div class="success-card">
+            <div class="icon-check">✓</div>
+            <h2>{{ method() === 'delivery' ? 'Pedido Confirmado!' : 'Pagamento Aprovado!' }}</h2>
+            <p>
+                {{ method() === 'delivery'
+                ? 'Seu pedido foi enviado para a cozinha. Prepare o pagamento para o entregador!'
+                : 'Seu pagamento foi processado com sucesso e seu pedido já está sendo preparado.' }}
+            </p>
+            <button class="btn-primary" (click)="goToMyOrders()">
+                Acompanhar Pedido
+            </button>
+        </div>
+    </div>
+    } @else {
+    <div class="container">
+        <button class="btn-back" (click)="goBack()">
+            <span class="icon">←</span> VOLTAR AO CARDÁPIO
+        </button>
+
+        <div class="payment-grid">
+            <aside class="order-summary">
+                <div class="summary-card">
+                    <h2 class="title">Resumo do Pedido</h2>
+
+                    <div class="product-info">
+                        @if (productId() !== 'custom') {
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/cup-placeholder.png" alt="Produto">
+                        </div>
+                        } @else {
+                        <div class="custom-icon">🥤</div>
+                        }
+                        <div class="text">
+                            <h3>{{ productId() === 'custom' ? 'Copo Personalizado' : 'Produto Original' }}</h3>
+                            <span class="category-tag">{{ productId() === 'custom' ? 'MONTE SEU COPO' : 'CARDÁPIO'
+                                }}</span>
+                        </div>
+                    </div>
+
+                    @if (productId() === 'custom' && customOrder()) {
+                    <div class="ingredients-list">
+                        <p class="label">INGREDIENTES SELECIONADOS:</p>
+                        <div class="tags">
+                            @for (ing of customOrder().ingredients; track ing.label) {
+                            <span class="ing-tag">{{ ing.label }}</span>
+                            }
+                        </div>
+                    </div>
+                    }
+
+                    <div class="bill-details">
+                        <div class="row">
+                            <span>Subtotal</span>
+                            <span>R$ {{ orderTotal() | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="row">
+                            <span>Taxa de Entrega</span>
+                            <span class="free">Grátis</span>
+                        </div>
+                        <div class="row total">
+                            <div class="total-label">
+                                <small>TOTAL</small>
+                                <span class="final-value">R$ {{ orderTotal() | number:'1.2-2' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secure-badge">
+                    <span class="shield">🛡️</span>
+                    <div>
+                        <p>Pagamento Seguro</p>
+                        <small>Sua transação é protegida por criptografia.</small>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="payment-methods">
+                <div class="methods-card">
+                    <h2 class="title">Forma de Pagamento</h2>
+
+                    <div class="method-tabs">
+                        <button [class.active]="method() === 'card'" (click)="method.set('card')">
+                            <span class="tab-icon">💳</span> CARTÃO
+                        </button>
+                        <button [class.active]="method() === 'pix'" (click)="method.set('pix')">
+                            <span class="tab-icon">🔗</span> PIX
+                        </button>
+                        <button [class.active]="method() === 'delivery'" (click)="method.set('delivery')">
+                            <span class="tab-icon">🛵</span> ENTREGA
+                        </button>
+                    </div>
+
+                    <div class="tab-content">
+                        @if (method() === 'card') {
+                        <div class="card-form animate-fade">
+                            <div class="input-group">
+                                <label>NOME NO CARTÃO</label>
+                                <input type="text" [(ngModel)]="cardName" placeholder="Como impresso no cartão">
+                            </div>
+                            <div class="input-group">
+                                <label>NÚMERO DO CARTÃO</label>
+                                <input type="text" [(ngModel)]="cardNumber" placeholder="0000 0000 0000 0000">
+                            </div>
+                            <div class="row-inputs">
+                                <div class="input-group">
+                                    <label>VALIDADE</label>
+                                    <input type="text" [(ngModel)]="cardExpiry" placeholder="MM/AA">
+                                </div>
+                                <div class="input-group">
+                                    <label>CVV</label>
+                                    <input type="text" [(ngModel)]="cardCvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+                        @if (method() === 'pix') {
+                        <div class="pix-area animate-fade">
+                            <div class="qr-code-box">
+                                <div class="qr-mockup">QR CODE</div>
+                            </div>
+                            <p class="pix-instruction">Escaneie o código ou copie a chave abaixo:</p>
+                            <div class="copy-box">
+                                <code>00020126580014br.gov.bcb.pix...</code>
+                                <button class="btn-copy">Copiar</button>
+                            </div>
+                        </div>
+                        }
+
+                        @if (method() === 'delivery') {
+                        <div class="delivery-area animate-fade">
+                            <div class="info-alert">
+                                <span class="info-icon">ℹ️</span>
+                                <p>Você pagará diretamente ao entregador quando seu pedido chegar.</p>
+                            </div>
+
+                            <div class="delivery-selector">
+                                <label>COMO DESEJA PAGAR AO ENTREGADOR?</label>
+                                <div class="toggle-buttons">
+                                    <button [class.active]="deliveryMethod() === 'cash'"
+                                        (click)="deliveryMethod.set('cash')">
+                                        Dinheiro
+                                    </button>
+                                    <button [class.active]="deliveryMethod() === 'card'"
+                                        (click)="deliveryMethod.set('card')">
+                                        Cartão (Maquininha)
+                                    </button>
+                                </div>
+                            </div>
+
+                            @if (deliveryMethod() === 'cash') {
+                            <div class="change-section animate-slide-down">
+                                <label>PRECISA DE TROCO?</label>
+                                <div class="mini-toggles">
+                                    <button [class.active]="!needsChange()"
+                                        (click)="needsChange.set(false)">Não</button>
+                                    <button [class.active]="needsChange()" (click)="needsChange.set(true)">Sim</button>
+                                </div>
+
+                                @if (needsChange()) {
+                                <div class="input-group change-input animate-fade">
+                                    <label>TROCO PARA QUANTO?</label>
+                                    <div class="currency-input">
+                                        <span>R$</span>
+                                        <input type="text" [(ngModel)]="changeFor" placeholder="Ex: 50,00">
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                            }
+                        </div>
+                        }
+                    </div>
+
+                    <button class="btn-checkout" [disabled]="isProcessing()" (click)="handlePayment()">
+                        @if (isProcessing()) {
+                        <span class="spinner"></span> PROCESSANDO...
+                        } @else {
+                        {{ method() === 'delivery' ? 'CONFIRMAR PEDIDO' : 'FINALIZAR PAGAMENTO' }}
+                        }
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+    }
+</div>
