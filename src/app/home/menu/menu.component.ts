@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Product } from '../../models/product.model';
 import { PRODUCTS } from '../../constants/product';
 import { RouterModule, Router } from '@angular/router';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [FormsModule, RouterModule, CommonModule, AppIconComponent,
+  imports: [FormsModule, RouterModule, CommonModule
 
   ],
   templateUrl: './menu.component.html',
