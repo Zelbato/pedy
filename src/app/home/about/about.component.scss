@@ -31,7 +31,7 @@
             .bg-offset {
                 position: absolute;
                 inset: 0;
-                background: #9ccb00 ;
+                background: #ffa500;
                 border-radius: 40px;
                 transform: translate(16px, 16px);
                 z-index: 0;
@@ -57,7 +57,7 @@
                 position: absolute;
                 top: -2rem;
                 right: -2rem;
-                background: #9ccb00 ;
+                background: #ffa500;
                 color: #300a33;
                 padding: 1.5rem;
                 border-radius: 32px;
@@ -97,7 +97,7 @@
         .about-text {
 
             .badge {
-                background: #9ccb00 ;
+                background: #ffa500;
                 color: #300a33;
                 padding: 0.25rem 1rem;
                 border-radius: 0.5rem;
@@ -114,7 +114,7 @@
                 line-height: 1.1;
 
                 .highlight {
-                    color: #9ccb00  ;
+                    color: #ffa500;
                     font-style: italic;
                 }
             }
@@ -141,7 +141,7 @@
                         transition: all 0.5s;
 
                         .icon {
-                            color: #9ccb00  ;
+                            color: #ffa500;
                             font-size: 3rem;
                         }
 
@@ -160,10 +160,10 @@
                             color: #ffffff96;
                         }
 
-
+                        
                         &:hover {
-                            background: #9ccb00 ;
-                            border-color: #9ccb00   ;
+                            background: #ffa500;
+                            border-color: #ffa500;
 
                             .icon {
                                 color: #300a33;
