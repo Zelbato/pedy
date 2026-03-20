@@ -143,7 +143,7 @@
                 .final-value {
                     font-size: 32px;
                     font-weight: 900;
-                    color: #FF8A00;
+                    color: #9ccb00;
                 }
             }
 
@@ -208,7 +208,7 @@
             }
 
             &.active {
-                border-color: #FF8A00;
+                border-color: #9ccb00;
                 background: rgba(255, 138, 0, 0.05);
                 color: #2D1B4E;
             }
@@ -246,7 +246,7 @@
 
             &:focus {
                 background: white;
-                border-color: #FF8A00;
+                border-color: #9ccb00;
                 box-shadow: 0 10px 20px rgba(255, 138, 0, 0.05);
             }
         }
@@ -295,7 +295,7 @@
             }
 
             .btn-copy {
-                background: #FF8A00;
+                background: #9ccb00;
                 color: #2D1B4E;
                 border: none;
                 padding: 8px 16px;
@@ -341,7 +341,7 @@
                 color: rgba(45, 27, 78, 0.4);
 
                 &.active {
-                    border-color: #FF8A00;
+                    border-color: #9ccb00;
                     background: rgba(255, 138, 0, 0.05);
                     color: #2D1B4E;
                 }

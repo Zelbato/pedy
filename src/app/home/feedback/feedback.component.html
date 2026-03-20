@@ -1,0 +1,25 @@
+<section class="feedback">
+    <div class="feedback__header">
+        <span class="feedback__subtitle">Feedback dos Clientes</span>
+        <h2 class="feedback__title">
+            QUEM PROVA, <span class="feedback__title--highlight">AMA.</span>
+        </h2>
+    </div>
+
+    <div class="feedback__carousel">
+        <div class="feedback__track">
+            <div *ngFor="let f of duplicatedFeedbacks" class="feedback__card">
+                <div class="feedback__user">
+                    <img [src]="f.avatar" class="feedback__avatar" [alt]="f.name" />
+                    <div class="feedback__user-info">
+                        <p class="feedback__user-name">{{ f.name }}</p>
+                        <div class="feedback__stars">
+                            <i *ngFor="let s of getStars(f.rating)" class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="feedback__text">"{{ f.comment }}"</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -42,14 +42,16 @@
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    border-radius: 50%;
     font-weight: bold;
-
+    
     .logo-icon {
-        width: 90px;
+        width: 60px;
         height: auto;
-        color: #ffa500;
+        color: #9ccb00;
         transition: transform 0.3s;
+        border-radius: 50%;
     }
 
     &:hover .logo-icon {
@@ -76,11 +78,11 @@
         gap: 0.5rem;
 
         &:hover {
-            color: #ffa500;
+            color: #9ccb00;
         }
 
         &.active {
-            color: #ffa500;
+            color: #9ccb00;
         }
     }
 
@@ -96,7 +98,7 @@
         bottom: -6px;
         height: 3px;
         width: 0;
-        background: linear-gradient(90deg, #ffa500, #ff7a00);
+        background: linear-gradient(90deg, #9ccb00, #cbff1e);
         border-radius: 2px;
 
         transition:
@@ -112,7 +114,7 @@
     align-items: center;
 
     .btn-primary {
-        background-color: #ffa500;
+        background-color: #81d100;
         color: #300A33;
         padding: 0.5rem 1.5rem;
         border-radius: 12px;
@@ -141,7 +143,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-            color: #ffa500;
+            color: #9ccb00;
             transform: scale(1.05);
         }
     }

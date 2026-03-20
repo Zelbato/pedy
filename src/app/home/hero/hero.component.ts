@@ -22,19 +22,15 @@ export class HeroComponent {
   onScroll() {
     const scrollY = window.scrollY;
 
-    const maxScroll = 400; // 🔥 aumenta pra suavizar
+    const maxScroll = 400;
 
-    // progresso de 0 a 1
     let progress = scrollY / maxScroll;
     if (progress > 1) progress = 1;
 
-    // 🔥 easing suave (easeOutCubic)
     const ease = 1 - Math.pow(1 - progress, 3);
 
-    // 🔥 escala mais sutil (quase imperceptível, premium)
-    this.scale = 1 - (ease * 0.08); // vai até ~0.92
+    this.scale = 1 - (ease * 0.08);
 
-    // 🔥 opacity bem leve
-    this.opacity = 1 - (ease * 0.15); // vai até ~0.85
+    this.opacity = 1 - (ease * 0.15);
   }
 }
