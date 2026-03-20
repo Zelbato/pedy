@@ -1,28 +1,39 @@
-<nav class="navbar">
+<nav class="navbar" [class.scrolled]="scrolled">
     <div class="container">
         <div class="navbar-inner">
 
-            <!-- Logo -->
             <a routerLink="/" class="logo">
-               <img src="assets/img/logo.png" alt="logo" class="logo-icon">
+                <img src="assets/img/logo.jpeg" alt="logo" class="logo-icon">
             </a>
 
-            <!-- Menu -->
             <div class="menu">
-                <a routerLink="/">Início</a>
-                <a routerLink="/cardapio">Cardápio</a>
-                <a routerLink="/meus-pedidos" class="menu-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 6h14v14H5V6z" />
-                    </svg>
-                    Meus Pedidos
+
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    INÍCIO
                 </a>
+
+                <a routerLink="/cardapio" routerLinkActive="active">
+                    CARDÁPIO
+                </a>
+
+                <a routerLink="/meus-pedidos" routerLinkActive="active" class="menu-item">
+                    <app-icon name="receipt_long" [size]="20"></app-icon>
+                    MEUS PEDIDOS
+                </a>
+
+                <!-- underline animado -->
+                <span class="underline"></span>
+
             </div>
 
-            <!-- Call to action -->
+
             <div class="cta">
-                <a routerLink="/cardapio" class="btn-primary">Peça Agora</a>
+                <a routerLink="/login" class="login-link">
+                    <app-icon name="person" [size]="20"></app-icon>
+                    ENTRAR
+                </a>
+
+                <a routerLink="/cardapio" class="btn-primary">PEÇA AGORA</a>
             </div>
 
         </div>
