@@ -61,21 +61,9 @@ export class CardapioComponent {
 
   }
 
-  handleCustomBuy() {
-    const customOrder = {
-      type: this.customType,
-      size: this.customSize,
-      ingredients: this.selectedIngredients,
-      total: this.customTotal
-    };
-
-    this.router.navigate(['/payment', 'custom'], {
-      state: { data: customOrder }
-    });
-  }
 
   handleBuy(productId: string) {
-    this.router.navigate(['/payment', productId]);
+    this.router.navigate(['/pagamento', productId]);
   }
 
 
@@ -134,4 +122,5 @@ export class CardapioComponent {
     return basePrice + ingredientsPrice;
 
   }
+
 }

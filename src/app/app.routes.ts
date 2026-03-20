@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CardapioComponent } from './home/cardapio/cardapio.component';
-import { PaymentComponent } from './home/payment/payment.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 
 export const routes: Routes = [
@@ -11,7 +10,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'cardapio', component: CardapioComponent },
-            { path: 'payment/:productId', component: PaymentComponent },
+            // { path: 'pagamento/:productId', component: PaymentComponent },
             // { path: 'meus-pedidos', component: OrdersComponent }
         ]
     },
