@@ -5,11 +5,13 @@ import { HeroComponent } from './hero/hero.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from "../shared/footer/footer.component";
+import { FeedbackComponent } from './feedback/feedback.component';
+// import { PaymentComponent } from './payment/payment.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, HeroComponent, MenuComponent, AboutComponent, FooterComponent,
+  imports: [HeaderComponent, HeroComponent, MenuComponent, AboutComponent, FeedbackComponent, FooterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

@@ -17,10 +17,11 @@
     gap: 3rem;
 }
 
-.footer-brand h3 {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #ffa500;
+.logo img {
+    background: #ffffff;
+    border-radius: 50%;
+    width: 81px;
+    height: 81px;
     margin-bottom: 1rem;
 }
 
@@ -50,7 +51,7 @@
 }
 
 .footer-links a:hover {
-    color: #ffa500;
+    color: #9ccb00;
 }
 
 .footer-contact p {
