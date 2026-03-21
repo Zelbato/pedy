@@ -3,6 +3,7 @@
     <div class="success-screen">
         <div class="success-card">
             <div class="icon-check">✓</div>
+            <!-- <app-icon name="check" [size]="70" class="icon-check"></app-icon> -->
             <h2>{{ method() === 'delivery' ? 'Pedido Confirmado!' : 'Pagamento Aprovado!' }}</h2>
             <p>
                 {{ method() === 'delivery'
@@ -17,7 +18,7 @@
     } @else {
     <div class="container">
         <button class="btn-back" (click)="goBack()">
-            <span class="icon">←</span> VOLTAR AO CARDÁPIO
+            <app-icon name="arrowLeft" [size]="24" class="icon" /> VOLTAR AO CARDÁPIO
         </button>
 
         <div class="payment-grid">
@@ -70,7 +71,7 @@
                 </div>
 
                 <div class="secure-badge">
-                    <span class="shield">🛡️</span>
+                    <app-icon name="shield" [size]="24" class="icon"></app-icon>
                     <div>
                         <p>Pagamento Seguro</p>
                         <small>Sua transação é protegida por criptografia.</small>
@@ -84,13 +85,13 @@
 
                     <div class="method-tabs">
                         <button [class.active]="method() === 'card'" (click)="method.set('card')">
-                            <span class="tab-icon">💳</span> CARTÃO
+                            <app-icon name="card" [size]="24" class="icon"></app-icon> CARTÃO
                         </button>
                         <button [class.active]="method() === 'pix'" (click)="method.set('pix')">
-                            <span class="tab-icon">🔗</span> PIX
+                            <app-icon name="pix" [size]="24" class="icon"></app-icon> PIX
                         </button>
                         <button [class.active]="method() === 'delivery'" (click)="method.set('delivery')">
-                            <span class="tab-icon">🛵</span> ENTREGA
+                            <app-icon name="cicloMotor" [size]="24" class="icon"></app-icon> ENTREGA
                         </button>
                     </div>
 
@@ -121,7 +122,8 @@
                         @if (method() === 'pix') {
                         <div class="pix-area animate-fade">
                             <div class="qr-code-box">
-                                <div class="qr-mockup">QR CODE</div>
+                                <app-icon name="qrCode" [size]="140" class="icon"></app-icon>
+                                <!-- <div class="qr-mockup">QR CODE</div> -->
                             </div>
                             <p class="pix-instruction">Escaneie o código ou copie a chave abaixo:</p>
                             <div class="copy-box">
@@ -134,7 +136,7 @@
                         @if (method() === 'delivery') {
                         <div class="delivery-area animate-fade">
                             <div class="info-alert">
-                                <span class="info-icon">ℹ️</span>
+                                <!-- <app-icon name="exclamation" [size]="18" class="icon"></app-icon> -->
                                 <p>Você pagará diretamente ao entregador quando seu pedido chegar.</p>
                             </div>
 

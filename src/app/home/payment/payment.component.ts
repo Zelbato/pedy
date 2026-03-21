@@ -2,13 +2,16 @@ import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AppIconComponent } from '../../shared/icon/icon.component';
+import { NgModule } from '@angular/core';
+import { NgxMaskDirective } from 'ngx-mask';
 
 type PaymentMethod = 'card' | 'pix' | 'delivery';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, AppIconComponent, NgxMaskDirective],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
@@ -22,6 +25,8 @@ export class PaymentComponent implements OnInit {
   isSuccess = signal(false);
   customOrder = signal<any>(null);
   orderTotal = signal<number>(0);
+  changeFor: string = '';
+  valorLimpo: number = 0;
 
   constructor() {
     this.productId.set(this.route.snapshot.params['id']);
@@ -45,7 +50,7 @@ export class PaymentComponent implements OnInit {
   cardCvv = '';
   deliveryMethod = signal<'cash' | 'card'>('card');
   needsChange = signal(false);
-  changeFor = '';
+  // changeFor = '';
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('productId');
