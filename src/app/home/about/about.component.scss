@@ -12,7 +12,7 @@
         right: 0;
         width: 50%;
         height: 100%;
-        background: rgba(255, 102, 0, 0.05);
+        background: #890aa328;
         transform: skewX(12deg) translateX(8rem);
         pointer-events: none;
     }
@@ -27,11 +27,79 @@
             position: relative;
             width: 100%;
             max-width: 100%;
+            opacity: 0;
+            transform: translate(-50px, 50px) scale(0.8) rotate(-5deg);
+            transition:
+                opacity 1s ease-out,
+                transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+
+            .floating-badge {
+                position: absolute;
+                bottom: -40px;
+                left: -40px;
+                background: white;
+                padding: 1.5rem;
+                border-radius: 32px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                display: none;
+                align-items: center;
+                gap: 1rem;
+                border: 4px solid #300a33;
+                z-index: 20;
+                animation: floatingBadge 4s ease-in-out infinite;
+
+
+                .icon-container {
+                    background: #890aa3;
+                    padding: 0.75rem;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .text-content {
+                    .title {
+                        font-size: 1.25rem;
+                        font-weight: 900;
+                        margin: 0;
+                        line-height: 1;
+                        color: #300a33;
+                    }
+
+                    .subtitle {
+                        font-size: 10px;
+                        font-weight: 900;
+                        opacity: 0.4;
+                        color: #300a33;
+                        text-transform: uppercase;
+                        margin-top: 4px;
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    display: flex;
+                }
+            }
+
+            @keyframes floatingBadge {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(15px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
 
             .bg-offset {
                 position: absolute;
                 inset: 0;
-                background: #9ccb00 ;
+                background: #890aa3;
                 border-radius: 40px;
                 transform: translate(16px, 16px);
                 z-index: 0;
@@ -44,12 +112,14 @@
                 position: relative;
                 z-index: 1;
 
-                img {
+
+                .photo {
                     width: 100%;
                     height: auto;
                     max-height: 400px;
                     object-fit: cover;
                     display: block;
+
                 }
             }
 
@@ -57,8 +127,8 @@
                 position: absolute;
                 top: -2rem;
                 right: -2rem;
-                background: #9ccb00 ;
-                color: #300a33;
+                background: #890aa3;
+                color: #ffffff;
                 padding: 1.5rem;
                 border-radius: 32px;
                 border: 4px solid #300a33;
@@ -94,10 +164,15 @@
             }
         }
 
+        .about-image.visible {
+            opacity: 1;
+            transform: translate(0, 0) scale(1) rotate(0deg);
+        }
+
         .about-text {
 
             .badge {
-                background: #9ccb00 ;
+                background: #9ccb00;
                 color: #300a33;
                 padding: 0.25rem 1rem;
                 border-radius: 0.5rem;
@@ -114,15 +189,17 @@
                 line-height: 1.1;
 
                 .highlight {
-                    color: #9ccb00  ;
+                    color: #9ccb00;
                     font-style: italic;
                 }
             }
 
             p {
                 color: rgba(255, 255, 255, 0.7);
-                font-size: 1.125rem;
+                font-size: 1.5rem;
                 margin-bottom: 2rem;
+                line-height: 36px;
+                font-weight: 600;
                 max-width: 600px;
             }
 
@@ -141,7 +218,7 @@
                         transition: all 0.5s;
 
                         .icon {
-                            color: #9ccb00  ;
+                            color: #9ccb00;
                             font-size: 3rem;
                         }
 
@@ -162,8 +239,8 @@
 
 
                         &:hover {
-                            background: #9ccb00 ;
-                            border-color: #9ccb00   ;
+                            background: #9ccb00;
+                            border-color: #9ccb00;
 
                             .icon {
                                 color: #300a33;

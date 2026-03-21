@@ -2,15 +2,25 @@
     <div class="background-accent"></div>
 
     <div class="container grid-two">
-        <div class="about-image">
+        <div class="about-image" #aboutImage>
             <div class="bg-offset"></div>
             <div class="image-wrapper">
-                <img src="https://picsum.photos/seed/about-shop/800/1000" alt="Nossa Loja" />
+                <img src="https://picsum.photos/seed/about-shop/800/1000" alt="Nossa Loja" class="photo" />
             </div>
+
+            <div class="floating-badge">
+                <div class="icon-container">
+                    <app-icon name="heart" [size]="32" class="icon"></app-icon>
+                </div>
+                <div class="text-content">
+                    <p class="title">Feito à Mão</p>
+                    <p class="subtitle">COM INGREDIENTES NATURAIS</p>
+                </div>
+            </div>
+
             <div class="badge-rotating">
                 <p>10+</p>
-                <span>ANOS DE <br>
-                    TRADIÇÃO</span>
+                <span>ANOS DE <br> TRADIÇÃO</span>
             </div>
         </div>
 
@@ -28,7 +38,7 @@
                 <div class="feature">
                     <div class="feature-box">
                         <!-- <i class="bi bi-truck icon"></i> -->
-                       <app-icon name="truck" [size]="48" class="icon"></app-icon>
+                        <app-icon name="truck" [size]="48" class="icon"></app-icon>
                         <h4>Entrega Rápida</h4>
                         <p>Média de 30 min</p>
                     </div>
@@ -36,7 +46,7 @@
                 <div class="feature">
                     <div class="feature-box">
                         <!-- <i class="bi bi-shield-check icon"></i> -->
-                         <app-icon name="shield" [size]="48" class="icon"></app-icon>
+                        <app-icon name="shield" [size]="48" class="icon"></app-icon>
                         <h4>Qualidade</h4>
                         <p>Garantia de sabor</p>
                     </div>

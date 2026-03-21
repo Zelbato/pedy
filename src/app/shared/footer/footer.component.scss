@@ -23,6 +23,11 @@
     width: 81px;
     height: 81px;
     margin-bottom: 1rem;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: rotate(12deg);
+    }
 }
 
 .footer-brand p {
