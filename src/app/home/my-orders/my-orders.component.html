@@ -1,1 +1,72 @@
-<p>my-orders works!</p>
+<div class="page">
+    <div class="container">
+
+        <div class="header">
+            <h1>Meus Pedidos</h1>
+            <p>Acompanhe o status das suas delícias</p>
+        </div>
+
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Cliente</th>
+                            <th>Destino</th>
+                            <th>Valor</th>
+                            <th class="center">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let order of orders" @rowAnimation class="table-row">
+
+                            <td>
+                                <div class="cell-flex">
+                                    <div class="icon-box">📦</div>
+                                    <span class="order-id">{{ order.id }}</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="cell-flex small">
+                                    👤 {{ order.customerName }}
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="cell-flex small truncate">
+                                    📍 {{ order.destination }}
+                                </div>
+                            </td>
+
+                            <td class="price">
+                                R$ {{ order.total.toFixed(2) }}
+                            </td>
+
+                            <td>
+                                <div class="status-wrapper">
+                                    <span class="status" [ngClass]="{
+                      'delivered': order.status === 'Entregue',
+                      'route': order.status === 'Em rota',
+                      'preparing': order.status === 'Preparando',
+                      'default': order.status !== 'Entregue' && order.status !== 'Em rota' && order.status !== 'Preparando'
+                    }">
+                                        ⏱ {{ order.status }}
+                                    </span>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="orders.length === 0" class="empty">
+            <p>Você ainda não fez nenhum pedido.</p>
+        </div>
+
+    </div>
+</div>

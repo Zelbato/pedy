@@ -104,16 +104,17 @@
                             </div>
                             <div class="input-group">
                                 <label>NÚMERO DO CARTÃO</label>
-                                <input type="text" [(ngModel)]="cardNumber" placeholder="0000 0000 0000 0000">
+                                <input type="text" [(ngModel)]="cardNumber" placeholder="0000 0000 0000 0000"
+                                    mask="0000.0000.0000.0000">
                             </div>
                             <div class="row-inputs">
                                 <div class="input-group">
                                     <label>VALIDADE</label>
-                                    <input type="text" [(ngModel)]="cardExpiry" placeholder="MM/AA">
+                                    <input type="text" [(ngModel)]="cardExpiry" placeholder="MM/AA" mask="00/00">
                                 </div>
                                 <div class="input-group">
                                     <label>CVV</label>
-                                    <input type="text" [(ngModel)]="cardCvv" placeholder="123">
+                                    <input type="text" [(ngModel)]="cardCvv" placeholder="123" mask="000">
                                 </div>
                             </div>
                         </div>
@@ -168,7 +169,8 @@
                                     <label>TROCO PARA QUANTO?</label>
                                     <div class="currency-input">
                                         <span>R$</span>
-                                        <input type="text" [(ngModel)]="changeFor" placeholder="Ex: 50,00">
+                                        <input [(ngModel)]="valor" mask="separator.2" thousandSeparator=","
+                                            decimalMarker="," prefix="R$ " placeholder="R$ 0,00">
                                     </div>
                                 </div>
                                 }

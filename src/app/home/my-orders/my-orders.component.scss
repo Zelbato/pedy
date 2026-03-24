@@ -1,0 +1,161 @@
+.page {
+  min-height: 100vh;
+  background: white;
+  padding: 48px 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 900;
+  color: #2e1065;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: rgba(46, 16, 101, 0.6);
+}
+
+.table-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid rgba(46, 16, 101, 0.05);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead tr {
+  background: #2e1065;
+  color: white;
+}
+
+th {
+  padding: 24px 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 24px 32px;
+}
+
+tbody tr {
+  border-top: 1px solid rgba(46, 16, 101, 0.05);
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: rgba(46, 16, 101, 0.05);
+}
+
+.cell-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cell-flex.small {
+  font-size: 14px;
+  color: rgba(46, 16, 101, 0.8);
+}
+
+.icon-box {
+  background: rgba(132, 204, 22, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+  color: #2e1065;
+}
+
+.order-id {
+  font-weight: bold;
+  color: #2e1065;
+}
+
+.truncate {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-weight: 900;
+  color: #84cc16;
+}
+
+.center {
+  text-align: center;
+}
+
+.status-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.status {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delivered {
+  background: #84cc16;
+  color: #2e1065;
+}
+
+.route {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.preparing {
+  background: rgba(132, 204, 22, 0.2);
+  color: #2e1065;
+}
+
+.default {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.empty {
+  text-align: center;
+  padding: 96px 0;
+  background: white;
+  border-radius: 24px;
+  margin-top: 32px;
+  border: 2px dashed rgba(46, 16, 101, 0.1);
+}
+
+.empty p {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(46, 16, 101, 0.4);
+}

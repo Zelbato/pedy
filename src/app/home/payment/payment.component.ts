@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AppIconComponent } from '../../shared/icon/icon.component';
-import { NgModule } from '@angular/core';
+import { NgxMaskPipe } from 'ngx-mask';
 import { NgxMaskDirective } from 'ngx-mask';
 
 type PaymentMethod = 'card' | 'pix' | 'delivery';
@@ -11,7 +11,7 @@ type PaymentMethod = 'card' | 'pix' | 'delivery';
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, AppIconComponent, NgxMaskDirective],
+  imports: [CommonModule, FormsModule, RouterModule, AppIconComponent, NgxMaskDirective, NgxMaskPipe],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
@@ -25,8 +25,9 @@ export class PaymentComponent implements OnInit {
   isSuccess = signal(false);
   customOrder = signal<any>(null);
   orderTotal = signal<number>(0);
-  changeFor: string = '';
-  valorLimpo: number = 0;
+  // changeFor: string = '';
+  // valorLimpo: number = 0;
+  valor: string = '';
 
   constructor() {
     this.productId.set(this.route.snapshot.params['id']);
@@ -43,7 +44,7 @@ export class PaymentComponent implements OnInit {
     }
   }
 
-  // Form States
+
   cardName = '';
   cardNumber = '';
   cardExpiry = '';
@@ -74,6 +75,21 @@ export class PaymentComponent implements OnInit {
       this.isSuccess.set(true);
       if (this.productId() === 'custom') localStorage.removeItem('customCupOrder');
     }, 2000);
+  }
+
+  converterParaNumero(valor: string): number {
+    if (!valor) return 0;
+
+    valor = valor.replace('R$ ', '')
+      .replace(/\./g, '')
+      .replace(',', '.');
+
+    return parseFloat(valor);
+  }
+
+  salvar() {
+    let valorNumerico = this.converterParaNumero(this.valor);
+    console.log(valorNumerico);
   }
 
   public goToMyOrders() {
