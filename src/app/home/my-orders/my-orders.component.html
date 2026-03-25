@@ -1,72 +1,192 @@
-<div class="page">
-    <div class="container">
-
-        <div class="header">
+<div class="container">
+    <div class="header">
+        <div>
             <h1>Meus Pedidos</h1>
-            <p>Acompanhe o status das suas delícias</p>
+            <p>Acompanhe o status das suas delícias em tempo real</p>
         </div>
 
-        <div class="table-card">
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Pedido</th>
-                            <th>Cliente</th>
-                            <th>Destino</th>
-                            <th>Valor</th>
-                            <th class="center">Status</th>
-                        </tr>
-                    </thead>
+        <div class="filters">
+            <div [class.active]="filter === 'todos'" (click)="setFilter('todos')">
+                Todos
+            </div>
 
-                    <tbody>
-                        <tr *ngFor="let order of orders" @rowAnimation class="table-row">
+            <div [class.active]="filter === 'andamento'" (click)="setFilter('andamento')">
+                Em andamento
+            </div>
 
-                            <td>
-                                <div class="cell-flex">
-                                    <div class="icon-box">📦</div>
-                                    <span class="order-id">{{ order.id }}</span>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="cell-flex small">
-                                    👤 {{ order.customerName }}
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="cell-flex small truncate">
-                                    📍 {{ order.destination }}
-                                </div>
-                            </td>
-
-                            <td class="price">
-                                R$ {{ order.total.toFixed(2) }}
-                            </td>
-
-                            <td>
-                                <div class="status-wrapper">
-                                    <span class="status" [ngClass]="{
-                      'delivered': order.status === 'Entregue',
-                      'route': order.status === 'Em rota',
-                      'preparing': order.status === 'Preparando',
-                      'default': order.status !== 'Entregue' && order.status !== 'Em rota' && order.status !== 'Preparando'
-                    }">
-                                        ⏱ {{ order.status }}
-                                    </span>
-                                </div>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
+            <div [class.active]="filter === 'concluidos'" (click)="setFilter('concluidos')">
+                Concluídos
             </div>
         </div>
+    </div>
 
-        <div *ngIf="orders.length === 0" class="empty">
-            <p>Você ainda não fez nenhum pedido.</p>
+    <div class="orders">
+        <div class="order-card" *ngFor="let order of filtered">
+            <div class="order-left">
+                <div class="icon-box">
+                    <img src="#" alt="">
+                </div>
+
+                <div>
+                    <div class="order-id">
+                        <span>ID do Pedido</span>
+                        <strong>{{ order.id }}</strong>
+                    </div>
+
+                    <div class="order-info">
+                        <app-icon name="calendar" [size]="20"></app-icon>
+                        <span>{{ order.date }}</span>
+
+                        <app-icon name="person" [size]="20"></app-icon>
+                        <span>{{ order.customerName }}</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-right">
+                <div class="total">
+                    <span>Total</span>
+                    <strong>R$ {{ order.total.toFixed(2) }}</strong>
+                </div>
+
+                <div class="status" [ngClass]="{
+                    entregue: order.status === 'Entregue',
+                    rota: order.status === 'Em rota',
+                    preparando: order.status === 'Preparando'
+                }">
+                    <app-icon name="clock" [size]="14" /> {{ order.status }}
+                </div>
+
+                <!-- MENU -->
+                <div class="menu">
+                    <button (click)="toggleMenu(order.id)">⋮</button>
+
+                    <div class="dropdown" *ngIf="activeMenu === order.id">
+                        <button (click)="openDetails(order)">
+                            <app-icon name="eye" [size]="20" /> Visualizar pedido
+                        </button>
+
+                        <button (click)="editOrder(order)">
+                            <app-icon name="edit" [size]="20" /> Editar pedido
+                        </button>
+
+                        <button (click)="deleteOrder(order.id)">
+                            <app-icon name="delete" [size]="20" /> Cancelar pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
+    <!-- MODAL CONFIRMAR CANCELAMENTO -->
+    <div class="modal" *ngIf="confirmCancelModal">
+        <div class="overlay"></div>
+
+        <div class="modal-box small">
+            <h2>Cancelar Pedido</h2>
+            <p>Você deseja realmente cancelar este pedido?</p>
+
+            <div class="modal-actions">
+                <button class="btn cancel" (click)="cancelDelete()">Voltar</button>
+                <button class="btn danger" (click)="confirmDelete()">Confirmar cancelamento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SUCESSO -->
+    <div class="modal" *ngIf="successModal">
+        <div class="overlay"></div>
+
+        <div class="modal-box small success">
+            <div class="success-icon">✔</div>
+            <h2>Pedido cancelado</h2>
+            <p>O pedido foi cancelado com sucesso.</p>
+
+            <button class="btn ok" (click)="closeSuccessModal()">OK</button>
+        </div>
+    </div>
+
+    <div class="empty" *ngIf="filtered.length === 0">
+        <div class="empty-box">
+            <div class="icon"><app-icon name="box" [size]="20" /></div>
+
+            <p *ngIf="filter === 'todos'">
+                Você ainda não fez nenhum pedido.
+            </p>
+
+            <p *ngIf="filter !== 'todos'">
+                Nenhum pedido encontrado nesse filtro.
+            </p>
+
+            <button *ngIf="filter !== 'todos'" (click)="clearFilter()">
+                Limpar filtro
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal" *ngIf="selectedOrder">
+        <div class="overlay" (click)="closeModal()"></div>
+
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <span *ngIf="mode === 'view'">Detalhes do Pedido</span>
+                    <span *ngIf="mode === 'edit'">Editar Pedido</span>
+                    <h2>{{ selectedOrder.id }}</h2>
+                </div>
+                <button (click)="closeModal()"><app-icon name="close" [size]="20" /></button>
+            </div>
+
+            <div class="modal-content">
+                <div class="grid">
+                    <div>
+                        <p class="label">Cliente</p>
+                        <p class="value" *ngIf="mode === 'view'">
+                            {{ selectedOrder.customerName }}
+                        </p>
+                        <input *ngIf="mode === 'edit'" [(ngModel)]="selectedOrder.customerName" />
+
+                        <p class="label">Endereço</p>
+                        <p class="value" *ngIf="mode === 'view'">
+                            {{ selectedOrder.destination }}
+                        </p>
+                        <input *ngIf="mode === 'edit'" [(ngModel)]="selectedOrder.destination" />
+                    </div>
+
+                    <div>
+                        <p class="label">Data</p>
+                        <p class="value" *ngIf="mode === 'view'">
+                            {{ selectedOrder.date }}
+                        </p>
+                        <input *ngIf="mode === 'edit'" [(ngModel)]="selectedOrder.date" />
+
+                        <p class="label">Status</p>
+                        <p class="value" *ngIf="mode === 'view'">
+                            {{ selectedOrder.status }}
+                        </p>
+
+                        <select *ngIf="mode === 'edit'" [(ngModel)]="selectedOrder.status">
+                            <option>Recebido</option>
+                            <option>Preparando</option>
+                            <option>Em rota</option>
+                            <option>Entregue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <span>Total</span>
+                        <strong>R$ {{ selectedOrder.total.toFixed(2) }}</strong>
+                    </div>
+
+                    <button *ngIf="mode === 'view'" (click)="closeModal()">Fechar</button>
+                    <button *ngIf="mode === 'edit'" (click)="saveEdit()">Salvar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
