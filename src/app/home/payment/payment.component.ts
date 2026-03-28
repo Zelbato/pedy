@@ -93,7 +93,7 @@ export class PaymentComponent implements OnInit {
   }
 
   public goToMyOrders() {
-    this.router.navigate(['/meus-pedidos']);
+    this.router.navigate(['/orders']);
   }
 
   public goBack() {

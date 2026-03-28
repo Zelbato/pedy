@@ -1,39 +1,28 @@
 <nav class="navbar" [class.scrolled]="scrolled">
     <div class="container">
         <div class="navbar-inner">
-
             <a routerLink="/" class="logo">
                 <img src="assets/img/logo.jpeg" alt="logo" class="logo-icon">
             </a>
-
             <div class="menu">
-
                 <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     INÍCIO
                 </a>
-
                 <a routerLink="/cardapio" routerLinkActive="active">
                     CARDÁPIO
                 </a>
-
                 <a routerLink="/orders" routerLinkActive="active" class="menu-item">
                     <app-icon name="receipt_long" [size]="20"></app-icon>
                     MEUS PEDIDOS
                 </a>
-
-                <!-- underline animado -->
                 <span class="underline"></span>
-
             </div>
-
-
             <div class="cta">
                 <a routerLink="/login" class="login-link">
                     <app-icon name="person" [size]="20"></app-icon>
                     ENTRAR
                 </a>
-
-                <a routerLink="/cardapio" class="btn-primary">PEÇA AGORA</a>
+                <!-- <a routerLink="/cardapio" class="btn-primary">PEÇA AGORA</a> -->
             </div>
 
         </div>

@@ -1,0 +1,67 @@
+<div class="login-page">
+    <div class="login-card" @cardAnimation>
+
+        <div class="card-header">
+            <div class="logo-box">
+                <a routerLink="/" class="logo">
+                    <img src="assets/img/logo.jpeg" alt="logo" class="logo-icon">
+                </a>
+            </div>
+            <h1>Bem-vindo!</h1>
+            <p>Acesse sua conta para continuar.</p>
+        </div>
+
+        <form (submit)="handleLogin()" #loginForm="ngForm" class="login-form">
+
+            <div class="input-field">
+                <label>E-mail</label>
+                <div class="input-wrapper">
+                    <i class="lucide-mail"></i>
+                    <input type="email" name="email" required placeholder="seu@email.com" ngModel>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <div class="label-row">
+                    <label>Senha</label>
+                    <a routerLink="/esqueci-senha" class="forgot-link">Esqueceu sua senha?</a>
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="lucide-lock icon-left"></i>
+
+                    <input [type]="showPassword ? 'text' : 'password'" name="password" required placeholder="••••••••"
+                        ngModel>
+
+                    <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
+                        <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" />
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="isLoading">
+                @if (isLoading) {
+                <div class="spinner"></div>
+                } @else {
+                <span>Entrar agora</span>
+                <i class="lucide-arrow-right"></i>
+                }
+            </button>
+
+            <div class="divider">
+                <span>Ou</span>
+            </div>
+
+            <button type="button" class="btn-google">
+                <i class="lucide-chrome"></i>
+                Google
+            </button>
+        </form>
+
+        <p class="signup-text">
+            Ainda não tem conta?
+            <a routerLink="/cadastro">Cadastre-se</a>
+        </p>
+
+    </div>
+</div>

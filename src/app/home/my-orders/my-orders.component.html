@@ -34,12 +34,15 @@
                     </div>
 
                     <div class="order-info">
-                        <app-icon name="calendar" [size]="20"></app-icon>
-                        <span>{{ order.date }}</span>
+                        <div class="info-item">
+                            <app-icon name="calendar" [size]="20" class="icon"></app-icon>
+                            <span>{{ order.date }}</span>
+                        </div>
 
-                        <app-icon name="person" [size]="20"></app-icon>
-                        <span>{{ order.customerName }}</span>
-
+                        <div class="info-item">
+                            <app-icon name="person" [size]="20" class="icon"></app-icon>
+                            <span>{{ order.customerName }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +58,7 @@
                     rota: order.status === 'Em rota',
                     preparando: order.status === 'Preparando'
                 }">
-                    <app-icon name="clock" [size]="14" /> {{ order.status }}
+                    <app-icon name="clock" [size]="14" class="icon" /> {{ order.status }}
                 </div>
 
                 <!-- MENU -->
@@ -64,15 +67,11 @@
 
                     <div class="dropdown" *ngIf="activeMenu === order.id">
                         <button (click)="openDetails(order)">
-                            <app-icon name="eye" [size]="20" /> Visualizar pedido
-                        </button>
-
-                        <button (click)="editOrder(order)">
-                            <app-icon name="edit" [size]="20" /> Editar pedido
+                            <app-icon name="eye" [size]="20" class="icon" /> Visualizar pedido
                         </button>
 
                         <button (click)="deleteOrder(order.id)">
-                            <app-icon name="delete" [size]="20" /> Cancelar pedido
+                            <app-icon name="delete" [size]="20" class="icon" /> Cancelar pedido
                         </button>
                     </div>
                 </div>
@@ -110,7 +109,7 @@
 
     <div class="empty" *ngIf="filtered.length === 0">
         <div class="empty-box">
-            <div class="icon"><app-icon name="box" [size]="20" /></div>
+            <div class="icon"><app-icon name="box" [size]="20" class="icon" /></div>
 
             <p *ngIf="filter === 'todos'">
                 Você ainda não fez nenhum pedido.
@@ -137,7 +136,7 @@
                     <span *ngIf="mode === 'edit'">Editar Pedido</span>
                     <h2>{{ selectedOrder.id }}</h2>
                 </div>
-                <button (click)="closeModal()"><app-icon name="close" [size]="20" /></button>
+                <button (click)="closeModal()"><app-icon name="close" [size]="20" class="icon" /></button>
             </div>
 
             <div class="modal-content">
