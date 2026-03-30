@@ -5,10 +5,11 @@ import { PaymentComponent } from './home/payment/payment.component';
 import { MyOrdersComponent } from './home/my-orders/my-orders.component';
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    // { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent },
     {
         path: '',
         component: ClientLayoutComponent,

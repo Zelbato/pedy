@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="card">
+
+        <div class="header">
+            <h1>Crie sua conta</h1>
+            <p>Preencha os dados abaixo.</p>
+        </div>
+
+        <form (submit)="handleRegister($event)" class="form">
+
+            <!-- Nome -->
+            <div class="field">
+                <label>Nome</label>
+                <div class="input-group">
+                    <i class="lucide-user"></i>
+                    <input type="text" placeholder="Seu nome" required>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+                <label>E-mail</label>
+                <div class="input-group">
+                    <i class="lucide-mail"></i>
+                    <input type="email" placeholder="seu@email.com" required>
+                </div>
+            </div>
+
+            <!-- Telefone -->
+            <div class="field">
+                <label>Telefone</label>
+                <div class="input-group">
+                    <i class="lucide-phone"></i>
+                    <input type="tel" placeholder="(00) 00000-0000" required>
+                </div>
+            </div>
+
+            <!-- CEP -->
+            <div class="field">
+                <label>CEP</label>
+                <div class="input-group">
+                    <i class="lucide-map-pin"></i>
+                    <input type="text" placeholder="00000-000" required>
+                </div>
+            </div>
+
+            <!-- Rua -->
+            <div class="field full">
+                <label>Rua</label>
+                <div class="input-group">
+                    <i class="lucide-home"></i>
+                    <input type="text" placeholder="Nome da rua" required>
+                </div>
+            </div>
+
+            <!-- Bairro -->
+            <div class="field">
+                <label>Bairro</label>
+                <div class="input-group">
+                    <i class="lucide-map-pin"></i>
+                    <input type="text" placeholder="Bairro" required>
+                </div>
+            </div>
+
+            <!-- Número -->
+            <div class="field">
+                <label>Número</label>
+                <div class="input-group">
+                    <i class="lucide-hash"></i>
+                    <input type="text" placeholder="Número" required>
+                </div>
+            </div>
+
+            <!-- Senha -->
+            <div class="field">
+                <label>Senha</label>
+                <div class="input-group">
+                    <i class="lucide-lock"></i>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <!-- Confirmar Senha -->
+            <div class="field">
+                <label>Confirmar Senha</label>
+                <div class="input-group">
+                    <i class="lucide-lock"></i>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="full actions">
+                <button type="submit" [disabled]="isLoading" class="btn-primary">
+                    <span *ngIf="!isLoading">
+                        Criar conta
+                        <i class="lucide-arrow-right"></i>
+                    </span>
+                    <div *ngIf="isLoading" class="spinner"></div>
+                </button>
+
+                <div class="divider">
+                    <span>Ou</span>
+                </div>
+
+                <button type="button" class="btn-google">
+                    <app-icon name="google" [size]="20"></app-icon>
+                    Google
+                </button>
+            </div>
+
+        </form>
+
+        <p class="login-link">
+            Já tem conta?
+            <a routerLink="/login">Entrar</a>
+        </p>
+
+    </div>
+</div>

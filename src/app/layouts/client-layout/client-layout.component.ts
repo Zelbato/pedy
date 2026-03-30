@@ -24,8 +24,7 @@ export class ClientLayoutComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      // Se a rota for '/login' ou '/cadastro', esconde o header/footer
-      this.showLayout = !(event.url === '/login' || event.url === '/cadastro');
+      this.showLayout = !(event.url === '/login' || event.url === '/register');
     });
   }
 }

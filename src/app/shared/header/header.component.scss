@@ -45,7 +45,7 @@
     background: #FFFFFF;
     border-radius: 50%;
     font-weight: bold;
-    
+
     .logo-icon {
         width: 60px;
         height: auto;
@@ -113,29 +113,15 @@
     justify-content: center;
     align-items: center;
 
-    .btn-primary {
-        background-color: #9ccb00;
-        color: #300A33;
-        padding: 0.5rem 1.5rem;
-        border-radius: 12px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: all 0.3s;
-        display: inline-block;
-        font-weight: 800;
-        font-size: 14px;
-
-        &:hover {
-            background-color: #fffffff5;
-            transform: scale(1.05);
-        }
-    }
-
     .login-link {
         display: flex;
         align-items: center;
         gap: 4px;
         color: #ffffffa9;
+        background: transparent;
+        border: 2px solid #ffffffa9;
+        border-radius: 12px;
+        padding: 8px 12px;
         text-decoration: none;
         font-weight: 800;
         font-size: 14px;
@@ -143,7 +129,9 @@
         transition: all 0.3s ease;
 
         &:hover {
-            color: #9ccb00;
+            background: #9ccb00;
+            border: 2px solid #9ccb00;
+            color: #300A33;
             transform: scale(1.05);
         }
     }
