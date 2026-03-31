@@ -1,7 +1,12 @@
 <div class="container">
     <div class="card">
 
-        <div class="header">
+        <div class="card-header">
+            <div class="logo-box">
+                <a routerLink="/" class="logo">
+                    <img src="assets/img/logo.jpeg" alt="logo" class="logo-icon">
+                </a>
+            </div>
             <h1>Crie sua conta</h1>
             <p>Preencha os dados abaixo.</p>
         </div>
@@ -43,9 +48,18 @@
                     <input type="text" placeholder="00000-000" required>
                 </div>
             </div>
+<!-- full -->
+            <!-- Bairro -->
+            <div class="field ">
+                <label>Bairro</label>
+                <div class="input-group">
+                    <i class="lucide-map-pin"></i>
+                    <input type="text" placeholder="Bairro" required>
+                </div>
+            </div>
 
             <!-- Rua -->
-            <div class="field full">
+            <div class="field">
                 <label>Rua</label>
                 <div class="input-group">
                     <i class="lucide-home"></i>
@@ -53,14 +67,6 @@
                 </div>
             </div>
 
-            <!-- Bairro -->
-            <div class="field">
-                <label>Bairro</label>
-                <div class="input-group">
-                    <i class="lucide-map-pin"></i>
-                    <input type="text" placeholder="Bairro" required>
-                </div>
-            </div>
 
             <!-- Número -->
             <div class="field">
