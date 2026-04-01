@@ -32,68 +32,74 @@
             </div>
 
             <!-- Telefone -->
-            <div class="field">
+            <!-- <div class="field">
                 <label>Telefone</label>
                 <div class="input-group">
                     <i class="lucide-phone"></i>
                     <input type="tel" placeholder="(00) 00000-0000" required>
                 </div>
-            </div>
+            </div> -->
 
             <!-- CEP -->
-            <div class="field">
+            <!-- <div class="field">
                 <label>CEP</label>
                 <div class="input-group">
                     <i class="lucide-map-pin"></i>
                     <input type="text" placeholder="00000-000" required>
                 </div>
-            </div>
-<!-- full -->
+            </div> -->
+            <!-- full -->
             <!-- Bairro -->
-            <div class="field ">
+            <!-- <div class="field ">
                 <label>Bairro</label>
                 <div class="input-group">
                     <i class="lucide-map-pin"></i>
                     <input type="text" placeholder="Bairro" required>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Rua -->
-            <div class="field">
+            <!-- <div class="field">
                 <label>Rua</label>
                 <div class="input-group">
                     <i class="lucide-home"></i>
                     <input type="text" placeholder="Nome da rua" required>
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- Número -->
-            <div class="field">
+            <!-- <div class="field">
                 <label>Número</label>
                 <div class="input-group">
                     <i class="lucide-hash"></i>
                     <input type="text" placeholder="Número" required>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Senha -->
             <div class="field">
                 <label>Senha</label>
                 <div class="input-group">
-                    <i class="lucide-lock"></i>
-                    <input type="password" placeholder="••••••••" required>
+                    <i class="lucide-lock icon-left"></i>
+                    <input [type]="showPassword ? 'text' : 'password'" placeholder="••••••••" name="password" required
+                        ngModel>
+                    <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
+                        <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20">
+                        </app-icon>
+
+                    </button>
                 </div>
             </div>
 
             <!-- Confirmar Senha -->
-            <div class="field">
+            <!-- <div class="field">
                 <label>Confirmar Senha</label>
                 <div class="input-group">
                     <i class="lucide-lock"></i>
                     <input type="password" placeholder="••••••••" required>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Botões -->
             <div class="full actions">
@@ -110,8 +116,8 @@
                 </div>
 
                 <button type="button" class="btn-google">
-                    <app-icon name="google" [size]="20"></app-icon>
-                    Google
+                    <app-icon name="googleIcon" [size]="24"></app-icon>
+                    Continuar com o Google
                 </button>
             </div>
 

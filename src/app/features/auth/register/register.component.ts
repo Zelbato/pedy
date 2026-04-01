@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AppComponent } from '../../../app.component';
 import { AppIconComponent } from "../../../shared/icon/icon.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, AppComponent, AppIconComponent],
+  imports: [CommonModule, AppComponent, AppIconComponent, RouterLink],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-
+  showPassword = false;
   isLoading = false;
 
   constructor(private router: Router) { }

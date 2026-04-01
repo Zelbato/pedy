@@ -18,7 +18,7 @@ export const routes: Routes = [
             { path: 'cardapio', component: CardapioComponent },
             { path: 'payment/:productId', component: PaymentComponent },
             { path: 'orders', component: MyOrdersComponent },
-            { path: 'login', component: LoginComponent }
+            // { path: 'login', component: LoginComponent }
         ]
     },
 
