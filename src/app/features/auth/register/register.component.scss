@@ -109,12 +109,34 @@
     position: relative;
     display: flex;
     align-items: center;
-}
 
-.input-group input {
-    width: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
+    i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #c7c7c7;
+    }
+
+    input {
+        width: 100%;
+        // padding: 10px 44px 10px 40px;
+        padding: 12px;
+        background: #f9fafb;
+        border: 2px solid #f3f4f6;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #300e33;
+        outline: none;
+        transition: all 0.3s;
+
+        &:focus {
+            border-color: #890aa3;
+            background: #fff;
+        }
+    }
 }
 
 .icon-left {
@@ -130,6 +152,10 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+
+    .icon {
+        color: #c5c5c5;
+    }
 }
 
 .actions {
