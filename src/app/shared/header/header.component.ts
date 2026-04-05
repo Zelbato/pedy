@@ -16,16 +16,35 @@ import { AppIconComponent } from '../icon/icon.component';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements AfterViewInit {
+  isLoggedIn = false;
+  isProfileOpen = false;
 
   constructor(
     private el: ElementRef,
     private router: Router
   ) { }
 
+  ngOnInit() {
+    this.checkAuth();
+  }
+
+  checkAuth() {
+    this.isLoggedIn = localStorage.getItem('user_logged_in') === 'true';
+  }
+
+  toggleProfile() {
+    this.isProfileOpen = !this.isProfileOpen;
+  }
+
+  logout() {
+    localStorage.removeItem('user_logged_in');
+    this.isLoggedIn = false;
+    this.isProfileOpen = false;
+  }
+
   ngAfterViewInit() {
     this.updateUnderline();
 
-    // Atualiza ao trocar rota
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {

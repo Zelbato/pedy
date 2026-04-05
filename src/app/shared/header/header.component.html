@@ -18,10 +18,63 @@
                 <span class="underline"></span>
             </div>
             <div class="cta">
-                <a routerLink="/login" class="login-link">
-                    <app-icon name="person" [size]="20"></app-icon>
-                    ENTRAR
-                </a>
+                <div *ngIf="isLoggedIn; else loginButton" class="profile-container">
+                    <button class="profile-btn" (click)="toggleProfile()">
+                        <div class="icon-box">
+                            <app-icon name="person" [size]="20"></app-icon>
+                        </div>
+                        <div class="profile-text">
+                            <span class="small">MINHA CONTA</span>
+                            <span class="big">PERFIL</span>
+                        </div>
+                        <app-icon name="arrowBottom" [size]="24" class="arrow" [class.rotate]="isProfileOpen">
+                        </app-icon>
+                    </button>
+
+                    <!-- DROPDOWN -->
+                    <div class="profile-menu" *ngIf="isProfileOpen">
+                        <div class="menu-header">
+                            <span class="welcome">BEM-VINDO DE VOLTA</span> <br>
+                            <span class="client">CLIENTE ESPECIAL</span>
+                        </div>
+                        <a routerLink="/profile" (click)="toggleProfile()">
+                            <div class="menu-icon">
+                                <app-icon name="person" [size]="20"></app-icon>
+                            </div>
+                            Perfil
+                        </a>
+                        <a routerLink="/settings" (click)="toggleProfile()">
+                            <div class="menu-icon">
+                                <app-icon name="settings" [size]="20"></app-icon>
+                            </div>
+                            Configurações
+                        </a>
+                        <a routerLink="/address" (click)="toggleProfile()">
+                            <div class="menu-icon">
+                                <app-icon name="location_add" [size]="20"></app-icon>
+                            </div>
+                            Endereços
+                        </a>
+
+                        <div class="divider"></div>
+
+                        <button (click)="logout()" class="logout">
+                            <div class="menu-icon-logout">
+                                <app-icon name="logout" [size]="20" class="icon-logout"></app-icon>
+                            </div>
+                            <span class="logout-text">Sair</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DESLOGADO -->
+                <ng-template #loginButton>
+                    <a routerLink="/login" class="login-link">
+                        <app-icon name="person" [size]="20"></app-icon>
+                        ENTRAR
+                    </a>
+                </ng-template>
+
             </div>
         </div>
     </div>
