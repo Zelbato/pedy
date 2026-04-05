@@ -24,6 +24,7 @@ import { AppIconComponent } from "../../../shared/icon/icon.component";
 export class LoginComponent {
   isLoading = false;
   showPassword = false;
+  password: string = '';
 
   constructor(private router: Router) { }
 

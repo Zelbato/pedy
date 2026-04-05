@@ -1,20 +1,24 @@
-.container {
-    min-height: 100dvh;
+.login-page {
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f9fafb;
-    padding: 10px;
+    background-color: #f9fafb;
+    padding: 8px;
 }
 
-.card {
+.login-card {
     width: 100%;
     max-width: 420px;
-    background: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid #f1f1f1;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 24px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    @media (min-width: 768px) {
+        padding: 32px;
+    }
 }
 
 .card-header {
@@ -32,11 +36,6 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 12px;
-
-        i {
-            color: #9ccb00;
-            font-size: 20px;
-        }
 
         .logo {
             display: flex;
@@ -76,96 +75,141 @@
     }
 }
 
-
-.form {
-    display: grid;
-    // grid-template-columns: 1fr 1fr;
-    grid-template-columns: repeat(1, 1fr);
-
-    gap: 16px;
-
-}
-
-.field {
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 8px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4px;
+    }
 
     label {
         font-size: 9px;
         font-weight: 900;
-        letter-spacing: 2px;
-        color: rgba(46, 16, 101, 0.4);
         text-transform: uppercase;
-        margin-left: 4px;
+        letter-spacing: 0.2em;
+        color: rgba(48, 14, 51, 0.4);
+    }
+
+    .forgot-link {
+        font-size: 9px;
+        color: #890aa3;
+        text-decoration: dashed;
+        letter-spacing: 0.1em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .icon-left {
+            position: absolute;
+            left: 14px;
+            font-size: 14px;
+            color: #d1d5db;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #f9fafb;
+            border: 2px solid #f3f4f6;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #300e33;
+            outline: none;
+            transition: all 0.3s;
+
+            &:focus {
+                border-color: #890aa3;
+                background: #ffffff;
+            }
+        }
+
+        input.ng-touched.ng-invalid {
+            border-color: #ef4444;
+            background: #fff;
+        }
+
+        .btn-toggle-eye {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #3d3d3d;
+            transition: color 0.2s;
+
+            &:hover {
+                color: #300e33;
+            }
+        }
+    }
+
+    .error {
+        color: #ef4444;
+        font-size: 11px;
+        margin-top: 4px;
+        padding-left: 4px;
     }
 }
 
-// .full {
-//     grid-column: span 4;
-// }
-
-.input-group {
-    position: relative;
+.checkbox {
     display: flex;
     align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: #6b7280;
 
-    i {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 12px;
-        color: #c7c7c7;
+    input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #f3f4f6;
+        border-radius: 4px;
+        background: #ffffff;
+        cursor: pointer;
+        transition: all 0.2s;
+        accent-color: #890aa3;
+
+        &:checked {
+            background: #890aa3;
+            border-color: #890aa3;
+        }
     }
 
-    input {
-        width: 100%;
-        // padding: 10px 44px 10px 40px;
-        padding: 12px;
-        background: #f9fafb;
-        border: 2px solid #f3f4f6;
-        border-radius: 12px;
+    a {
         font-size: 12px;
-        font-weight: 500;
-        color: #300e33;
-        outline: none;
-        transition: all 0.3s;
+        color: #890aa3;
+        text-decoration: none;
 
-        &:focus {
-            border-color: #890aa3;
-            background: #fff;
+        &:hover {
+            text-decoration: underline;
         }
     }
 }
 
-.icon-left {
-    position: absolute;
-    left: 12px;
-}
-
-.btn-toggle-eye {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    .icon {
-        color: #c5c5c5;
-    }
-}
-
-.actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 5px;
-}
-
-.btn-primary {
+.btn-submit {
     width: 100%;
     background: #300e33;
     color: #ffffff;
@@ -185,59 +229,52 @@
     box-shadow: 0 10px 15px -3px rgba(48, 14, 51, 0.1);
     margin-top: 8px;
 
-    &:hover {
+    &:hover:not(:disabled) {
         background: #890aa3;
+        transform: translateY(-1px);
     }
-}
 
-.spinner {
-    width: 14px;
-    height: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top: 2px solid #fff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 }
 
 .divider {
     position: relative;
     text-align: center;
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #d1d5db;
+    margin: 8px 0;
 
     &::before {
         content: "";
         position: absolute;
         top: 50%;
         left: 0;
-        width: 100%;
+        right: 0;
         height: 1px;
-        background: #f1f1f1;
+        background: #f3f4f6;
     }
 
     span {
-        background: #fff;
-        padding: 0 8px;
         position: relative;
+        background: #ffffff;
+        padding: 0 12px;
+        font-size: 9px;
+        font-weight: 900;
+        color: #d1d5db;
+        text-transform: uppercase;
     }
 }
 
 .btn-google {
     width: 100%;
-    background: #fff;
-    border: 1px solid #f1f1f1;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 12px;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
     color: #300e33;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: capitalize;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -246,17 +283,19 @@
     transition: all 0.3s;
 
     &:hover {
-        background: #f9fafb;
+        background: #f1f1f1;
+        border-color: #e5e7eb;
+        transform: scale(1.02);
+    }
+
+    i {
+        color: #9ccb00;
+        font-size: 14px;
     }
 }
 
-.google-icon {
-    width: 14px;
-    height: 14px;
-}
-
-.login-link {
-    margin-top: 10px;
+.signup-text {
+    margin-top: 16px;
     text-align: center;
     font-size: 12px;
     font-weight: 700;
@@ -264,7 +303,6 @@
 
     a {
         color: #890aa3;
-        margin-left: 4px;
         text-decoration: none;
 
         &:hover {
@@ -273,12 +311,17 @@
     }
 }
 
-@media (max-width: 768px) {
-    .form {
-        grid-template-columns: 1fr;
-    }
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
 
-    .full {
-        grid-column: span 1;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }

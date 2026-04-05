@@ -28,14 +28,22 @@
                 </div>
 
                 <div class="input-wrapper">
-                    <i class="lucide-lock icon-left"></i>
-
-                    <input [type]="showPassword ? 'text' : 'password'" name="password" required placeholder="••••••••"
-                        ngModel>
+                    <input [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="password"
+                        #passwordModel="ngModel" required minlength="8" placeholder="••••••••">
 
                     <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
                         <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" />
                     </button>
+                </div>
+
+                <div class="error" *ngIf="passwordModel.touched && passwordModel.invalid">
+                    <span *ngIf="passwordModel.errors?.['required']">
+                        A senha é obrigatória
+                    </span>
+
+                    <span *ngIf="passwordModel.errors?.['minlength']">
+                        A senha deve ter no mínimo 8 caracteres
+                    </span>
                 </div>
             </div>
 

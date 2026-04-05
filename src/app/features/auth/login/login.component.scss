@@ -108,11 +108,9 @@
 
     .forgot-link {
         font-size: 9px;
-        font-weight: 900;
         color: #890aa3;
-        text-decoration: none;
+        text-decoration: dashed;
         letter-spacing: 0.1em;
-        text-transform: uppercase;
 
         &:hover {
             text-decoration: underline;
@@ -134,7 +132,6 @@
 
         input {
             width: 100%;
-            // padding: 10px 44px 10px 40px;
             padding: 12px;
             background: #f9fafb;
             border: 2px solid #f3f4f6;
@@ -148,14 +145,14 @@
             &:focus {
                 border-color: #890aa3;
                 background: #ffffff;
-
-                &~.icon-left {
-                    color: #890aa3;
-                }
             }
         }
 
-        // Botão do Olho no Final
+        input.ng-touched.ng-invalid {
+            border-color: #ef4444;
+            background: #fff;
+        }
+
         .btn-toggle-eye {
             position: absolute;
             right: 12px;
@@ -172,11 +169,14 @@
             &:hover {
                 color: #300e33;
             }
-
-            .icon {
-                display: flex;
-            }
         }
+    }
+
+    .error {
+        color: #ef4444;
+        font-size: 11px;
+        margin-top: 4px;
+        padding-left: 4px;
     }
 }
 

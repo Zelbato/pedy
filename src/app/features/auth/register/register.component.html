@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card">
+<div class="login-page">
+    <div class="login-card">
 
         <div class="card-header">
             <div class="logo-box">
@@ -7,126 +7,174 @@
                     <img src="assets/img/logo.jpeg" alt="logo" class="logo-icon">
                 </a>
             </div>
-            <h1>Crie sua conta</h1>
-            <p>Preencha os dados abaixo.</p>
+
+            <h1 *ngIf="step === 1">Criar sua conta</h1>
+            <h1 *ngIf="step === 2">Adicionar Localização</h1>
+
+            <p *ngIf="step === 1">Preencha seus dados para continuar</p>
+            <p *ngIf="step === 2">Onde você quer receber seus pedidos?</p>
         </div>
 
-        <form (submit)="handleRegister($event)" class="form">
+        <form #form="ngForm" class="login-form" (ngSubmit)="step === 1 ? nextStep($event) : registerLocation($event)"
+            novalidate>
+            <!-- STEP 1 -->
+            <ng-container *ngIf="step === 1">
 
-            <!-- Nome -->
-            <div class="field">
-                <label>Nome</label>
-                <div class="input-group">
-                    <i class="lucide-user"></i>
-                    <input type="text" placeholder="Seu nome" required>
+                <div class="input-field">
+                    <label>Nome completo</label>
+                    <div class="input-wrapper">
+                        <i class="lucide-user"></i>
+                        <input type="text" name="name" required ngModel #nameModel="ngModel"
+                            placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="error" *ngIf="nameModel.touched && nameModel.invalid">
+                        Nome é obrigatório
+                    </div>
                 </div>
-            </div>
 
-            <!-- Email -->
-            <div class="field">
-                <label>E-mail</label>
-                <div class="input-group">
-                    <i class="lucide-mail"></i>
-                    <input type="email" placeholder="seu@email.com" required>
+                <div class="input-field">
+                    <label>E-mail</label>
+                    <div class="input-wrapper">
+                        <i class="lucide-mail"></i>
+                        <input type="email" name="email" [(ngModel)]="email" #emailModel="ngModel" required email
+                            placeholder="seu@email.com">
+                    </div>
+
+                    <div class="error" *ngIf="emailModel.touched && emailModel.invalid">
+                        <span *ngIf="emailModel.errors?.['required']">
+                            O e-mail é obrigatório
+                        </span>
+                        <span *ngIf="emailModel.errors?.['email']">
+                            Digite um e-mail válido
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Telefone -->
-            <!-- <div class="field">
-                <label>Telefone</label>
-                <div class="input-group">
-                    <i class="lucide-phone"></i>
-                    <input type="tel" placeholder="(00) 00000-0000" required>
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>Senha</label>
+                        <a routerLink="/esqueci-senha" class="forgot-link">Esqueceu sua senha?</a>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="password"
+                            #passwordModel="ngModel" required minlength="8" placeholder="••••••••">
+
+                        <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
+                            <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" />
+                        </button>
+                    </div>
+
+                    <div class="error" *ngIf="passwordModel.touched && passwordModel.invalid">
+                        <span *ngIf="passwordModel.errors?.['required']">
+                            A senha é obrigatória
+                        </span>
+
+                        <span *ngIf="passwordModel.errors?.['minlength']">
+                            A senha deve ter no mínimo 8 caracteres
+                        </span>
+                    </div>
                 </div>
-            </div> -->
 
-            <!-- CEP -->
-            <!-- <div class="field">
-                <label>CEP</label>
-                <div class="input-group">
-                    <i class="lucide-map-pin"></i>
-                    <input type="text" placeholder="00000-000" required>
+                <div class="checkbox">
+                    <input type="checkbox" [(ngModel)]="acceptedTerms" name="terms">
+                    <a href="/termos" target="_blank">Aceito os Termos e Condições</a>
                 </div>
-            </div> -->
-            <!-- full -->
-            <!-- Bairro -->
-            <!-- <div class="field ">
-                <label>Bairro</label>
-                <div class="input-group">
-                    <i class="lucide-map-pin"></i>
-                    <input type="text" placeholder="Bairro" required>
-                </div>
-            </div> -->
 
-            <!-- Rua -->
-            <!-- <div class="field">
-                <label>Rua</label>
-                <div class="input-group">
-                    <i class="lucide-home"></i>
-                    <input type="text" placeholder="Nome da rua" required>
-                </div>
-            </div> -->
+                <button type="submit" class="btn-submit" [disabled]="!acceptedTerms || form.invalid || isLoading">
 
-
-            <!-- Número -->
-            <!-- <div class="field">
-                <label>Número</label>
-                <div class="input-group">
-                    <i class="lucide-hash"></i>
-                    <input type="text" placeholder="Número" required>
-                </div>
-            </div> -->
-
-            <!-- Senha -->
-            <div class="field">
-                <label>Senha</label>
-                <div class="input-group">
-                    <i class="lucide-lock icon-left"></i>
-                    <input [type]="showPassword ? 'text' : 'password'" placeholder="••••••••" name="password" required
-                        ngModel>
-                    <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
-                        <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" class="icon">
-                        </app-icon>
-
-                    </button>
-                </div>
-            </div>
-
-            <!-- Confirmar Senha -->
-            <!-- <div class="field">
-                <label>Confirmar Senha</label>
-                <div class="input-group">
-                    <i class="lucide-lock"></i>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-            </div> -->
-
-            <!-- Botões -->
-            <div class="full actions">
-                <button type="submit" [disabled]="isLoading" class="btn-primary">
-                    <span *ngIf="!isLoading">
-                        Criar conta
-                        <i class="lucide-arrow-right"></i>
-                    </span>
+                    <span *ngIf="!isLoading">Continuar</span>
                     <div *ngIf="isLoading" class="spinner"></div>
+                    <app-icon name="arrowRight" [size]="20" class="icon"></app-icon>
                 </button>
 
-                <div class="divider">
-                    <span>Ou</span>
-                </div>
+                <div class="divider"><span>ou</span></div>
 
                 <button type="button" class="btn-google">
                     <app-icon name="googleIcon" [size]="24"></app-icon>
-                    Continuar com o Google
+                    Entrar com Google
                 </button>
-            </div>
 
+            </ng-container>
+
+            <!-- STEP 2 -->
+            <ng-container *ngIf="step === 2">
+
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>CEP</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="cep" ngModel #cepModel="ngModel" required mask="00000-000"
+                            placeholder="00000-000">
+                    </div>
+                    <div class="error" *ngIf="cepModel.touched && cepModel.invalid">
+                        <span *ngIf="cepModel.errors?.['required']">CEP é obrigatório</span>
+                        <span *ngIf="cepModel.errors?.['pattern']">CEP inválido</span>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>Bairro</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="bairro" ngModel #bairroModel="ngModel" required minlength="3"
+                            placeholder="Seu bairro">
+                    </div>
+                    <div class="error" *ngIf="bairroModel.touched && bairroModel.invalid">
+                        <span *ngIf="bairroModel.errors?.['required']">Bairro é obrigatório</span>
+                        <span *ngIf="bairroModel.errors?.['minlength']">Bairro deve ter no mínimo 3 caracteres</span>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>Rua</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="rua" ngModel #ruaModel="ngModel" required minlength="3"
+                            placeholder="Nome da rua">
+                    </div>
+                    <div class="error" *ngIf="ruaModel.touched && ruaModel.invalid">
+                        <span *ngIf="ruaModel.errors?.['required']">Rua é obrigatória</span>
+                        <span *ngIf="ruaModel.errors?.['minlength']">Rua deve ter no mínimo 3 caracteres</span>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>Número</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="numero" ngModel #numeroModel="ngModel" placeholder="123" required>
+                    </div>
+                    <div class="error" *ngIf="numeroModel.touched && numeroModel.invalid">
+                        <span *ngIf="numeroModel.errors?.['required']">Número é obrigatório</span>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <div class="label-row">
+                        <label>Complemento</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" name="complemento" ngModel #complementoModel="ngModel"
+                            placeholder="Ex: Apto 101, Bloco B">
+                    </div>
+                    <div class="error" *ngIf="complementoModel.touched && complementoModel.invalid">
+                        <span *ngIf="complementoModel.errors?.['required']">Complemento é obrigatório</span>
+                    </div>
+                </div>
+
+                <button class="btn-submit" [disabled]="isLoading">
+                    <span *ngIf="!isLoading">Finalizar cadastro</span>
+                    <div *ngIf="isLoading" class="spinner"></div>
+                </button>
+
+            </ng-container>
         </form>
-
-        <p class="login-link">
-            Já tem conta?
-            <a routerLink="/login">Entrar</a>
-        </p>
 
     </div>
 </div>
