@@ -1,5 +1,5 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
 // import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 

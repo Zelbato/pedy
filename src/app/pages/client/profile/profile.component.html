@@ -1,0 +1,247 @@
+<div class="profile">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Perfil</h1>
+        <p>Gerencie sua conta</p>
+    </div>
+
+    <!-- ===================== CONTA ===================== -->
+    <section class="section">
+        <h2>Minha Conta</h2>
+
+        <div class="grid">
+            <button class="card" (click)="activeModal = 'info'">
+                <div class="card-left">
+                    <div class="icon-box">
+                        <app-icon name="person"></app-icon>
+                    </div>
+                    <div>
+                        <p class="card-title">Informações pessoais</p>
+                        <p class="card-sub">Nome, email e telefone</p>
+                    </div>
+                </div>
+                <app-icon name="arrowRight"></app-icon>
+            </button>
+
+            <button class="card" (click)="activeModal = 'security'">
+                <div class="card-left">
+                    <div class="icon-box">
+                        <app-icon name="shield"></app-icon>
+                    </div>
+                    <div>
+                        <p class="card-title">Segurança</p>
+                        <p class="card-sub">Senha e 2FA</p>
+                    </div>
+                </div>
+                <app-icon name="arrowRight"></app-icon>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===================== FIDELIDADE ===================== -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Cartão Fidelidade</h2>
+        </div>
+
+        <a routerLink="/loyalty">
+            <div class="loyalty-card">
+                <div class="loyalty-left">
+                    <div class="loyalty-icon">
+                        <app-icon name="star"></app-icon>
+                    </div>
+                    <div>
+                        <h3>Seu Cartão Fidelidade</h3>
+                        <p>Você tem {{loyaltyPoints}} de 10 pontos</p>
+                    </div>
+                </div>
+
+                <div class="loyalty-dots">
+                    <div *ngFor="let dot of [].constructor(10); let i = index" class="dot"
+                        [class.active]="i < loyaltyPoints">
+                    </div>
+
+                    <app-icon name="arrowRight"></app-icon>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- ===================== PEDIDOS ===================== -->
+    <section class="section">
+        <h2>Pedidos Recentes</h2>
+
+        <div class="orders">
+            <div class="order-card" *ngFor="let order of recentOrders">
+                <div class="order-left">
+
+                    <div class="status-icon" [ngClass]="order.status">
+                        <app-icon [name]="order.status === 'preparing' ? 'clock' : 'check'">
+                        </app-icon>
+                    </div>
+
+                    <div>
+                        <div class="order-top">
+                            <span class="order-id">{{order.id}}</span>
+
+                            <span class="badge" [ngClass]="order.status">
+                                {{order.status}}
+                            </span>
+                        </div>
+
+                        <p class="order-date">{{order.date}}</p>
+                        <p class="order-items">{{order.items}}</p>
+                    </div>
+                </div>
+
+                <div class="order-right">
+                    <div class="total">
+                        <span>Total</span>
+                        <strong>{{order.total}}</strong>
+                    </div>
+
+                    <button class="repeat-btn">
+                        Repetir pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ENDEREÇOS ===================== -->
+    <section class="section">
+        <h2>Endereços</h2>
+
+        <div class="address-grid">
+
+            <div class="address-card" *ngFor="let addr of savedAddresses">
+                <div class="icon-box">
+                    <app-icon name="mapPin"></app-icon>
+                </div>
+
+                <h3>{{addr.type}}</h3>
+                <p>{{addr.address}}</p>
+                <span>{{addr.city}}</span>
+            </div>
+
+            <button class="address-add" (click)="isAddAddressOpen = true">
+                <app-icon name="plus"></app-icon>
+                Novo endereço
+            </button>
+
+        </div>
+    </section>
+
+    <!-- ===================== MODAL ENDEREÇO ===================== -->
+    <div class="overlay" *ngIf="isAddAddressOpen" @fade>
+        <div class="modal" @scale>
+
+            <div class="modal-header">
+                <h2>Novo endereço</h2>
+                <button (click)="isAddAddressOpen = false">✕</button>
+            </div>
+
+            <form (ngSubmit)="addAddress()">
+                <input type="text" [(ngModel)]="newAddress.type" name="type" placeholder="Casa / Trabalho" required>
+                <input type="text" [(ngModel)]="newAddress.address" name="address" placeholder="Rua..." required>
+                <input type="text" [(ngModel)]="newAddress.city" name="city" placeholder="Cidade" required>
+
+                <div class="modal-actions">
+                    <button type="button" (click)="isAddAddressOpen = false">Cancelar</button>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- ===================== MODAL PARABÉNS ===================== -->
+    <div class="overlay" *ngIf="showCongrats" @fade>
+        <div class="congrats-modal" @scale>
+
+            <div class="award-icon">
+                <app-icon name="award"></app-icon>
+            </div>
+
+            <h2>Parabéns!</h2>
+            <p>Você completou seu cartão fidelidade</p>
+
+            <div class="modal-buttons">
+                <button class="btn-primary" (click)="redeemPoints()">
+                    Resgatar prêmio
+                </button>
+
+                <button class="btn-secondary" (click)="showCongrats = false">
+                    Depois
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================== MODAL INFO ===================== -->
+    <div class="overlay" *ngIf="activeModal === 'info'" @fade>
+        <div class="modal" @scale>
+
+            <div class="modal-header">
+                <h2>Informações pessoais</h2>
+                <button (click)="closeModal()">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <input type="text" value="Cliente Especial" readonly>
+                <input type="email" value="cliente@email.com" readonly>
+                <input type="text" value="(11) 99999-9999" readonly>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================== MODAL SEGURANÇA ===================== -->
+    <div class="overlay" *ngIf="activeModal === 'security'" @fade>
+        <div class="modal" @scale>
+
+            <div class="modal-header">
+                <h2>Segurança</h2>
+                <button (click)="closeModal()">✕</button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- SENHA -->
+                <div *ngIf="passwordStep === 'initial'">
+                    <button (click)="passwordStep = 'current'" class="btn-primary">
+                        Alterar senha
+                    </button>
+                </div>
+
+                <div *ngIf="passwordStep === 'current'">
+                    <input type="password" placeholder="Senha atual">
+                    <button (click)="passwordStep = 'new'">Continuar</button>
+                </div>
+
+                <div *ngIf="passwordStep === 'new'">
+                    <input type="password" placeholder="Nova senha">
+                    <input type="password" placeholder="Confirmar senha">
+                    <button (click)="passwordStep = 'initial'">
+                        Salvar
+                    </button>
+                </div>
+
+                <!-- 2FA -->
+                <div class="twofa">
+                    <span>Autenticação 2FA</span>
+
+                    <button (click)="is2FAEnabled = !is2FAEnabled">
+                        {{ is2FAEnabled ? 'Desativar' : 'Ativar' }}
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+```

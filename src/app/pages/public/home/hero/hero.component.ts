@@ -1,17 +1,18 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../../shared/icon/icon.component';
 
 @Component({
   selector: 'app-hero',
+  standalone: true,
   imports: [
     CommonModule,
     RouterModule,
     AppIconComponent
   ],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'
+  styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent {
 

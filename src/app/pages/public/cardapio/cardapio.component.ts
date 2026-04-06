@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { Product } from '../../models/product.model';
-import { PRODUCTS, CUSTOM_CUP_OPTIONS } from '../../constants/product';
+import { PRODUCTS, CUSTOM_CUP_OPTIONS } from '../../../core/constants/product';
 
 type Category = 'sorvete' | 'açai' | 'milkshake' | 'picole' | 'pote';
 

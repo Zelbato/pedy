@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { INITIAL_ORDERS } from '../../constants/my-orders';
+import { INITIAL_ORDERS } from '../../../core/constants/my-orders';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../shared/icon/icon.component';
 
 @Component({
   selector: 'app-my-orders',

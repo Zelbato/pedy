@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Product } from '../../models/product.model';
-import { PRODUCTS } from '../../constants/product';
+import { Product } from '../../../../core/models/product.model';
+import { PRODUCTS } from '../../../../core/constants/product';
 import { RouterModule, Router } from '@angular/router';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../../shared/icon/icon.component';
 
 @Component({
   selector: 'app-menu',

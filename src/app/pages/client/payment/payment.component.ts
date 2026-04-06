@@ -2,7 +2,7 @@ import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AppIconComponent } from '../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../shared/icon/icon.component';
 import { NgxMaskPipe } from 'ngx-mask';
 import { NgxMaskDirective } from 'ngx-mask';
 
