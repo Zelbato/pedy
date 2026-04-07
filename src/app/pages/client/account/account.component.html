@@ -1,0 +1,88 @@
+<div class="account-container">
+    <aside class="sidebar">
+        <header class="user-card">
+            <div class="avatar-box">
+                <app-icon name="person" [size]="28"></app-icon>
+            </div>
+            <div class="user-info">
+                <span class="user-label">Cliente Especial</span>
+                <span class="user-id">ID: #2026-0331</span>
+            </div>
+        </header>
+
+        <nav class="sidebar-menu">
+            <ul class="menu-list">
+                <li>
+                    <a routerLink="/account/profile" routerLinkActive="active" class="menu-link">
+                        <div class="link-content">
+                            <div class="icon-wrapper">
+                                <app-icon name="person" [size]="20"></app-icon>
+                            </div>
+                            <span class="label">Perfil</span>
+                        </div>
+                        <app-icon name="arrowRight" [size]="16" class="arrow-icon"></app-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="pedidos" routerLinkActive="active" class="menu-link">
+                        <div class="link-content">
+                            <div class="icon-wrapper">
+                                <app-icon name="clipboard-outline" [size]="20"></app-icon>
+                            </div>
+                            <span class="label">Meus Pedidos</span>
+                        </div>
+                        <app-icon name="arrowRight" [size]="16" class="arrow-icon"></app-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="enderecos" routerLinkActive="active" class="menu-link">
+                        <div class="link-content">
+                            <div class="icon-wrapper">
+                                <app-icon name="location_add" [size]="20"></app-icon>
+                            </div>
+                            <span class="label">Endereços Salvos</span>
+                        </div>
+                        <app-icon name="arrowRight" [size]="16" class="arrow-icon"></app-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="pagamentos" routerLinkActive="active" class="menu-link">
+                        <div class="link-content">
+                            <div class="icon-wrapper">
+                                <app-icon name="card-outline" [size]="20"></app-icon>
+                            </div>
+                            <span class="label">Pagamentos</span>
+                        </div>
+                        <app-icon name="arrowRight" [size]="16" class="arrow-icon"></app-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="fidelidade" routerLinkActive="active" class="menu-link">
+                        <div class="link-content">
+                            <div class="icon-wrapper">
+                                <app-icon name="ribbon-outline" [size]="20"></app-icon>
+                            </div>
+                            <span class="label">Pontos de Fidelidade</span>
+                        </div>
+                        <app-icon name="arrowRight" [size]="16" class="arrow-icon"></app-icon>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <button class="btn-logout">
+                <app-icon name="log-out-outline" [size]="18"></app-icon>
+                <span>Sair</span>
+            </button>
+        </footer>
+    </aside>
+
+    <main class="content-view">
+        <router-outlet></router-outlet>
+    </main>
+</div>

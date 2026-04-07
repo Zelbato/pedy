@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AppIconComponent } from '../../../shared/icon/icon.component';
+import { AppIconComponent } from '../../../../shared/icon/icon.component';
 import { RouterModule } from '@angular/router';
 import { RouterLink, Route } from '@angular/router';
 

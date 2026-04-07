@@ -6,6 +6,8 @@ import { MyOrdersComponent } from './pages/client/my-orders/my-orders.component'
 import { ClientLayoutComponent } from './layouts/client-layout/client-layout.component';
 import { LoginComponent } from './pages/public/login/login.component';
 import { RegisterComponent } from './pages/public/register/register.component';
+import { AccountComponent } from './pages/client/account/account.component';
+import { ProfileComponent } from './pages/client/account/profile/profile.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -18,9 +20,19 @@ export const routes: Routes = [
             { path: 'cardapio', component: CardapioComponent },
             { path: 'payment/:productId', component: PaymentComponent },
             { path: 'orders', component: MyOrdersComponent },
-            {path: 'profile', loadComponent: () => import('./pages/client/profile/profile.component').then(m => m.ProfileComponent) },
-            {path: 'loyalty', loadComponent: () => import('./pages/client/loyalty/loyalty.component').then(m => m.LoyaltyComponent) },
-            // { path: 'login', component: LoginComponent }
+            { path: 'profile', loadComponent: () => import('./pages/client/account/profile/profile.component').then(m => m.ProfileComponent) },
+            { path: 'loyalty', loadComponent: () => import('./pages/client/loyalty/loyalty.component').then(m => m.LoyaltyComponent) },
+            {
+                path: 'account',
+                component: AccountComponent,
+                children: [
+                    { path: 'profile', component: ProfileComponent },
+                    // { path: 'fidelidade', component: FidelidadeComponent },
+                    // { path: 'enderecos', component: EnderecosComponent },
+                    // { path: 'configuracoes', component: ConfiguracoesComponent },
+                    { path: '', redirectTo: 'profile', pathMatch: 'full' }
+                ]
+            }
         ]
     },
 
