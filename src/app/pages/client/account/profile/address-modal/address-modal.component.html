@@ -1,0 +1,30 @@
+<div class="overlay">
+    <div class="modal">
+
+        <div class="modal-header">
+            <h2>Novo endereço</h2>
+            <button (click)="close.emit()">✕</button>
+        </div>
+
+        <form (ngSubmit)="save.emit()">
+
+            <input type="text" [(ngModel)]="newAddress.type" name="type" placeholder="Casa / Trabalho" required>
+
+            <input type="text" [(ngModel)]="newAddress.address" name="address" placeholder="Rua..." required>
+
+            <input type="text" [(ngModel)]="newAddress.city" name="city" placeholder="Cidade" required>
+
+            <div class="modal-actions">
+                <button type="button" (click)="close.emit()">
+                    Cancelar
+                </button>
+
+                <button type="submit">
+                    Salvar
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

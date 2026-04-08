@@ -5,11 +5,22 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { AppIconComponent } from '../../../../shared/icon/icon.component';
 import { RouterModule } from '@angular/router';
 import { RouterLink, Route } from '@angular/router';
-
+import { InfoModalComponent } from './info-modal/info-modal.component';
+import { SecurityModalComponent } from './security-modal/security-modal.component';
+import { AddressModalComponent } from './address-modal/address-modal.component';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppIconComponent, RouterModule, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppIconComponent,
+    RouterModule,
+    RouterLink,
+    InfoModalComponent,
+    SecurityModalComponent,
+    AddressModalComponent
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
   animations: [

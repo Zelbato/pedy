@@ -1,0 +1,44 @@
+<div class="overlay">
+    <div class="modal">
+
+        <div class="modal-header">
+            <h2>Segurança</h2>
+            <button (click)="close.emit()">✕</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div *ngIf="passwordStep === 'initial'">
+                <button class="btn-primary" (click)="changeStep.emit('current')">
+                    Alterar senha
+                </button>
+            </div>
+
+            <div *ngIf="passwordStep === 'current'">
+                <input type="password" placeholder="Senha atual">
+                <button (click)="changeStep.emit('new')">
+                    Continuar
+                </button>
+            </div>
+
+            <div *ngIf="passwordStep === 'new'">
+                <input type="password" placeholder="Nova senha">
+                <input type="password" placeholder="Confirmar senha">
+
+                <button (click)="changeStep.emit('initial')">
+                    Salvar
+                </button>
+            </div>
+
+            <div class="twofa">
+                <span>Autenticação 2FA</span>
+
+                <button (click)="toggle2FA.emit()">
+                    {{ is2FAEnabled ? 'Desativar' : 'Ativar' }}
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

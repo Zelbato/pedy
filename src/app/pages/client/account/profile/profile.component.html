@@ -127,27 +127,9 @@
         </div>
     </section>
 
-    <div class="overlay" *ngIf="isAddAddressOpen" @fade>
-        <div class="modal" @scale>
-
-            <div class="modal-header">
-                <h2>Novo endereço</h2>
-                <button (click)="isAddAddressOpen = false">✕</button>
-            </div>
-
-            <form (ngSubmit)="addAddress()">
-                <input type="text" [(ngModel)]="newAddress.type" name="type" placeholder="Casa / Trabalho" required>
-                <input type="text" [(ngModel)]="newAddress.address" name="address" placeholder="Rua..." required>
-                <input type="text" [(ngModel)]="newAddress.city" name="city" placeholder="Cidade" required>
-
-                <div class="modal-actions">
-                    <button type="button" (click)="isAddAddressOpen = false">Cancelar</button>
-                    <button type="submit">Salvar</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
+    <app-address-modal *ngIf="isAddAddressOpen" [newAddress]="newAddress" (save)="addAddress()"
+        (close)="isAddAddressOpen = false">
+    </app-address-modal>
 
     <div class="overlay" *ngIf="showCongrats" @fade>
         <div class="congrats-modal" @scale>
@@ -172,62 +154,10 @@
         </div>
     </div>
 
-    <div class="overlay" *ngIf="activeModal === 'info'" @fade>
-        <div class="modal" @scale>
+    <app-info-modal *ngIf="activeModal === 'info'" (close)="closeModal()">
+    </app-info-modal>
 
-            <div class="modal-header">
-                <h2>Informações pessoais</h2>
-                <button (click)="closeModal()">✕</button>
-            </div>
-
-            <div class="modal-body">
-                <input type="text" value="Cliente Especial" readonly>
-                <input type="email" value="cliente@email.com" readonly>
-                <input type="text" value="(11) 99999-9999" readonly>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="overlay" *ngIf="activeModal === 'security'" @fade>
-        <div class="modal" @scale>
-
-            <div class="modal-header">
-                <h2>Segurança</h2>
-                <button (click)="closeModal()">✕</button>
-            </div>
-
-            <div class="modal-body">
-
-                <!-- SENHA -->
-                <div *ngIf="passwordStep === 'initial'">
-                    <button (click)="passwordStep = 'current'" class="btn-primary">
-                        Alterar senha
-                    </button>
-                </div>
-
-                <div *ngIf="passwordStep === 'current'">
-                    <input type="password" placeholder="Senha atual">
-                    <button (click)="passwordStep = 'new'">Continuar</button>
-                </div>
-
-                <div *ngIf="passwordStep === 'new'">
-                    <input type="password" placeholder="Nova senha">
-                    <input type="password" placeholder="Confirmar senha">
-                    <button (click)="passwordStep = 'initial'">
-                        Salvar
-                    </button>
-                </div>
-
-                <!-- 2FA -->
-                <div class="twofa">
-                    <span>Autenticação 2FA</span>
-
-                    <button (click)="is2FAEnabled = !is2FAEnabled">
-                        {{ is2FAEnabled ? 'Desativar' : 'Ativar' }}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-security-modal *ngIf="activeModal === 'security'" [passwordStep]="passwordStep" [is2FAEnabled]="is2FAEnabled"
+        (close)="closeModal()" (toggle2FA)="is2FAEnabled = !is2FAEnabled" (changeStep)="passwordStep = $event">
+    </app-security-modal>
 </div>
