@@ -1,12 +1,9 @@
 <div class="profile">
-
-    <!-- HEADER -->
     <div class="header">
         <h1>Meu Perfil</h1>
         <p>Gerencie seus dados e pedidos</p>
     </div>
 
-    <!-- ===================== CONTA ===================== -->
     <section class="section">
         <h2>Minha Conta</h2>
 
@@ -39,17 +36,16 @@
         </div>
     </section>
 
-    <!-- ===================== FIDELIDADE ===================== -->
     <section class="section">
         <div class="section-header">
             <h2>Cartão Fidelidade</h2>
         </div>
 
-        <a routerLink="/loyalty">
+        <a routerLink="/loyalty" class="loyalty">
             <div class="loyalty-card">
                 <div class="loyalty-left">
                     <div class="loyalty-icon">
-                        <app-icon name="star"></app-icon>
+                        <app-icon name="star" [size]="32"></app-icon>
                     </div>
                     <div>
                         <h3>Seu Cartão Fidelidade</h3>
@@ -68,7 +64,6 @@
         </a>
     </section>
 
-    <!-- ===================== PEDIDOS ===================== -->
     <section class="section">
         <h2>Pedidos Recentes</h2>
 
@@ -109,15 +104,14 @@
         </div>
     </section>
 
-    <!-- ===================== ENDEREÇOS ===================== -->
     <section class="section">
         <h2>Endereços</h2>
 
         <div class="address-grid">
 
             <div class="address-card" *ngFor="let addr of savedAddresses">
-                <div class="icon-box">
-                    <app-icon name="mapPin"></app-icon>
+                <div class="icon-box-location">
+                    <app-icon name="location" class="icon"></app-icon>
                 </div>
 
                 <h3>{{addr.type}}</h3>
@@ -126,14 +120,13 @@
             </div>
 
             <button class="address-add" (click)="isAddAddressOpen = true">
-                <app-icon name="plus"></app-icon>
+                <app-icon name="location" class="icon"></app-icon>
                 Novo endereço
             </button>
 
         </div>
     </section>
 
-    <!-- ===================== MODAL ENDEREÇO ===================== -->
     <div class="overlay" *ngIf="isAddAddressOpen" @fade>
         <div class="modal" @scale>
 
@@ -156,7 +149,6 @@
         </div>
     </div>
 
-    <!-- ===================== MODAL PARABÉNS ===================== -->
     <div class="overlay" *ngIf="showCongrats" @fade>
         <div class="congrats-modal" @scale>
 
@@ -180,7 +172,6 @@
         </div>
     </div>
 
-    <!-- ===================== MODAL INFO ===================== -->
     <div class="overlay" *ngIf="activeModal === 'info'" @fade>
         <div class="modal" @scale>
 
@@ -198,7 +189,6 @@
         </div>
     </div>
 
-    <!-- ===================== MODAL SEGURANÇA ===================== -->
     <div class="overlay" *ngIf="activeModal === 'security'" @fade>
         <div class="modal" @scale>
 
@@ -237,11 +227,7 @@
                         {{ is2FAEnabled ? 'Desativar' : 'Ativar' }}
                     </button>
                 </div>
-
             </div>
-
         </div>
     </div>
-
 </div>
-```

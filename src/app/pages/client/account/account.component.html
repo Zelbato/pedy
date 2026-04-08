@@ -28,7 +28,7 @@
                     <a routerLink="pedidos" routerLinkActive="active" class="menu-link">
                         <div class="link-content">
                             <div class="icon-wrapper">
-                                <app-icon name="clipboard-outline" [size]="20"></app-icon>
+                                <app-icon name="receipt_long" [size]="20"></app-icon>
                             </div>
                             <span class="label">Meus Pedidos</span>
                         </div>
@@ -52,7 +52,7 @@
                     <a routerLink="pagamentos" routerLinkActive="active" class="menu-link">
                         <div class="link-content">
                             <div class="icon-wrapper">
-                                <app-icon name="card-outline" [size]="20"></app-icon>
+                                <app-icon name="creditCard" [size]="20"></app-icon>
                             </div>
                             <span class="label">Pagamentos</span>
                         </div>
@@ -61,10 +61,10 @@
                 </li>
 
                 <li>
-                    <a routerLink="fidelidade" routerLinkActive="active" class="menu-link">
+                    <a routerLink="/loyalty" routerLinkActive="active" class="menu-link">
                         <div class="link-content">
                             <div class="icon-wrapper">
-                                <app-icon name="ribbon-outline" [size]="20"></app-icon>
+                                <app-icon name="worksSpace" [size]="20"></app-icon>
                             </div>
                             <span class="label">Pontos de Fidelidade</span>
                         </div>
@@ -74,12 +74,14 @@
             </ul>
         </nav>
 
-        <footer class="sidebar-footer">
-            <button class="btn-logout">
-                <app-icon name="log-out-outline" [size]="18"></app-icon>
-                <span>Sair</span>
+        <div class="sidebar-footer">
+            <button class="btn-logout-container" (click)="logout()">
+                <div class="icon-block">
+                    <app-icon name="logout" [size]="20"></app-icon>
+                </div>
+                <span class="btn-text">Sair da conta</span>
             </button>
-        </footer>
+        </div>
     </aside>
 
     <main class="content-view">
