@@ -13,17 +13,6 @@ import { CommonModule } from '@angular/common';
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
-  // animations: [
-  //   trigger('float', [
-  //     transition('* => *', [ // Qualquer mudança de estado dispara a animação
-  //       animate('4s ease-in-out', keyframes([
-  //         style({ transform: 'translateY(0)', offset: 0 }),
-  //         style({ transform: 'translateY(15px)', offset: 0.5 }),
-  //         style({ transform: 'translateY(0)', offset: 1 })
-  //       ]))
-  //     ])
-  //   ])
-  // ],
 })
 export class AboutComponent {
 

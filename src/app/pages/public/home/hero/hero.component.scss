@@ -1,6 +1,6 @@
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    min-height: 100dvh;
     background: #890aa3;
     display: flex;
     justify-content: center;
@@ -13,9 +13,11 @@
 }
 
 .hero-content {
+    width: 100%;
     max-width: 1200px;
     text-align: center;
     z-index: 2;
+    padding: 0 20px;
 }
 
 .hero-badge {
@@ -26,21 +28,18 @@
     font-weight: 900;
     margin-bottom: 40px;
     display: inline-block;
-    // transform: rotate(-10deg);
     animation: floatRotate 2.5s ease-in-out infinite;
 }
 
 @keyframes floatRotate {
-    0% {
+
+    0%,
+    100% {
         transform: rotate(-10deg) scale(1);
     }
 
     50% {
         transform: rotate(-10deg) scale(1.1);
-    }
-
-    100% {
-        transform: rotate(-10deg) scale(1);
     }
 }
 
@@ -48,7 +47,7 @@
     font-size: 6rem;
     font-weight: 900;
     color: #300A33;
-    line-height: .8;
+    line-height: .9;
     margin-bottom: 60px;
 
     span {
@@ -60,6 +59,7 @@
 .hero-image-wrapper {
     position: relative;
     margin-bottom: 60px;
+    display: inline-block;
 }
 
 .hero-image {
@@ -72,16 +72,14 @@
 }
 
 @keyframes float {
-    0% {
+
+    0%,
+    100% {
         transform: translateY(0px) rotate(-2deg);
     }
 
     50% {
         transform: translateY(-30px) rotate(2deg);
-    }
-
-    100% {
-        transform: translateY(0px) rotate(-2deg);
     }
 }
 
@@ -231,7 +229,7 @@
 
 @media screen and (max-width: 1024px) {
     .hero-title {
-        font-size: 4.5rem; // Redução gradual do título
+        font-size: 4.5rem;
         margin-bottom: 40px;
     }
 
@@ -243,20 +241,13 @@
 
 @media screen and (max-width: 768px) {
     .hero-section {
-        min-height: auto; // Permite que o conteúdo dite a altura se necessário
-        padding: 60px 20px;
+        padding: 40px 0;
+        min-height: 100vh; // Mantido para não quebrar o fundo roxo
     }
 
     .hero-title {
-        font-size: 3.5rem;
-        line-height: 0.9;
-        margin-bottom: 30px;
-    }
-
-    .hero-badge {
-        font-size: 0.85rem;
-        padding: 8px 16px;
-        margin-bottom: 25px;
+        font-size: 3.2rem;
+        line-height: 1.1; // Espaçamento maior para telas menores
     }
 
     .hero-image {
@@ -265,23 +256,18 @@
         border-width: 8px;
     }
 
-    .hero-description {
-        font-size: 18px;
-        max-width: 320px;
-    }
-
     .marquee {
-        font-size: 25vw; // Aumenta o destaque do fundo no mobile
+        font-size: 25vw;
     }
 }
 
 @media screen and (max-width: 480px) {
     .hero-title {
-        font-size: 2.8rem;
-        margin-bottom: 20px;
+        font-size: 2.5rem;
+        margin-bottom: 25px;
 
         span {
-            text-shadow: 0 3px 0 #300A33; // Shadow menor para texto menor
+            text-shadow: 0 3px 0 #300A33;
         }
     }
 
@@ -290,23 +276,29 @@
         height: 200px;
     }
 
-    .hero-actions {
-        gap: 20px;
-    }
-
     .hero-button {
-        padding: 16px 32px;
-        width: 100%; // Botão ocupa a largura toda no mobile
+        width: 100%;
+        max-width: auto;
         justify-content: center;
+        align-items: center;
     }
 
     .hero-tags {
         font-size: 0.8rem;
-        flex-wrap: wrap; // Garante que as tags não cortem
-        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .star {
-        font-size: 30px; // Estrelas menores
+        font-size: 24px;
+    }
+
+    .star-1 {
+        right: 0;
+        top: 0;
+    }
+
+    .star-2 {
+        left: 0;
+        bottom: 0;
     }
 }

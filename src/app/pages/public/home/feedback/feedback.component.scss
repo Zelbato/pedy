@@ -12,7 +12,7 @@
 
     &__subtitle {
         display: block;
-        color: rgba(#300a33, 0.4);
+        color: rgba(48, 10, 51, 0.4);
         font-weight: 900;
         font-size: 0.75rem;
         text-transform: uppercase;
@@ -22,11 +22,11 @@
     }
 
     &__title {
-        font-size: clamp(3rem, 10vw, 4.5rem);
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
         font-weight: 900;
         color: #300a33;
         letter-spacing: -0.05em;
-        line-height: 1;
+        line-height: 1.1;
         margin: 0;
 
         &--highlight {
@@ -55,6 +55,7 @@
 
     &__card {
         width: 400px;
+        max-width: 85vw;
         background-color: #f9f9f9;
         padding: 2rem;
         border-radius: 32px;
@@ -98,7 +99,7 @@
     }
 
     &__text {
-        color: rgba(#300a33, 0.6);
+        color: rgba(48, 10, 51, 0.6);
         font-weight: 500;
         font-style: italic;
         margin: 0;
@@ -107,7 +108,6 @@
     }
 }
 
-// Animações
 @keyframes marquee {
     0% {
         transform: translateX(0);
@@ -127,5 +127,47 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .feedback {
+        padding: 4rem 0;
+
+        &__header {
+            margin-bottom: 2.5rem;
+        }
+
+        &__track {
+            gap: 1.5rem;
+            animation-duration: 20s;
+        }
+
+        &__card {
+            width: 300px;
+            padding: 1.5rem;
+            border-radius: 24px;
+        }
+
+        &__avatar {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .feedback {
+        &__title {
+            font-size: 2.2rem;
+        }
+
+        &__card {
+            width: 280px;
+        }
+
+        &__text {
+            font-size: 0.9rem;
+        }
     }
 }
