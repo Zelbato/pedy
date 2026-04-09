@@ -1,0 +1,73 @@
+<div class="addresses-container">
+    <div class="header-row">
+        <div>
+            <h1>Meus Endereços</h1>
+            <p>Gerencie seus locais de entrega</p>
+        </div>
+        <button class="btn-add" (click)="toggleAddModal()">
+            <app-icon name="plus" [size]="18" />NOVO ENDEREÇO
+        </button>
+    </div>
+
+    <div class="address-grid">
+        <div *ngFor="let addr of addresses" class="address-card" [class.is-primary]="primaryAddressId === addr.id">
+
+            <div *ngIf="primaryAddressId === addr.id" class="primary-badge">
+                Principal
+            </div>
+
+            <div class="card-content">
+                <div class="info-group">
+                    <div class="icon-box" [class.bg-lime]="primaryAddressId === addr.id">
+                        <span *ngIf="addr.type.toLowerCase() === 'casa'">
+                            <app-icon name="home" [size]="28"></app-icon>
+                        </span>
+                        <span *ngIf="addr.type.toLowerCase() === 'trabalho'">
+                            <app-icon name="briefcase" [size]="28"></app-icon>
+                        </span>
+                        <span *ngIf="addr.type.toLowerCase() !== 'casa' && addr.type.toLowerCase() !== 'trabalho'">
+                            <app-icon name="briefcase" [size]="28"></app-icon>
+                        </span>
+                    </div>
+
+                    <div class="text-details">
+                        <h3>{{ addr.type }}</h3>
+                        <p class="street">{{ addr.address }}</p>
+                        <p class="city">{{ addr.city }}</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button *ngIf="primaryAddressId !== addr.id" class="btn-set-primary"
+                        (click)="openConfirmModal(addr.id)">
+                        Tornar Principal
+                    </button>
+
+                    <div *ngIf="primaryAddressId === addr.id" class="current-badge">
+                        Endereço Atual
+                    </div>
+
+                    <button class="btn-delete" (click)="deleteAddress(addr.id)">
+                        <app-icon name="trash" [size]="20"></app-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="addresses.length === 0" class="empty-state">
+            <div class="empty-icon">
+                <app-icon name="pinDrop" [size]="48"></app-icon>
+            </div>
+            <h3>Nenhum endereço salvo</h3>
+            <p>Adicione um endereço para facilitar suas entregas</p>
+        </div>
+    </div>
+</div>
+
+<app-new-address-modal [isOpen]="isAddModalOpen" (close)="isAddModalOpen = false" (save)="handleAddAddress($event)">
+</app-new-address-modal>
+
+
+<app-confirm-modal [isOpen]="isConfirmModalOpen" (close)="isConfirmModalOpen = false"
+    (confirm)="confirmPrimaryChange()">
+</app-confirm-modal>

@@ -1,0 +1,284 @@
+.addresses-container {
+    padding: 40px;
+    padding-bottom: 120px;
+    min-height: 100vh;
+
+    .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+
+        h1 {
+            font-size: 38px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #300e33;
+            letter-spacing: -1px;
+        }
+
+        p {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: rgba(48, 14, 51, 0.4);
+            letter-spacing: 2px;
+        }
+    }
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #300e33;
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 18px;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(48, 14, 51, 0.15);
+
+    &:hover {
+        background: #890aa3;
+        transform: translateY(-2px);
+    }
+}
+
+.address-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.address-card {
+    background: white;
+    padding: 30px;
+    border-radius: 32px;
+    border: 1px solid rgba(48, 14, 51, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+
+    &.is-primary {
+        border: 2px solid #d9f99d;
+        box-shadow: 0 15px 30px rgba(217, 249, 157, 0.15);
+    }
+
+    .primary-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #d9f99d;
+        color: #300e33;
+        padding: 6px 15px;
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        border-bottom-left-radius: 16px;
+    }
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .info-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            background: #f3e8ff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+
+            &.bg-lime {
+                background: #d9f99d;
+            }
+        }
+
+        .text-details {
+            h3 {
+                font-size: 18px;
+                font-weight: 900;
+                text-transform: uppercase;
+                color: #300e33;
+                margin-bottom: 4px;
+            }
+
+            .street {
+                font-size: 14px;
+                font-weight: 600;
+                color: rgba(48, 14, 51, 0.7);
+            }
+
+            .city {
+                font-size: 10px;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: #999;
+                margin-top: 4px;
+            }
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .btn-set-primary {
+        background: #f3e8ff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-weight: 900;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #300e33;
+        cursor: pointer;
+
+        &:hover {
+            background: #d9f99d;
+        }
+    }
+
+    .current-badge {
+        background: #300e33;
+        color: #d9f99d;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-weight: 900;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+
+    .btn-delete {
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0.4;
+        transition: 0.3s;
+
+        &:hover {
+            opacity: 1;
+            color: #ff4444;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 10, 49, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 40px;
+
+    h2 {
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #300e33;
+    }
+
+    .form-group {
+        margin: 25px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: rgba(48, 14, 51, 0.4);
+        }
+
+        input {
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            background: #f9f9f9;
+            font-weight: 700;
+
+            &:focus {
+                border-color: #300e33;
+                outline: none;
+            }
+        }
+    }
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+
+    button {
+        flex: 1;
+        padding: 16px;
+        border-radius: 16px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .btn-cancel {
+        background: #eee;
+        border: none;
+        color: #999;
+    }
+
+    .btn-save {
+        background: #300e33;
+        border: none;
+        color: white;
+    }
+}
+
+// Mobile Responsividade
+@media (max-width: 768px) {
+    .addresses-container {
+        padding: 20px;
+    }
+
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .card-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+
+        .actions {
+            width: 100%;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    }
+}

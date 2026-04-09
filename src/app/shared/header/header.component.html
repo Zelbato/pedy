@@ -43,17 +43,26 @@
                             </div>
                             Perfil
                         </a>
+
+                        <a routerLink="/account/loyalty" (click)="toggleProfile()">
+                            <div class="menu-icon">
+                                <app-icon name="star" [size]="20"></app-icon>
+                            </div>
+                            Cartão Fidelidade
+                        </a>
+
+                        <a routerLink="/account/addresses" (click)="toggleProfile()">
+                            <div class="menu-icon">
+                                <app-icon name="location_add" [size]="20"></app-icon>
+                            </div>
+                            Endereços
+                        </a>
+
                         <a routerLink="/account/settings" (click)="toggleProfile()">
                             <div class="menu-icon">
                                 <app-icon name="settings" [size]="20"></app-icon>
                             </div>
                             Configurações
-                        </a>
-                        <a routerLink="/account/address" (click)="toggleProfile()">
-                            <div class="menu-icon">
-                                <app-icon name="location_add" [size]="20"></app-icon>
-                            </div>
-                            Endereços
                         </a>
 
                         <div class="divider"></div>

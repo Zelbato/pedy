@@ -1,16 +1,43 @@
-<div class="overlay">
-    <div class="modal">
-
+<div class="overlay" (click)="close.emit()">
+    <div class="modal" (click)="$event.stopPropagation()">
         <div class="modal-header">
-            <h2>Informações pessoais</h2>
-            <button (click)="close.emit()">✕</button>
+            <div class="header-title">
+                <app-icon name="user" [size]="20" class="title-icon"></app-icon>
+                <h2>Informações pessoais</h2>
+            </div>
+            <button class="close-btn" (click)="close.emit()">
+                <app-icon name="close" [size]="20"></app-icon>
+            </button>
         </div>
 
         <div class="modal-body">
-            <input type="text" value="Cliente Especial" readonly>
-            <input type="email" value="cliente@email.com" readonly>
-            <input type="text" value="(11) 99999-9999" readonly>
+            <div class="input-group">
+                <label>Nome completo</label>
+                <div class="input-wrapper">
+                    <app-icon name="person" [size]="18" class="field-icon"></app-icon>
+                    <input type="text" value="Cliente Especial" readonly>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>E-mail</label>
+                <div class="input-wrapper">
+                    <app-icon name="email" [size]="18" class="field-icon"></app-icon>
+                    <input type="email" value="cliente@email.com" readonly>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Telefone</label>
+                <div class="input-wrapper">
+                    <app-icon name="phone" [size]="18" class="field-icon"></app-icon>
+                    <input type="text" value="(11) 99999-9999" readonly>
+                </div>
+            </div>
         </div>
 
+        <div class="modal-footer">
+            <button class="primary-btn" (click)="close.emit()">Entendido</button>
+        </div>
     </div>
 </div>

@@ -1,43 +1,65 @@
-<div class="overlay">
-    <div class="modal">
+<div class="overlay" (click)="close.emit()">
+    <div class="modal" (click)="$event.stopPropagation()">
 
         <div class="modal-header">
-            <h2>Segurança</h2>
-            <button (click)="close.emit()">✕</button>
+            <div class="header-title">
+                <app-icon name="shield" [size]="20" class="title-icon"></app-icon>
+                <h2>Segurança</h2>
+            </div>
+            <button class="close-btn" (click)="close.emit()">
+                <app-icon name="close" [size]="20"></app-icon>
+            </button>
         </div>
 
         <div class="modal-body">
-
-            <div *ngIf="passwordStep === 'initial'">
-                <button class="btn-primary" (click)="changeStep.emit('current')">
-                    Alterar senha
-                </button>
+            <div class="step-container" *ngIf="passwordStep === 'initial'">
+                <div class="info-card">
+                    <p>Mantenha sua conta protegida atualizando sua senha regularmente.</p>
+                    <button class="btn-primary" (click)="changeStep.emit('current')">
+                        Alterar senha
+                    </button>
+                </div>
             </div>
 
-            <div *ngIf="passwordStep === 'current'">
-                <input type="password" placeholder="Senha atual">
-                <button (click)="changeStep.emit('new')">
+            <div class="step-container" *ngIf="passwordStep === 'current'">
+                <p class="step-label">Digite sua senha atual para continuar:</p>
+                <div class="input-wrapper">
+                    <app-icon name="lock" [size]="18" class="field-icon"></app-icon>
+                    <input type="password" placeholder="Senha atual">
+                </div>
+                <button class="btn-primary" (click)="changeStep.emit('new')">
                     Continuar
                 </button>
             </div>
 
-            <div *ngIf="passwordStep === 'new'">
-                <input type="password" placeholder="Nova senha">
-                <input type="password" placeholder="Confirmar senha">
-
-                <button (click)="changeStep.emit('initial')">
-                    Salvar
+            <div class="step-container" *ngIf="passwordStep === 'new'">
+                <p class="step-label">Escolha uma senha forte:</p>
+                <div class="input-wrapper">
+                    <app-icon name="lock" [size]="18" class="field-icon"></app-icon>
+                    <input type="password" placeholder="Nova senha">
+                </div>
+                <div class="input-wrapper">
+                    <app-icon name="lockOpen" [size]="18" class="field-icon"></app-icon>
+                    <input type="password" placeholder="Confirmar nova senha">
+                </div>
+                <button class="btn-primary" (click)="changeStep.emit('initial')">
+                    Salvar Nova Senha
                 </button>
             </div>
 
-            <div class="twofa">
-                <span>Autenticação 2FA</span>
+            <div class="divider"></div>
 
-                <button (click)="toggle2FA.emit()">
+            <div class="twofa-section">
+                <div class="twofa-info">
+                    <span class="twofa-title">Autenticação 2FA</span>
+                    <span class="twofa-status" [class.enabled]="is2FAEnabled">
+                        {{ is2FAEnabled ? 'Ativado' : 'Desativado' }}
+                    </span>
+                </div>
+                <button class="btn-toggle" [class.active]="is2FAEnabled" (click)="toggle2FA.emit()">
                     {{ is2FAEnabled ? 'Desativar' : 'Ativar' }}
                 </button>
             </div>
-
         </div>
 
     </div>

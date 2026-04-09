@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppIconComponent } from '../../../../../shared/icon/icon.component';
 
 @Component({
   selector: 'app-security-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppIconComponent],
   templateUrl: './security-modal.component.html',
   styleUrl: './security-modal.component.scss'
 })

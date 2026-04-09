@@ -1,0 +1,46 @@
+<div class="overlay" *ngIf="isOpen" (click)="onClose()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <div class="header-content">
+                <h2>Adicionar Novo Endereço</h2>
+            </div>
+            <button class="close-btn" (click)="onClose()">
+                <app-icon name="close" [size]="24" class="icon"></app-icon>
+            </button>
+        </div>
+
+        <div class="form-body">
+            <div class="input-row">
+                <div class="input-box">
+                    <label>CEP</label>
+                    <input type="text" [(ngModel)]="newAddress.cep" placeholder="00000-000">
+                </div>
+                <div class="input-box">
+                    <label>Bairro</label>
+                    <input type="text" [(ngModel)]="newAddress.bairro" placeholder="Seu bairro">
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Rua</label>
+                <input type="text" [(ngModel)]="newAddress.street" placeholder="Nome da rua">
+            </div>
+
+            <div class="input-row">
+                <div class="input-box flex-1">
+                    <label>Número</label>
+                    <input type="text" [(ngModel)]="newAddress.number" placeholder="123">
+                </div>
+                <div class="input-box flex-2">
+                    <label>Complemento</label>
+                    <input type="text" [(ngModel)]="newAddress.complement" placeholder="Apto 101...">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" (click)="onClose()">Cancelar</button>
+            <button class="btn-save" (click)="onSave()">Salvar Endereço</button>
+        </div>
+    </div>
+</div>

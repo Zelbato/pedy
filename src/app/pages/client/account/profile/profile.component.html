@@ -104,26 +104,69 @@
         </div>
     </section>
 
-    <section class="section">
-        <h2>Endereços</h2>
+    <section class="profile-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                Endereços Salvos
+            </h2>
+            <a routerLink="/address" class="view-all">Gerenciar Todos</a>
+        </div>
 
         <div class="address-grid">
-
-            <div class="address-card" *ngFor="let addr of savedAddresses">
-                <div class="icon-box-location">
-                    <app-icon name="location" class="icon"></app-icon>
+            <div class="address-card" *ngFor="let addr of addresses.slice(0, 2)"
+                [class.is-primary]="primaryAddressId === addr.id">
+                <div class="badge-primary" *ngIf="primaryAddressId === addr.id">
+                    Principal
                 </div>
 
-                <h3>{{addr.type}}</h3>
-                <p>{{addr.address}}</p>
-                <span>{{addr.city}}</span>
+                <div class="icon-wrapper" [class.bg-lime]="primaryAddressId === addr.id">
+                    <app-icon name="location" [size]="24"></app-icon>
+                </div>
+
+                <h3 class="card-title">{{ addr.type }}</h3>
+                <p class="card-text">{{ addr.address }}</p>
+                <p class="card-city">{{ addr.city }}</p>
             </div>
 
-            <button class="address-add" (click)="isAddAddressOpen = true">
-                <app-icon name="location" class="icon"></app-icon>
-                Novo endereço
-            </button>
+            <a routerLink="/account/addresses" class="add-new-card">
+                <div class="plus-circle">
+                    <app-icon name="plus" [size]="28"></app-icon>
+                </div>
+                <span class="add-text">Novo endereço</span>
+            </a>
+        </div>
+    </section>
 
+    <section class="profile-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                Pagamentos
+            </h2>
+            <a routerLink="/payments" class="view-all">Ver Todos</a>
+        </div>
+
+        <div class="address-grid">
+            <div class="address-card" *ngFor="let card of cards.slice(0, 2)"
+                [class.is-primary]="primaryCardId === card.id">
+                <div class="badge-primary" *ngIf="primaryCardId === card.id">
+                    Principal
+                </div>
+
+                <div class="icon-wrapper" [class.bg-lime]="primaryCardId === card.id">
+                    <app-icon name="creditCard" [size]="24"></app-icon>
+                </div>
+
+                <h3 class="card-title">{{ card.brand }} - {{ card.type === 'credit' ? 'Crédito' : 'Débito' }}</h3>
+                <p class="card-text">{{ card.number }}</p>
+                <p class="card-city">{{ card.name }}</p>
+            </div>
+
+            <a routerLink="/pagamentos" class="add-new-card">
+                <div class="plus-circle">
+                    <app-icon name="plus" [size]="28"></app-icon>
+                </div>
+                <span class="add-text">Novo cartão</span>
+            </a>
         </div>
     </section>
 

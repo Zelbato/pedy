@@ -1,0 +1,23 @@
+<div class="overlay" *ngIf="isOpen" (click)="onClose()">
+    <div class="modal" (click)="$event.stopPropagation()">
+
+        <div class="modal-header">
+            <div class="alert-icon-wrapper">
+                <app-icon name="warning" [size]="36"></app-icon>
+            </div>
+            <h2>ALTERAR ENDEREÇO <br> PRINCIPAL?</h2>
+        </div>
+
+        <div class="modal-body">
+            <p>
+                ESTE ENDEREÇO SERÁ SELECIONADO AUTOMATICAMENTE PARA SUAS PRÓXIMAS ENTREGAS.
+            </p>
+        </div>
+
+        <div class="modal-actions-stack">
+            <button class="btn-confirm" (click)="onConfirm()">CONFIRMAR MUDANÇA</button>
+            <button class="btn-cancel" (click)="onClose()">CANCELAR</button>
+        </div>
+
+    </div>
+</div>

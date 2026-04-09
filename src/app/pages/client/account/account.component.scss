@@ -162,9 +162,9 @@
                     font-weight: 600;
                     font-size: 0.95rem;
                 }
-                
+
                 &:hover {
-                    background-color: #fef2f2; 
+                    background-color: #fef2f2;
 
                     .icon-block {
                         background-color: #fff;
@@ -172,7 +172,7 @@
                 }
 
                 &:active {
-                    transform: scale(0.98); 
+                    transform: scale(0.98);
                 }
             }
         }
@@ -180,5 +180,84 @@
 
     .content-view {
         flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .account-container {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 20px;
+
+        .sidebar {
+            width: 100%;
+            position: relative;
+            top: 0;
+            max-height: none;
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+            .user-card {
+                padding: 0 20px 20px;
+                margin-bottom: 15px;
+
+                .avatar-box {
+                    width: 44px;
+                    height: 44px;
+                }
+
+                .user-label {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .sidebar-menu {
+                .menu-list {
+                    flex-direction: row;
+                    overflow-x: auto;
+                    padding: 0 15px;
+                    gap: 10px;
+                    padding-bottom: 5px;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+
+                    .menu-link {
+                        flex-shrink: 0;
+                        padding: 10px 14px;
+                        border-radius: 14px;
+
+                        .arrow-icon {
+                            display: none;
+                        }
+
+                        .link-content {
+                            gap: 8px;
+
+                            .icon-wrapper {
+                                width: 28px;
+                                height: 28px;
+                            }
+
+                            .label {
+                                font-size: 0.85rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+        }
+
+        .content-view {
+            width: 100%;
+        }
     }
 }

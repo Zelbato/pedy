@@ -1,0 +1,158 @@
+<div class="loyalty-container">
+  <header class="header">
+    <div class="header-left">
+      <div class="title-group">
+        <h1>FIDELIDADE PANDA</h1>
+        <p>Acompanhe seus pontos e resgate prêmios</p>
+      </div>
+    </div>
+    <div class="status-badge">
+      <lucide-icon [name]="Zap" class="icon pulse"></lucide-icon>
+      <span>Status: Panda Gold</span>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <div class="content-side">
+      <div class="loyalty-card" @fadeInScale>
+        <div class="card-bg-decoration">
+          <div class="blob-1"></div>
+          <div class="blob-2"></div>
+          <div class="pattern"></div>
+        </div>
+
+        <div class="card-content">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <lucide-icon [name]="Trophy" class="icon-lime"></lucide-icon>
+                <h3>Cartão Digital</h3>
+              </div>
+              <p class="card-id">ID: #PANDA-2026-LOYALTY</p>
+            </div>
+
+            <div class="points-badge">
+              <p>Pontos Atuais</p>
+              <div class="points-value">
+                <span class="current">{{ loyaltyPoints }}</span>
+                <span class="total">/10</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-info">
+              <span>Progresso do Prêmio</span>
+              <span class="lime-text">{{ progressPercentage }}%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" [style.width.%]="progressPercentage"></div>
+            </div>
+          </div>
+
+          <div class="points-grid">
+            <div *ngFor="let p of pointsArray; let i = index" class="point-slot" [ngClass]="{
+                   'active': i < loyaltyPoints,
+                   'next': i === loyaltyPoints,
+                   'empty': i > loyaltyPoints
+                 }">
+              <ng-container *ngIf="i < loyaltyPoints; else placeholder">
+                <lucide-icon [name]="Star" class="star-active"></lucide-icon>
+                <div class="check-badge">✓</div>
+              </ng-container>
+              <ng-template #placeholder>
+                <span class="slot-number">{{ i + 1 }}</span>
+              </ng-template>
+            </div>
+          </div>
+
+          <button *ngIf="loyaltyPoints === 10" class="btn-redeem" (click)="showCongrats = true">
+            <lucide-icon [name]="Gift"></lucide-icon>
+            Resgatar meu Açaí Grátis
+          </button>
+        </div>
+      </div>
+
+      <div class="history-card">
+        <div class="history-header">
+          <h3>
+            <lucide-icon [name]="History" class="icon-lime"></lucide-icon>
+            Histórico de Atividades
+          </h3>
+          <span class="label">Últimos 30 dias</span>
+        </div>
+        <div class="history-list" [@listAnimation]="loyaltyHistory.length">
+          <div *ngFor="let item of loyaltyHistory" class="history-item">
+            <div class="item-info">
+              <div class="icon-wrapper" [ngClass]="item.type">
+                <lucide-icon [name]="item.type === 'bonus' ? Sparkles : Star"></lucide-icon>
+              </div>
+              <div>
+                <p class="description">{{ item.description }}</p>
+                <p class="date">{{ item.date }}</p>
+              </div>
+            </div>
+            <div class="item-points">
+              <span>{{ item.points }}</span>
+              <lucide-icon [name]="Star" class="mini-star"></lucide-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="info-card">
+        <div class="info-icon-bg"><lucide-icon [name]="Info"></lucide-icon></div>
+        <div class="info-header">
+          <div class="info-icon-box"><lucide-icon [name]="Info"></lucide-icon></div>
+          <h4>Como funciona?</h4>
+        </div>
+        <ul class="rules-list">
+          <li>
+            <div class="dot"><lucide-icon [name]="Star"></lucide-icon></div>
+            <p>Cada açaí comprado vale 1 ponto</p>
+          </li>
+          <li>
+            <div class="dot"><lucide-icon [name]="Trophy"></lucide-icon></div>
+            <p>Acumule 10 pontos no seu cartão</p>
+          </li>
+          <li>
+            <div class="dot"><lucide-icon [name]="Gift"></lucide-icon></div>
+            <p>Ganhe 1 açaí grátis à sua escolha</p>
+          </li>
+          <li>
+            <div class="dot"><lucide-icon [name]="Heart"></lucide-icon></div>
+            <p>Resgate a qualquer momento</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vip-card">
+        <div class="vip-header">
+          <div class="vip-icon-box"><lucide-icon [name]="Award"></lucide-icon></div>
+          <h4>Vantagens VIP</h4>
+        </div>
+        <p class="vip-text">Clientes com cartão fidelidade ativo recebem ofertas exclusivas e cashback em dobro.</p>
+        <button class="btn-vip">
+          Ver Todos os Benefícios
+          <lucide-icon [name]="ChevronRight"></lucide-icon>
+        </button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="congrats-overlay" *ngIf="showCongrats" @overlayAnimation>
+  <div class="congrats-modal">
+    <div class="congrats-icon">
+      <lucide-icon [name]="Award" size="56"></lucide-icon>
+    </div>
+    <h2>PARABÉNS!</h2>
+    <p>Você completou seu cartão! Agora é só escolher seu gelato favorito por nossa conta.</p>
+    <div class="modal-actions">
+      <button class="btn-confirm" (click)="resetPoints()">RESGATAR AGORA</button>
+      <button class="btn-later" (click)="showCongrats = false">Deixar para depois</button>
+    </div>
+  </div>
+</div>

@@ -52,6 +52,8 @@ export class ProfileComponent implements OnInit {
   activeModal: string | null = null;
   passwordStep: 'initial' | 'current' | 'new' = 'initial';
   is2FAEnabled = false;
+  primaryAddressId = 1;
+  primaryCardId = 1;
 
   newAddress = { type: '', address: '', city: '' };
 
@@ -64,6 +66,16 @@ export class ProfileComponent implements OnInit {
   savedAddresses = [
     { id: 1, type: 'Casa', address: 'Rua das Delícias, 123', city: 'São Paulo/SP' },
     { id: 2, type: 'Trabalho', address: 'Av. Paulista, 1000', city: 'São Paulo/SP' },
+  ];
+
+  addresses = [
+    { id: 1, type: 'Casa', address: 'Rua das Flores, 123', city: 'São Paulo - SP' },
+    { id: 2, type: 'Trabalho', address: 'Av. Paulista, 1000', city: 'São Paulo - SP' }
+  ];
+
+  cards = [
+    { id: 1, brand: 'Visa', type: 'credit', number: '**** **** **** 4455', name: 'NOME DO CLIENTE' },
+    { id: 2, brand: 'Mastercard', type: 'debit', number: '**** **** **** 8899', name: 'NOME DO CLIENTE' }
   ];
 
   ngOnInit() {

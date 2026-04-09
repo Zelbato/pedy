@@ -21,16 +21,16 @@ export const routes: Routes = [
             { path: 'payment/:productId', component: PaymentComponent },
             { path: 'orders', component: MyOrdersComponent },
             { path: 'profile', loadComponent: () => import('./pages/client/account/profile/profile.component').then(m => m.ProfileComponent) },
-            { path: 'loyalty', loadComponent: () => import('./pages/client/loyalty/loyalty.component').then(m => m.LoyaltyComponent) },
+            { path: 'loyalty', loadComponent: () => import('./pages/client/account/loyalty/loyalty.component').then(m => m.LoyaltyComponent) },
             {
                 path: 'account',
                 component: AccountComponent,
                 children: [
                     { path: 'profile', component: ProfileComponent },
-                    // { path: 'fidelidade', component: FidelidadeComponent },
-                    // { path: 'enderecos', component: EnderecosComponent },
-                    // { path: 'configuracoes', component: ConfiguracoesComponent },
-                    { path: '', redirectTo: 'profile', pathMatch: 'full' }
+                    { path: 'addresses', loadComponent: () => import('./pages/client/account/addresses/addresses.component').then(m => m.AddressesComponent) },
+                    { path: '', redirectTo: 'profile', pathMatch: 'full' },
+                    { path: 'addresses', loadComponent: () => import('./pages/client/account/addresses/addresses.component').then(m => m.AddressesComponent) },
+                    { path: 'loyalty', loadComponent: () => import('./pages/client/account/loyalty/loyalty.component').then(m => m.LoyaltyComponent) }
                 ]
             }
         ]
