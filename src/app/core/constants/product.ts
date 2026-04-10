@@ -7,7 +7,7 @@ export const PRODUCTS: Product[] = [
     description: 'Delicioso doce feito com açaí, ninho, leite em pó e leite condensado.',
     price: 12.9,
     category: 'açai',
-    image: 'assets/img/açai-01.png'
+    image: 'assets/img/img-illustre.png'
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const PRODUCTS: Product[] = [
     description: 'Milkshake cremoso com pedaços de oreo.',
     price: 18.5,
     category: 'milkshake',
-    image: 'assets/img/milk-01.png'
+    image: 'assets/img/img-illustre-2.png'
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     description: 'Sorvete cremoso artesanal de morango.',
     price: 9.9,
     category: 'sorvete',
-    image: 'assets/img/sorvete_morango.jpg'
+    image: 'assets/img/img-illustre-3.png'
   },
 ];
 

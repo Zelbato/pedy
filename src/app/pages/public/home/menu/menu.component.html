@@ -35,7 +35,7 @@
                         <p>{{ featuredProducts[0].description }}</p>
                         <div class="bottom">
                             <span class="price">R$ {{ featuredProducts[0].price.toFixed(2) }}</span>
-                            <a [routerLink]="'/pagamento/' + featuredProducts[0].id" class="buy-btn">
+                            <a [routerLink]="'/payment/' + featuredProducts[0].id" class="buy-btn">
                                 PEDIR AGORA
                             </a>
                         </div>
@@ -55,7 +55,7 @@
                             <p>{{ product.description }}</p>
                             <div class="bottom">
                                 <span class="price">R$ {{ product.price.toFixed(2) }}</span>
-                                <a [routerLink]="'/pagamento/' + product.id" class="icon-btn">
+                                <a [routerLink]="'/payment/' + product.id" class="icon-btn">
                                     <i class="bi bi-cart3 icon"></i>
                                 </a>
                             </div>
