@@ -1,0 +1,68 @@
+<div class="payments-container">
+    <header class="payments-header">
+        <div class="header-text">
+            <h1>Pagamentos</h1>
+            <span>Gerencie seus cartões salvos</span>
+        </div>
+        <button class="btn-add" (click)="isAddModalOpen = true">
+            <app-icon name="plus" [size]="20"></app-icon>
+            Adicionar Cartão
+        </button>
+    </header>
+
+    <div class="cards-grid">
+        <div *ngFor="let card of cards" class="payment-card" [class.is-primary]="primaryCardId === card.id">
+
+            <div *ngIf="primaryCardId === card.id" class="badge-primary">
+                Principal
+            </div>
+
+            <div class="card-content">
+                <div class="card-info-group">
+                    <div class="card-icon-box" [class.icon-active]="primaryCardId === card.id">
+                        <app-icon name="card" [size]="24"></app-icon>
+                    </div>
+
+                    <div class="card-details">
+                        <h3>{{card.brand}} - {{card.type === 'credit' ? 'Crédito' : 'Débito'}}</h3>
+                        <p class="card-number">{{card.number}}</p>
+                        <div class="card-meta">
+                            <span>Exp: {{card.expiry}}</span>
+                            <span>{{card.name}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button *ngIf="primaryCardId !== card.id" (click)="openConfirmModal(card.id)"
+                        class="btn-make-primary">
+                        Tornar Principal
+                    </button>
+
+                    <div *ngIf="primaryCardId === card.id" class="status-current">
+                        Cartão Atual
+                    </div>
+
+                    <button (click)="deleteCard(card.id)" class="btn-delete" title="Excluir">
+                        <app-icon name="trash" [size]="20"></app-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="cards.length === 0" class="empty-state">
+            <div class="empty-icon">
+                <app-icon name="card" [size]="48"></app-icon>
+            </div>
+            <h3>Sem cartões</h3>
+            <p>Adicione um método de pagamento para começar</p>
+        </div>
+    </div>
+</div>
+
+<app-payments-modal *ngIf="isAddModalOpen" (close)="isAddModalOpen = false" (save)="handleAddCard($event)">
+</app-payments-modal>
+
+<app-confirm-payments-modal *ngIf="isConfirmModalOpen" (confirm)="handleConfirmPrimary()"
+    (cancel)="isConfirmModalOpen = false">
+</app-confirm-payments-modal>

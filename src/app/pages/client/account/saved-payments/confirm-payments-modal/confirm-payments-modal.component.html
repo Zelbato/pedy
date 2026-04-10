@@ -1,0 +1,23 @@
+<div class="overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="alert-icon-wrapper">
+                <app-icon name="warning" [size]="36"></app-icon>
+            </div>
+            <h2>Confirmar Principal</h2>
+        </div>
+
+        <div class="modal-body">
+            <p>Deseja definir este cartão como sua forma de pagamento padrão para compras futuras?</p>
+        </div>
+
+        <div class="modal-actions-stack">
+            <button class="btn-confirm" (click)="onConfirm()">
+                Sim, tornar principal
+            </button>
+            <button class="btn-cancel" (click)="onCancel()">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</div>

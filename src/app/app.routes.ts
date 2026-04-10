@@ -30,7 +30,8 @@ export const routes: Routes = [
                     { path: 'addresses', loadComponent: () => import('./pages/client/account/addresses/addresses.component').then(m => m.AddressesComponent) },
                     { path: '', redirectTo: 'profile', pathMatch: 'full' },
                     { path: 'addresses', loadComponent: () => import('./pages/client/account/addresses/addresses.component').then(m => m.AddressesComponent) },
-                    { path: 'loyalty', loadComponent: () => import('./pages/client/account/loyalty/loyalty.component').then(m => m.LoyaltyComponent) }
+                    { path: 'loyalty', loadComponent: () => import('./pages/client/account/loyalty/loyalty.component').then(m => m.LoyaltyComponent) },
+                    { path: 'saved-payments', loadComponent: () => import('./pages/client/account/saved-payments/saved-payments.component').then(m => m.SavedPaymentsComponent) }
                 ]
             }
         ]

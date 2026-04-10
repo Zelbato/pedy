@@ -1,0 +1,74 @@
+<div class="overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Novo Cartão</h2>
+            <p>Adicione um novo método de pagamento</p>
+            <button class="close-btn" (click)="onClose()">
+                <app-icon name="close" [size]="20"></app-icon>
+            </button>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" class="form-body">
+
+            <div class="input-row">
+                <div class="input-box flex-1">
+                    <label>Tipo</label>
+                    <div class="custom-select" [ngClass]="{'is-open': isTypeDropdownOpen}">
+                        <div class="select-trigger" (click)="toggleTypeDropdown()">
+                            <span>{{ card.type || 'Selecione...' }}</span>
+                            <span class="custom-arrow"></span>
+                        </div>
+                        <div class="select-options-container">
+                            <div class="select-option" (click)="selectType('Crédito')">Crédito</div>
+                            <div class="select-option" (click)="selectType('Débito')">Débito</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-box flex-1">
+                    <label>Bandeira</label>
+                    <div class="custom-select" [ngClass]="{'is-open': isBrandDropdownOpen}">
+                        <div class="select-trigger" (click)="toggleBrandDropdown()">
+                            <span>{{ card.brand || 'Selecione...' }}</span>
+                            <span class="custom-arrow"></span>
+                        </div>
+                        <div class="select-options-container">
+                            <div class="select-option" (click)="selectBrand('Visa')">Visa</div>
+                            <div class="select-option" (click)="selectBrand('Mastercard')">Mastercard</div>
+                            <div class="select-option" (click)="selectBrand('Elo')">Elo</div>
+                            <div class="select-option" (click)="selectBrand('American Express')">American Express</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Nome no Cartão</label>
+                <input type="text" name="name" [(ngModel)]="card.name" placeholder="Ex: JOÃO SILVA" required>
+            </div>
+
+            <div class="input-box">
+                <label>Número do Cartão</label>
+                <input type="text" name="number" [(ngModel)]="card.number" mask="0000 0000 0000 0000"
+                    placeholder="0000 0000 0000 0000" required>
+            </div>
+
+            <div class="input-row">
+                <div class="input-box flex-2">
+                    <label>Validade</label>
+                    <input type="text" name="expiry" [(ngModel)]="card.expiry" mask="00/00"
+                        [dropSpecialCharacters]="false" placeholder="MM/AA" required>
+                </div>
+                <div class="input-box flex-1">
+                    <label>CVV</label>
+                    <input type="text" name="cvv" [(ngModel)]="card.cvv" mask="000" placeholder="000" required>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" (click)="onClose()">Cancelar</button>
+                <button type="submit" class="btn-save">Salvar Cartão</button>
+            </div>
+        </form>
+    </div>
+</div>
