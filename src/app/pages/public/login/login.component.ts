@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AppComponent } from '../../../app.component';
-import { AppIconComponent } from "../../../shared/icon/icon.component";
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, AppComponent, AppIconComponent],
+  imports: [CommonModule, RouterModule, FormsModule, LucideAngularModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [

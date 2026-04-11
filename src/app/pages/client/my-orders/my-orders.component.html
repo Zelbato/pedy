@@ -1,8 +1,8 @@
-<div class="container">
+﻿<div class="container">
     <div class="header">
         <div>
             <h1>Meus Pedidos</h1>
-            <p>Acompanhe o status das suas delícias em tempo real</p>
+            <p>Acompanhe o status das suas delÃ­cias em tempo real</p>
         </div>
 
         <div class="filters">
@@ -15,7 +15,7 @@
             </div>
 
             <div [class.active]="filter === 'concluidos'" (click)="setFilter('concluidos')">
-                Concluídos
+                ConcluÃ­dos
             </div>
         </div>
     </div>
@@ -35,12 +35,12 @@
 
                     <div class="order-info">
                         <div class="info-item">
-                            <app-icon name="calendar" [size]="20" class="icon"></app-icon>
+                            <lucide-icon name="calendar" [size]="20" class="icon"></lucide-icon>
                             <span>{{ order.date }}</span>
                         </div>
 
                         <div class="info-item">
-                            <app-icon name="person" [size]="20" class="icon"></app-icon>
+                            <lucide-icon name="person" [size]="20" class="icon"></lucide-icon>
                             <span>{{ order.customerName }}</span>
                         </div>
                     </div>
@@ -58,20 +58,20 @@
                     rota: order.status === 'Em rota',
                     preparando: order.status === 'Preparando'
                 }">
-                    <app-icon name="clock" [size]="14" class="icon" /> {{ order.status }}
+                    <lucide-icon name="clock" [size]="14" class="icon" /> {{ order.status }}
                 </div>
 
                 <!-- MENU -->
                 <div class="menu">
-                    <button (click)="toggleMenu(order.id)">⋮</button>
+                    <button (click)="toggleMenu(order.id)">â‹®</button>
 
                     <div class="dropdown" *ngIf="activeMenu === order.id">
                         <button (click)="openDetails(order)">
-                            <app-icon name="eye" [size]="20" class="icon" /> Visualizar pedido
+                            <lucide-icon name="eye" [size]="20" class="icon" /> Visualizar pedido
                         </button>
 
                         <button (click)="deleteOrder(order.id)">
-                            <app-icon name="delete" [size]="20" class="icon" /> Cancelar pedido
+                            <lucide-icon name="delete" [size]="20" class="icon" /> Cancelar pedido
                         </button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
 
         <div class="modal-box small">
             <h2>Cancelar Pedido</h2>
-            <p>Você deseja realmente cancelar este pedido?</p>
+            <p>VocÃª deseja realmente cancelar este pedido?</p>
 
             <div class="modal-actions">
                 <button class="btn cancel" (click)="cancelDelete()">Voltar</button>
@@ -99,7 +99,7 @@
         <div class="overlay"></div>
 
         <div class="modal-box small success">
-            <div class="success-icon">✔</div>
+            <div class="success-icon">âœ”</div>
             <h2>Pedido cancelado</h2>
             <p>O pedido foi cancelado com sucesso.</p>
 
@@ -109,10 +109,10 @@
 
     <div class="empty" *ngIf="filtered.length === 0">
         <div class="empty-box">
-            <div class="icon"><app-icon name="box" [size]="20" class="icon" /></div>
+            <div class="icon"><lucide-icon name="box" [size]="20" class="icon" /></div>
 
             <p *ngIf="filter === 'todos'">
-                Você ainda não fez nenhum pedido.
+                VocÃª ainda nÃ£o fez nenhum pedido.
             </p>
 
             <p *ngIf="filter !== 'todos'">
@@ -136,7 +136,7 @@
                     <span *ngIf="mode === 'edit'">Editar Pedido</span>
                     <h2>{{ selectedOrder.id }}</h2>
                 </div>
-                <button (click)="closeModal()"><app-icon name="close" [size]="20" class="icon" /></button>
+                <button (click)="closeModal()"><lucide-icon name="close" [size]="20" class="icon" /></button>
             </div>
 
             <div class="modal-content">
@@ -148,7 +148,7 @@
                         </p>
                         <input *ngIf="mode === 'edit'" [(ngModel)]="selectedOrder.customerName" />
 
-                        <p class="label">Endereço</p>
+                        <p class="label">EndereÃ§o</p>
                         <p class="value" *ngIf="mode === 'view'">
                             {{ selectedOrder.destination }}
                         </p>

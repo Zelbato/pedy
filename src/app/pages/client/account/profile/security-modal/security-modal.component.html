@@ -1,13 +1,13 @@
-<div class="overlay" (click)="close.emit()">
+﻿<div class="overlay" (click)="close.emit()">
     <div class="modal" (click)="$event.stopPropagation()">
 
         <div class="modal-header">
             <div class="header-title">
-                <app-icon name="shield" [size]="20" class="title-icon"></app-icon>
+                <lucide-icon name="shield" [size]="20" class="title-icon"></lucide-icon>
                 <h2>Segurança</h2>
             </div>
             <button class="close-btn" (click)="close.emit()">
-                <app-icon name="close" [size]="20"></app-icon>
+                <lucide-icon name="close" [size]="20"></lucide-icon>
             </button>
         </div>
 
@@ -24,7 +24,7 @@
             <div class="step-container" *ngIf="passwordStep === 'current'">
                 <p class="step-label">Digite sua senha atual para continuar:</p>
                 <div class="input-wrapper">
-                    <app-icon name="lock" [size]="18" class="field-icon"></app-icon>
+                    <lucide-icon name="lock" [size]="18" class="field-icon"></lucide-icon>
                     <input type="password" placeholder="Senha atual">
                 </div>
                 <button class="btn-primary" (click)="changeStep.emit('new')">
@@ -35,11 +35,11 @@
             <div class="step-container" *ngIf="passwordStep === 'new'">
                 <p class="step-label">Escolha uma senha forte:</p>
                 <div class="input-wrapper">
-                    <app-icon name="lock" [size]="18" class="field-icon"></app-icon>
+                    <lucide-icon name="lock" [size]="18" class="field-icon"></lucide-icon>
                     <input type="password" placeholder="Nova senha">
                 </div>
                 <div class="input-wrapper">
-                    <app-icon name="lockOpen" [size]="18" class="field-icon"></app-icon>
+                    <lucide-icon name="lockOpen" [size]="18" class="field-icon"></lucide-icon>
                     <input type="password" placeholder="Confirmar nova senha">
                 </div>
                 <button class="btn-primary" (click)="changeStep.emit('initial')">

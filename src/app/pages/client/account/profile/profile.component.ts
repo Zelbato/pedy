@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 import { RouterModule } from '@angular/router';
 import { RouterLink, Route } from '@angular/router';
 import { InfoModalComponent } from './info-modal/info-modal.component';
@@ -14,7 +14,7 @@ import { AddressModalComponent } from './address-modal/address-modal.component';
   imports: [
     CommonModule,
     FormsModule,
-    AppIconComponent,
+    LucideAngularModule,
     RouterModule,
     RouterLink,
     InfoModalComponent,

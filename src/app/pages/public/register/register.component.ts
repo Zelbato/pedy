@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AppComponent } from '../../../app.component';
-import { AppIconComponent } from "../../../shared/icon/icon.component";
+import { LucideAngularModule } from 'lucide-angular';
 import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, AppComponent, AppIconComponent, NgxMaskDirective],
+  imports: [CommonModule, FormsModule, RouterModule, LucideAngularModule, NgxMaskDirective],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

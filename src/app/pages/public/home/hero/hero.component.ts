@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-hero',
@@ -9,7 +9,7 @@ import { AppIconComponent } from '../../../../shared/icon/icon.component';
   imports: [
     CommonModule,
     RouterModule,
-    AppIconComponent
+    LucideAngularModule
   ],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss']

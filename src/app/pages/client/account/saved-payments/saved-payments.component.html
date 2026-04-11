@@ -1,11 +1,11 @@
-<div class="payments-container">
+﻿<div class="payments-container">
     <header class="payments-header">
         <div class="header-text">
             <h1>Pagamentos</h1>
             <span>Gerencie seus cartões salvos</span>
         </div>
         <button class="btn-add" (click)="isAddModalOpen = true">
-            <app-icon name="plus" [size]="20"></app-icon>
+            <lucide-icon name="plus" [size]="20"></lucide-icon>
             Adicionar Cartão
         </button>
     </header>
@@ -20,7 +20,7 @@
             <div class="card-content">
                 <div class="card-info-group">
                     <div class="card-icon-box" [class.icon-active]="primaryCardId === card.id">
-                        <app-icon name="card" [size]="24"></app-icon>
+                        <lucide-icon name="card" [size]="24"></lucide-icon>
                     </div>
 
                     <div class="card-details">
@@ -44,7 +44,7 @@
                     </div>
 
                     <button (click)="deleteCard(card.id)" class="btn-delete" title="Excluir">
-                        <app-icon name="trash" [size]="20"></app-icon>
+                        <lucide-icon name="trash" [size]="20"></lucide-icon>
                     </button>
                 </div>
             </div>
@@ -52,7 +52,7 @@
 
         <div *ngIf="cards.length === 0" class="empty-state">
             <div class="empty-icon">
-                <app-icon name="card" [size]="48"></app-icon>
+                <lucide-icon name="card" [size]="48"></lucide-icon>
             </div>
             <h3>Sem cartões</h3>
             <p>Adicione um método de pagamento para começar</p>

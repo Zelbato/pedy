@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppIconComponent } from '../../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-info-modal',
   standalone: true,
-  imports: [CommonModule, AppIconComponent],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './info-modal.component.html',
   styleUrl: './info-modal.component.scss'
 })

@@ -1,4 +1,4 @@
-<div class="profile">
+﻿<div class="profile">
     <div class="header">
         <h1>Meu Perfil</h1>
         <p>Gerencie seus dados e pedidos</p>
@@ -11,27 +11,27 @@
             <button class="card" (click)="activeModal = 'info'">
                 <div class="card-left">
                     <div class="icon-box">
-                        <app-icon name="person"></app-icon>
+                        <lucide-icon name="person"></lucide-icon>
                     </div>
                     <div>
                         <p class="card-title">Informações pessoais</p>
                         <p class="card-sub">Nome, email e telefone</p>
                     </div>
                 </div>
-                <app-icon name="arrowRight"></app-icon>
+                <lucide-icon name="arrowRight"></lucide-icon>
             </button>
 
             <button class="card" (click)="activeModal = 'security'">
                 <div class="card-left">
                     <div class="icon-box">
-                        <app-icon name="shield"></app-icon>
+                        <lucide-icon name="shield"></lucide-icon>
                     </div>
                     <div>
                         <p class="card-title">Segurança</p>
                         <p class="card-sub">Senha e 2FA</p>
                     </div>
                 </div>
-                <app-icon name="arrowRight"></app-icon>
+                <lucide-icon name="arrowRight"></lucide-icon>
             </button>
         </div>
     </section>
@@ -45,7 +45,7 @@
             <div class="loyalty-card">
                 <div class="loyalty-left">
                     <div class="loyalty-icon">
-                        <app-icon name="star" [size]="32"></app-icon>
+                        <lucide-icon name="star" [size]="32"></lucide-icon>
                     </div>
                     <div>
                         <h3>Seu Cartão Fidelidade</h3>
@@ -58,7 +58,7 @@
                         [class.active]="i < loyaltyPoints">
                     </div>
 
-                    <app-icon name="arrowRight"></app-icon>
+                    <lucide-icon name="arrowRight"></lucide-icon>
                 </div>
             </div>
         </a>
@@ -72,8 +72,8 @@
                 <div class="order-left">
 
                     <div class="status-icon" [ngClass]="order.status">
-                        <app-icon [name]="order.status === 'preparing' ? 'clock' : 'check'">
-                        </app-icon>
+                        <lucide-icon [name]="order.status === 'preparing' ? 'clock' : 'check'">
+                        </lucide-icon>
                     </div>
 
                     <div>
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="icon-wrapper" [class.bg-lime]="primaryAddressId === addr.id">
-                    <app-icon name="location" [size]="24"></app-icon>
+                    <lucide-icon name="location" [size]="24"></lucide-icon>
                 </div>
 
                 <h3 class="card-title">{{ addr.type }}</h3>
@@ -130,7 +130,7 @@
 
             <a routerLink="/account/addresses" class="add-new-card">
                 <div class="plus-circle">
-                    <app-icon name="plus" [size]="28"></app-icon>
+                    <lucide-icon name="plus" [size]="28"></lucide-icon>
                 </div>
                 <span class="add-text">Novo endereço</span>
             </a>
@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="icon-wrapper" [class.bg-lime]="primaryCardId === card.id">
-                    <app-icon name="creditCard" [size]="24"></app-icon>
+                    <lucide-icon name="creditCard" [size]="24"></lucide-icon>
                 </div>
 
                 <h3 class="card-title">{{ card.brand }} - {{ card.type === 'credit' ? 'Crédito' : 'Débito' }}</h3>
@@ -163,7 +163,7 @@
 
             <a routerLink="/account/saved-payments" class="add-new-card">
                 <div class="plus-circle">
-                    <app-icon name="plus" [size]="28"></app-icon>
+                    <lucide-icon name="plus" [size]="28"></lucide-icon>
                 </div>
                 <span class="add-text">Novo cartão</span>
             </a>
@@ -178,7 +178,7 @@
         <div class="congrats-modal" @scale>
 
             <div class="award-icon">
-                <app-icon name="award"></app-icon>
+                <lucide-icon name="award"></lucide-icon>
             </div>
 
             <h2>Parabéns!</h2>

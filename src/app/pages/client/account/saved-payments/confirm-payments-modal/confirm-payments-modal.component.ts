@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppIconComponent } from '../../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-confirm-payments-modal',
-  imports: [CommonModule, AppIconComponent],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './confirm-payments-modal.component.html',
   styleUrl: './confirm-payments-modal.component.scss'
 })

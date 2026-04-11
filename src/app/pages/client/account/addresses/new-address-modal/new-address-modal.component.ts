@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-new-address-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppIconComponent],
+  imports: [CommonModule, FormsModule, LucideAngularModule],
   templateUrl: './new-address-modal.component.html',
   styleUrls: ['./new-address-modal.component.scss']
 })

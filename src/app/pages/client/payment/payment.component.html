@@ -1,14 +1,15 @@
-<div class="payment-page">
+﻿<div class="payment-page">
     @if (isSuccess()) {
     <div class="success-screen">
         <div class="success-card">
-            <div class="icon-check">✓</div>
-            <!-- <app-icon name="check" [size]="70" class="icon-check"></app-icon> -->
+            <div class="icon-check">
+                <lucide-icon name="check" [size]="52" class="icon"></lucide-icon>
+            </div>
             <h2>{{ method() === 'delivery' ? 'Pedido Confirmado!' : 'Pagamento Aprovado!' }}</h2>
             <p>
                 {{ method() === 'delivery'
                 ? 'Seu pedido foi enviado para a cozinha. Prepare o pagamento para o entregador!'
-                : 'Seu pagamento foi processado com sucesso e seu pedido já está sendo preparado.' }}
+                : 'Seu pagamento foi processado com sucesso e seu pedido jÃ¡ estÃ¡ sendo preparado.' }}
             </p>
             <button class="btn-primary" (click)="goToMyOrders()">
                 Acompanhar Pedido
@@ -18,7 +19,7 @@
     } @else {
     <div class="container">
         <button class="btn-back" (click)="goBack()">
-            <app-icon name="arrowLeft" [size]="24" class="icon" /> VOLTAR AO CARDÁPIO
+            <lucide-icon name="arrowLeft" [size]="24" class="icon" /> VOLTAR AO CARDÁPIO
         </button>
 
         <div class="payment-grid">
@@ -32,7 +33,9 @@
                             <img src="assets/images/cup-placeholder.png" alt="Produto">
                         </div>
                         } @else {
-                        <div class="custom-icon">🥤</div>
+                        <div class="custom-icon">
+                            <lucide-icon name="user" [size]="24" class="icon" />
+                        </div>
                         }
                         <div class="text">
                             <h3>{{ productId() === 'custom' ? 'Copo Personalizado' : 'Produto Original' }}</h3>
@@ -71,10 +74,10 @@
                 </div>
 
                 <div class="secure-badge">
-                    <app-icon name="shield" [size]="24" class="icon"></app-icon>
+                    <lucide-icon name="shield" [size]="24" class="icon"></lucide-icon>
                     <div>
                         <p>Pagamento Seguro</p>
-                        <small>Sua transação é protegida por criptografia.</small>
+                        <small>Sua transaÃ§Ã£o Ã© protegida por criptografia.</small>
                     </div>
                 </div>
             </aside>
@@ -85,13 +88,13 @@
 
                     <div class="method-tabs">
                         <button [class.active]="method() === 'card'" (click)="method.set('card')">
-                            <app-icon name="card" [size]="24" class="icon"></app-icon> CARTÃO
+                            <lucide-icon name="card" [size]="24" class="icon"></lucide-icon> CARTÃO
                         </button>
                         <button [class.active]="method() === 'pix'" (click)="method.set('pix')">
-                            <app-icon name="pix" [size]="24" class="icon"></app-icon> PIX
+                            <lucide-icon name="pix" [size]="24" class="icon"></lucide-icon> PIX
                         </button>
                         <button [class.active]="method() === 'delivery'" (click)="method.set('delivery')">
-                            <app-icon name="cicloMotor" [size]="24" class="icon"></app-icon> ENTREGA
+                            <lucide-icon name="cicloMotor" [size]="24" class="icon"></lucide-icon> ENTREGA
                         </button>
                     </div>
 
@@ -123,7 +126,7 @@
                         @if (method() === 'pix') {
                         <div class="pix-area animate-fade">
                             <div class="qr-code-box">
-                                <app-icon name="qrCode" [size]="140" class="icon"></app-icon>
+                                <lucide-icon name="qrCode" [size]="140" class="icon"></lucide-icon>
                                 <!-- <div class="qr-mockup">QR CODE</div> -->
                             </div>
                             <p class="pix-instruction">Escaneie o código ou copie a chave abaixo:</p>
@@ -137,7 +140,7 @@
                         @if (method() === 'delivery') {
                         <div class="delivery-area animate-fade">
                             <div class="info-alert">
-                                <!-- <app-icon name="exclamation" [size]="18" class="icon"></app-icon> -->
+                                <!-- <lucide-icon name="exclamation" [size]="18" class="icon"></lucide-icon> -->
                                 <p>Você pagará diretamente ao entregador quando seu pedido chegar.</p>
                             </div>
 

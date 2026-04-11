@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 import { NewAddressModalComponent } from './new-address-modal/new-address-modal.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-addresses',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppIconComponent, NewAddressModalComponent, ConfirmModalComponent],
+  imports: [CommonModule, FormsModule, LucideAngularModule, NewAddressModalComponent, ConfirmModalComponent],
   templateUrl: './addresses.component.html',
   styleUrls: ['./addresses.component.scss']
 })

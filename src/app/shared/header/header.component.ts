@@ -1,8 +1,8 @@
 import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
 import { filter } from 'rxjs/operators';
-import { AppIconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { AppIconComponent } from '../icon/icon.component';
   imports: [
     CommonModule,
     RouterModule,
-    AppIconComponent,
+    LucideAngularModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

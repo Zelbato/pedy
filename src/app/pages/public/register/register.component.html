@@ -1,4 +1,4 @@
-<div class="login-page">
+﻿<div class="login-page">
     <div class="login-card">
 
         <div class="card-header">
@@ -9,10 +9,10 @@
             </div>
 
             <h1 *ngIf="step === 1">Criar sua conta</h1>
-            <h1 *ngIf="step === 2">Adicionar Localização</h1>
+            <h1 *ngIf="step === 2">Adicionar LocalizaÃ§Ã£o</h1>
 
             <p *ngIf="step === 1">Preencha seus dados para continuar</p>
-            <p *ngIf="step === 2">Onde você quer receber seus pedidos?</p>
+            <p *ngIf="step === 2">Onde vocÃª quer receber seus pedidos?</p>
         </div>
 
         <form #form="ngForm" class="login-form" (ngSubmit)="step === 1 ? nextStep($event) : registerLocation($event)"
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="error" *ngIf="nameModel.touched && nameModel.invalid">
-                        Nome é obrigatório
+                        Nome Ã© obrigatÃ³rio
                     </div>
                 </div>
 
@@ -43,10 +43,10 @@
 
                     <div class="error" *ngIf="emailModel.touched && emailModel.invalid">
                         <span *ngIf="emailModel.errors?.['required']">
-                            O e-mail é obrigatório
+                            O e-mail Ã© obrigatÃ³rio
                         </span>
                         <span *ngIf="emailModel.errors?.['email']">
-                            Digite um e-mail válido
+                            Digite um e-mail vÃ¡lido
                         </span>
                     </div>
                 </div>
@@ -59,40 +59,40 @@
 
                     <div class="input-wrapper">
                         <input [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="password"
-                            #passwordModel="ngModel" required minlength="8" placeholder="••••••••">
+                            #passwordModel="ngModel" required minlength="8" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
 
                         <button type="button" class="btn-toggle-eye" (click)="showPassword = !showPassword">
-                            <app-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" />
+                            <lucide-icon [name]="showPassword ? 'eyeOff' : 'eye'" [size]="20" />
                         </button>
                     </div>
 
                     <div class="error" *ngIf="passwordModel.touched && passwordModel.invalid">
                         <span *ngIf="passwordModel.errors?.['required']">
-                            A senha é obrigatória
+                            A senha Ã© obrigatÃ³ria
                         </span>
 
                         <span *ngIf="passwordModel.errors?.['minlength']">
-                            A senha deve ter no mínimo 8 caracteres
+                            A senha deve ter no mÃ­nimo 8 caracteres
                         </span>
                     </div>
                 </div>
 
                 <div class="checkbox">
                     <input type="checkbox" [(ngModel)]="acceptedTerms" name="terms">
-                    <a href="/termos" target="_blank">Aceito os Termos e Condições</a>
+                    <a href="/termos" target="_blank">Aceito os Termos e CondiÃ§Ãµes</a>
                 </div>
 
                 <button type="submit" class="btn-submit" [disabled]="!acceptedTerms || form.invalid || isLoading">
 
                     <span *ngIf="!isLoading">Continuar</span>
                     <div *ngIf="isLoading" class="spinner"></div>
-                    <app-icon name="arrowRight" [size]="20" class="icon"></app-icon>
+                    <lucide-icon name="arrowRight" [size]="20" class="icon"></lucide-icon>
                 </button>
 
                 <div class="divider"><span>ou</span></div>
 
                 <button type="button" class="btn-google">
-                    <app-icon name="googleIcon" [size]="24"></app-icon>
+                    <lucide-icon name="googleIcon" [size]="24"></lucide-icon>
                     Entrar com Google
                 </button>
 
@@ -110,8 +110,8 @@
                             placeholder="00000-000">
                     </div>
                     <div class="error" *ngIf="cepModel.touched && cepModel.invalid">
-                        <span *ngIf="cepModel.errors?.['required']">CEP é obrigatório</span>
-                        <span *ngIf="cepModel.errors?.['pattern']">CEP inválido</span>
+                        <span *ngIf="cepModel.errors?.['required']">CEP Ã© obrigatÃ³rio</span>
+                        <span *ngIf="cepModel.errors?.['pattern']">CEP invÃ¡lido</span>
                     </div>
                 </div>
 
@@ -124,8 +124,8 @@
                             placeholder="Seu bairro">
                     </div>
                     <div class="error" *ngIf="bairroModel.touched && bairroModel.invalid">
-                        <span *ngIf="bairroModel.errors?.['required']">Bairro é obrigatório</span>
-                        <span *ngIf="bairroModel.errors?.['minlength']">Bairro deve ter no mínimo 3 caracteres</span>
+                        <span *ngIf="bairroModel.errors?.['required']">Bairro Ã© obrigatÃ³rio</span>
+                        <span *ngIf="bairroModel.errors?.['minlength']">Bairro deve ter no mÃ­nimo 3 caracteres</span>
                     </div>
                 </div>
 
@@ -138,20 +138,20 @@
                             placeholder="Nome da rua">
                     </div>
                     <div class="error" *ngIf="ruaModel.touched && ruaModel.invalid">
-                        <span *ngIf="ruaModel.errors?.['required']">Rua é obrigatória</span>
-                        <span *ngIf="ruaModel.errors?.['minlength']">Rua deve ter no mínimo 3 caracteres</span>
+                        <span *ngIf="ruaModel.errors?.['required']">Rua Ã© obrigatÃ³ria</span>
+                        <span *ngIf="ruaModel.errors?.['minlength']">Rua deve ter no mÃ­nimo 3 caracteres</span>
                     </div>
                 </div>
 
                 <div class="input-field">
                     <div class="label-row">
-                        <label>Número</label>
+                        <label>NÃºmero</label>
                     </div>
                     <div class="input-wrapper">
                         <input type="text" name="numero" ngModel #numeroModel="ngModel" placeholder="123" required>
                     </div>
                     <div class="error" *ngIf="numeroModel.touched && numeroModel.invalid">
-                        <span *ngIf="numeroModel.errors?.['required']">Número é obrigatório</span>
+                        <span *ngIf="numeroModel.errors?.['required']">NÃºmero Ã© obrigatÃ³rio</span>
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
                             placeholder="Ex: Apto 101, Bloco B">
                     </div>
                     <div class="error" *ngIf="complementoModel.touched && complementoModel.invalid">
-                        <span *ngIf="complementoModel.errors?.['required']">Complemento é obrigatório</span>
+                        <span *ngIf="complementoModel.errors?.['required']">Complemento Ã© obrigatÃ³rio</span>
                     </div>
                 </div>
 

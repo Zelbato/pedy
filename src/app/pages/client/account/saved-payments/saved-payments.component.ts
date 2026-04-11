@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 import { PaymentsModalComponent } from './payments-modal/payments-modal.component';
 import { PaymentsConfirmComponent } from './confirm-payments-modal/confirm-payments-modal.component';
-import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-saved-payments',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppIconComponent, PaymentsModalComponent, NgxMaskDirective, PaymentsConfirmComponent],
+  imports: [CommonModule, FormsModule, LucideAngularModule, PaymentsModalComponent, PaymentsConfirmComponent],
   templateUrl: './saved-payments.component.html',
   styleUrls: ['./saved-payments.component.scss']
 })

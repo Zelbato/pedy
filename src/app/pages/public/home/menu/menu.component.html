@@ -1,66 +1,68 @@
-<section class="featured-products">
-    <div class="background-glow"></div>
+﻿<section class="featured-section">
+    <div class="bg-elements">
+        <div class="blur-circle"></div>
+        <div class="carbon-pattern"></div>
+    </div>
 
     <div class="container">
-        <div class="header">
-            <div class="badge-header">
-                <span class="badge">
-                    <app-icon name="bolt" [size]="20" class="icon" />
-                    Seleção Premium
-                </span>
+        <div class="header-content">
+            <div class="title-area">
+                <div class="badge">
+                    <span class="line"></span>
+                    <span class="badge-text">SELEÇÃO PREMIUM</span>
+                </div>
+                <h2 class="main-title">
+                    OS MAIS <br />
+                    <span class="italic">DESEJADOS</span>
+                </h2>
+                <p class="description">
+                    Uma seleção exclusiva dos nossos produtos mais amados, preparados com ingredientes premium e muito
+                    carinho.
+                </p>
             </div>
-            <h2>
-                OS MAIS <span class="highlight">DESEJADOS.</span>
-            </h2>
-            <a routerLink="/cardapio" class="view-all">
-                VER TODOS OS PRODUTOS
-                <i class="bi bi-caret-right-fill view-icon"></i>
-            </a>
+
+            <div class="view-all-wrapper">
+                <a href="/cardapio" class="circle-button">
+                    <span class="button-text">VER TODOS</span>
+                    <div class="dashed-ring"></div>
+                </a>
+            </div>
         </div>
 
-        <div class="grid-products">
-            <div class="featured-large">
-                <div class="bg-offset"></div>
-                <div class="product-card">
-                    <img [src]="featuredProducts[0].image" [alt]="featuredProducts[0].name" />
-                    <div class="product-info">
-                        <div class="top">
-                            <div class="stars">
-                                <ng-container *ngFor="let star of [1,2,3,4,5]">
-                                    <span class="star">★</span>
-                                </ng-container>
-                            </div>
+        <div class="products-grid">
+            <div class="product-card" *ngFor="let product of featuredProducts; let i = index">
+                <div class="card-inner">
+
+                    <div class="image-container">
+                        <img [src]="product.image" [alt]="product.name" class="product-img">
+                        <div class="heart-badge">
+                            <lucide-icon name="heart" [size]="20"></lucide-icon>
                         </div>
-                        <h3>{{ featuredProducts[0].name }}</h3>
-                        <p>{{ featuredProducts[0].description }}</p>
-                        <div class="bottom">
-                            <span class="price">R$ {{ featuredProducts[0].price.toFixed(2) }}</span>
-                            <a [routerLink]="'/payment/' + featuredProducts[0].id" class="buy-btn">
-                                PEDIR AGORA
+                    </div>
+
+                    <div class="card-details">
+                        <div class="rating-row">
+                            <div class="stars">
+                                <lucide-icon name="star" [size]="12" *ngFor="let s of [1,2,3,4,5]"></lucide-icon>
+                            </div>
+                            <span class="choice-label">Top Choice</span>
+                        </div>
+
+                        <h3 class="product-name">{{ product.name }}</h3>
+
+                        <div class="price-action">
+                            <div class="price-info">
+                                <span class="price-label">Preço</span>
+                                <p class="price-value">R$ {{ product.price | number:'1.2-2' }}</p>
+                            </div>
+
+                            <a [href]="'/pagamento/' + product.id" class="buy-button">
+                                COMPRAR AGORA
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="featured-small">
-                <div *ngFor="let product of featuredProducts.slice(1,3)">
-                    <div class="bg-offset"></div>
-                    <div class="product-card-small">
-                        <div class="image-wrapper">
-                            <img [src]="product.image" [alt]="product.name" />
-                        </div>
-                        <div class="product-info">
-                            <h4>{{ product.name }}</h4>
-                            <p>{{ product.description }}</p>
-                            <div class="bottom">
-                                <span class="price">R$ {{ product.price.toFixed(2) }}</span>
-                                <a [routerLink]="'/payment/' + product.id" class="icon-btn">
-                                    <i class="bi bi-cart3 icon"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="hover-glow"></div>
                 </div>
             </div>
         </div>

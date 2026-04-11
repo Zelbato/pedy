@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { INITIAL_ORDERS } from '../../../core/constants/my-orders';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-my-orders',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppIconComponent],
+  imports: [CommonModule, FormsModule, LucideAngularModule],
   templateUrl: './my-orders.component.html',
   styleUrl: './my-orders.component.scss'
 })

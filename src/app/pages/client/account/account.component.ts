@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { Router } from '@angular/router';
-import { AppIconComponent } from '../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-account',
-  imports: [RouterModule, AppIconComponent],
+  imports: [RouterModule, LucideAngularModule],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })

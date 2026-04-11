@@ -1,11 +1,11 @@
-<div class="addresses-container">
+﻿<div class="addresses-container">
     <div class="header-row">
         <div>
             <h1>Meus Endereços</h1>
             <p>Gerencie seus locais de entrega</p>
         </div>
         <button class="btn-add" (click)="toggleAddModal()">
-            <app-icon name="plus" [size]="18" />NOVO ENDEREÇO
+            <lucide-icon name="plus" [size]="18" />NOVO ENDEREÇO
         </button>
     </div>
 
@@ -20,13 +20,13 @@
                 <div class="info-group">
                     <div class="icon-box" [class.bg-lime]="primaryAddressId === addr.id">
                         <span *ngIf="addr.type.toLowerCase() === 'casa'">
-                            <app-icon name="home" [size]="28"></app-icon>
+                            <lucide-icon name="home" [size]="28"></lucide-icon>
                         </span>
                         <span *ngIf="addr.type.toLowerCase() === 'trabalho'">
-                            <app-icon name="briefcase" [size]="28"></app-icon>
+                            <lucide-icon name="briefcase" [size]="28"></lucide-icon>
                         </span>
                         <span *ngIf="addr.type.toLowerCase() !== 'casa' && addr.type.toLowerCase() !== 'trabalho'">
-                            <app-icon name="briefcase" [size]="28"></app-icon>
+                            <lucide-icon name="briefcase" [size]="28"></lucide-icon>
                         </span>
                     </div>
 
@@ -48,7 +48,7 @@
                     </div>
 
                     <button class="btn-delete" (click)="deleteAddress(addr.id)">
-                        <app-icon name="trash" [size]="20"></app-icon>
+                        <lucide-icon name="trash" [size]="20"></lucide-icon>
                     </button>
                 </div>
             </div>
@@ -56,7 +56,7 @@
 
         <div *ngIf="addresses.length === 0" class="empty-state">
             <div class="empty-icon">
-                <app-icon name="pinDrop" [size]="48"></app-icon>
+                <lucide-icon name="pinDrop" [size]="48"></lucide-icon>
             </div>
             <h3>Nenhum endereço salvo</h3>
             <p>Adicione um endereço para facilitar suas entregas</p>

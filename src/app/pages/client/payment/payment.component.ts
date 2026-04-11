@@ -2,8 +2,7 @@ import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AppIconComponent } from '../../../shared/icon/icon.component';
-import { NgxMaskPipe } from 'ngx-mask';
+import { LucideAngularModule } from 'lucide-angular';
 import { NgxMaskDirective } from 'ngx-mask';
 
 type PaymentMethod = 'card' | 'pix' | 'delivery';
@@ -11,7 +10,7 @@ type PaymentMethod = 'card' | 'pix' | 'delivery';
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, AppIconComponent, NgxMaskDirective, NgxMaskPipe],
+  imports: [CommonModule, FormsModule, RouterModule, LucideAngularModule, NgxMaskDirective],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })

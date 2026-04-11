@@ -1,4 +1,4 @@
-<nav class="navbar" [class.scrolled]="scrolled">
+﻿<nav class="navbar" [class.scrolled]="scrolled">
     <div class="container">
         <div class="navbar-inner">
             <a routerLink="/" class="logo">
@@ -6,13 +6,13 @@
             </a>
             <div class="menu">
                 <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                    INÍCIO
+                    INICIO
                 </a>
                 <a routerLink="/cardapio" routerLinkActive="active">
                     CARDÁPIO
                 </a>
                 <a routerLink="/orders" routerLinkActive="active" class="menu-item">
-                    <app-icon name="receipt_long" [size]="20"></app-icon>
+                    <lucide-icon name="receipt_long" [size]="20"></lucide-icon>
                     MEUS PEDIDOS
                 </a>
                 <span class="underline"></span>
@@ -21,14 +21,14 @@
                 <div *ngIf="isLoggedIn; else loginButton" class="profile-container">
                     <button class="profile-btn" (click)="toggleProfile()">
                         <div class="icon-box">
-                            <app-icon name="person" [size]="20"></app-icon>
+                            <lucide-icon name="person" [size]="20"></lucide-icon>
                         </div>
                         <div class="profile-text">
                             <span class="small">MINHA CONTA</span>
                             <span class="big">PERFIL</span>
                         </div>
-                        <app-icon name="arrowBottom" [size]="24" class="arrow" [class.rotate]="isProfileOpen">
-                        </app-icon>
+                        <lucide-icon name="arrowBottom" [size]="24" class="arrow" [class.rotate]="isProfileOpen">
+                        </lucide-icon>
                     </button>
 
                     <!-- DROPDOWN -->
@@ -39,28 +39,28 @@
                         </div>
                         <a routerLink="/account/profile" (click)="toggleProfile()">
                             <div class="menu-icon">
-                                <app-icon name="person" [size]="20"></app-icon>
+                                <lucide-icon name="person" [size]="20"></lucide-icon>
                             </div>
                             Perfil
                         </a>
 
                         <a routerLink="/account/loyalty" (click)="toggleProfile()">
                             <div class="menu-icon">
-                                <app-icon name="star" [size]="20"></app-icon>
+                                <lucide-icon name="star" [size]="20"></lucide-icon>
                             </div>
                             Cartão Fidelidade
                         </a>
 
                         <a routerLink="/account/addresses" (click)="toggleProfile()">
                             <div class="menu-icon">
-                                <app-icon name="location_add" [size]="20"></app-icon>
+                                <lucide-icon name="location_add" [size]="20"></lucide-icon>
                             </div>
                             Endereços
                         </a>
 
                         <a routerLink="/account/settings" (click)="toggleProfile()">
                             <div class="menu-icon">
-                                <app-icon name="settings" [size]="20"></app-icon>
+                                <lucide-icon name="settings" [size]="20"></lucide-icon>
                             </div>
                             Configurações
                         </a>
@@ -69,7 +69,7 @@
 
                         <button (click)="logout()" class="logout">
                             <div class="menu-icon-logout">
-                                <app-icon name="logout" [size]="20" class="icon-logout"></app-icon>
+                                <lucide-icon name="logout" [size]="20" class="icon-logout"></lucide-icon>
                             </div>
                             <span class="logout-text">Sair</span>
                         </button>
@@ -79,7 +79,7 @@
                 <!-- DESLOGADO -->
                 <ng-template #loginButton>
                     <a routerLink="/login" class="login-link">
-                        <app-icon name="person" [size]="20"></app-icon>
+                        <lucide-icon name="person" [size]="20"></lucide-icon>
                         ENTRAR
                     </a>
                 </ng-template>

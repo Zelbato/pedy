@@ -432,18 +432,21 @@
         border-radius: 40px;
         max-width: 450px;
         box-shadow: 0 40px 80px rgba(45, 27, 78, 0.1);
-
+        
         .icon-check {
-            width: 80px;
-            height: 80px;
-            background: #DCFCE7;
-            color: #22C55E;
-            font-size: 40px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #DCFCE7;
+            border-radius: 50%;
             margin: 0 auto 24px;
+            font-size: 32px;
+            
+            .icon {
+                color: #22C55E;
+            }
         }
 
         h2 {

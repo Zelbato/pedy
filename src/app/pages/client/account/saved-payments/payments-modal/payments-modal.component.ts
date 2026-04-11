@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppIconComponent } from '../../../../../shared/icon/icon.component';
+import { LucideAngularModule } from 'lucide-angular';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-payments-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgxMaskDirective, AppIconComponent],
+  imports: [CommonModule, FormsModule, NgxMaskDirective, LucideAngularModule],
   providers: [provideNgxMask()],
   templateUrl: './payments-modal.component.html',
   styleUrls: ['./payments-modal.component.scss']

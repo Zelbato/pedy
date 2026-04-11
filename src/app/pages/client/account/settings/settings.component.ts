@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
 import {
   LucideAngularModule, Star, Sparkles, Award, Info,
   History, Gift, ChevronRight, ArrowLeft, Zap, Trophy, Heart, ChessKing, Bell,
-  Globe, CreditCard, LogOut, Trash2, HelpCircle, FileText, X,
+  Globe, CreditCard, LogOut, Trash2, HelpCircle, FileText, X, ShoppingCart
 } from 'lucide-angular';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, AppIconComponent, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
@@ -35,6 +34,7 @@ export class SettingsComponent {
   readonly HelpCircle = HelpCircle;
   readonly FileText = FileText;
   readonly close = X;
+  readonly ShoppingCart = ShoppingCart;
 
   activeModal: string | null = null;
   language = 'pt';

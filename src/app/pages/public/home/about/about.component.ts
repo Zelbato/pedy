@@ -1,13 +1,13 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { AppIconComponent } from '../../../../shared/icon/icon.component';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule } from 'lucide-angular';
 // import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-about',
   standalone: true,
   imports: [
-    AppIconComponent,
+    LucideAngularModule,
     CommonModule,
   
   ],
