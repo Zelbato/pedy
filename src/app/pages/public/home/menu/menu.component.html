@@ -35,9 +35,6 @@
 
                     <div class="image-container">
                         <img [src]="product.image" [alt]="product.name" class="product-img">
-                        <div class="heart-badge">
-                            <lucide-icon name="heart" [size]="20"></lucide-icon>
-                        </div>
                     </div>
 
                     <div class="card-details">
@@ -45,7 +42,7 @@
                             <div class="stars">
                                 <lucide-icon name="star" [size]="12" *ngFor="let s of [1,2,3,4,5]"></lucide-icon>
                             </div>
-                            <span class="choice-label">Top Choice</span>
+                            <span class="choice-label">Promoção do Dia</span>
                         </div>
 
                         <h3 class="product-name">{{ product.name }}</h3>
@@ -56,7 +53,7 @@
                                 <p class="price-value">R$ {{ product.price | number:'1.2-2' }}</p>
                             </div>
 
-                            <a [href]="'/pagamento/' + product.id" class="buy-button">
+                            <a [href]="'/payment/' + product.id" class="buy-button">
                                 COMPRAR AGORA
                             </a>
                         </div>

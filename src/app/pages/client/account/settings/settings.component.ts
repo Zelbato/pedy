@@ -5,11 +5,15 @@ import {
   History, Gift, ChevronRight, ArrowLeft, Zap, Trophy, Heart, ChessKing, Bell,
   Globe, CreditCard, LogOut, Trash2, HelpCircle, FileText, X, ShoppingCart
 } from 'lucide-angular';
+import { MetodPaymentModalComponent } from './metod-payment-modal/metod-payment-modal.component';
+import { HistoryModalComponent } from './history-modal/history-modal.component';
+import { HelpCenterModalComponent } from './help-center-modal/help-center-modal.component';
+import { TermsContentModalComponent } from './terms-content-modal/terms-content-modal.component';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, MetodPaymentModalComponent, HistoryModalComponent, HelpCenterModalComponent, TermsContentModalComponent],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
@@ -78,7 +82,10 @@ export class SettingsComponent {
       'terms_of_use': 'Termos de Uso',
       'terms_description': 'Políticas e privacidade',
       'delete_account': 'Excluir Conta',
-      'settings_add_card': 'Adicionar Novo Cartão'
+      'settings_add_card': 'Adicionar Novo Cartão',
+      'help': 'AJUDA E SUPORTE',
+      'transactions': 'Histórico',
+      'terms': 'Termos de Uso',
     };
     return translations[key] || key;
   }

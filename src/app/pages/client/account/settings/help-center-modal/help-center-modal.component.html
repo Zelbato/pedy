@@ -1,0 +1,66 @@
+<div class="help-content-inner">
+    <p class="section-label">PERGUNTAS FREQUENTES</p>
+
+    <div class="faq-list">
+        <div class="faq-item" [class.open]="openFaq === 1">
+            <button class="faq-trigger" (click)="toggleFaq(1)" type="button">
+                <span>Como rastrear meu pedido?</span>
+                <lucide-icon [img]="ChevronDown" [size]="18" class="arrow-icon"
+                    [class.rotate]="openFaq === 1"></lucide-icon>
+            </button>
+            <div class="faq-body" [style.display]="openFaq === 1 ? 'block' : 'none'">
+                <p>Você pode acompanhar o status em tempo real na aba 'Meus Pedidos'.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" [class.open]="openFaq === 2">
+            <button class="faq-trigger" (click)="toggleFaq(2)" type="button">
+                <span>Quais as formas de pagamento?</span>
+                <lucide-icon [img]="ChevronDown" [size]="18" class="arrow-icon"
+                    [class.rotate]="openFaq === 2"></lucide-icon>
+            </button>
+            <div class="faq-body" [style.display]="openFaq === 2 ? 'block' : 'none'">
+                <p>Aceitamos cartões de crédito, débito e PIX diretamente pelo aplicativo.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" [class.open]="openFaq === 3">
+            <button class="faq-trigger" (click)="toggleFaq(3)" type="button">
+                <span>Como funciona o cartão fidelidade?</span>
+                <lucide-icon [img]="ChevronDown" [size]="18" class="arrow-icon"
+                    [class.rotate]="openFaq === 3"></lucide-icon>
+            </button>
+            <div class="faq-body" [style.display]="openFaq === 3 ? 'block' : 'none'">
+                <p>Acumule pontos em cada compra e troque por descontos exclusivos.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" [class.open]="openFaq === 4">
+            <button class="faq-trigger" (click)="toggleFaq(4)" type="button">
+                <span>Qual o tempo médio de entrega?</span>
+                <lucide-icon [img]="ChevronDown" [size]="18" class="arrow-icon"
+                    [class.rotate]="openFaq === 4"></lucide-icon>
+            </button>
+            <div class="faq-body" [style.display]="openFaq === 4 ? 'block' : 'none'">
+                <p>O tempo médio varia entre 30 a 50 minutos conforme sua região.</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="section-label mt-6">AINDA PRECISA DE AJUDA?</p>
+    <div class="support-grid">
+        <button class="support-card whatsapp" type="button">
+            <div class="icon-circle lime">
+                <lucide-icon [img]="MessageSquare" [size]="22"></lucide-icon>
+            </div>
+            <span>WHATSAPP</span>
+        </button>
+
+        <button class="support-card email" type="button">
+            <div class="icon-circle purple">
+                <lucide-icon [img]="Mail" [size]="22"></lucide-icon>
+            </div>
+            <span>E-MAIL</span>
+        </button>
+    </div>
+</div>

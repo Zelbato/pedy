@@ -1,0 +1,17 @@
+<div class="terms-content">
+    <div class="terms-highlight">
+        <span class="eyebrow">POLÍTICAS E PRIVACIDADE</span>
+        <p>
+            Este resumo apresenta as regras gerais de uso do Panda App e como tratamos as informações da sua conta.
+        </p>
+    </div>
+
+    <div class="terms-sections">
+        <article class="terms-section" *ngFor="let section of sections">
+            <h4>{{ section.title }}</h4>
+            <p *ngFor="let paragraph of section.paragraphs">
+                {{ paragraph }}
+            </p>
+        </article>
+    </div>
+</div>

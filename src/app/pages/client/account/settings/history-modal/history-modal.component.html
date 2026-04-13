@@ -1,0 +1,14 @@
+<div class="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+    <div *ngFor="let i of transactions" class="transaction-item">
+        <div class="t-left">
+            <div class="t-icon-bg">
+                <lucide-icon [name]="ShoppingCart" [size]="20"></lucide-icon>
+            </div>
+            <div>
+                <p class="font-bold">Pedido #202{{ i }}</p>
+                <p class="card-sub">31 Mar 2026</p>
+            </div>
+        </div>
+        <p class="font-black">R$ 45,90</p>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+.help-content-inner {
+    width: 100%;
+}
+
+.section-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #b1a7b4;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+
+    &.mt-6 {
+        margin-top: 24px;
+    }
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    background: #fff;
+    transition: all 0.3s ease;
+
+    &.open {
+        border-color: #eee;
+    }
+}
+
+.faq-trigger {
+    width: 100%;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+
+    span {
+        font-size: 15px;
+        font-weight: 700;
+        color: #300e33;
+    }
+}
+
+.arrow-icon {
+    color: #cbd5e1;
+    transition: transform 0.3s ease-in-out;
+
+    &.rotate {
+        transform: rotate(180deg);
+    }
+}
+
+.faq-body {
+    padding: 0 20px 20px 20px;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+
+    p {
+        margin: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.support-card {
+    padding: 24px;
+    border-radius: 28px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    outline: none !important;
+
+    &.whatsapp {
+        background: #f9ffd6;
+    }
+
+    &.email {
+        background: #f1edff;
+    }
+
+    span {
+        font-size: 10px;
+        font-weight: 900;
+        color: #300e33;
+    }
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.lime {
+        background: #e2ff31;
+        color: #300e33;
+    }
+
+    &.purple {
+        background: #300e33;
+        color: #fff;
+    }
+}
