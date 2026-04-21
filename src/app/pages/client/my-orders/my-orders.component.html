@@ -58,12 +58,13 @@
                     rota: order.status === 'Em rota',
                     preparando: order.status === 'Preparando'
                 }">
-                    <lucide-icon name="clock" [size]="14" class="icon" /> {{ order.status }}
+                    {{ order.status }}
                 </div>
 
-                <!-- MENU -->
                 <div class="menu">
-                    <button (click)="toggleMenu(order.id)">â‹®</button>
+                    <button (click)="toggleMenu(order.id)">
+                        <lucide-icon [name]="EllipsisVertical" [size]="20" class="icon"></lucide-icon>
+                    </button>
 
                     <div class="dropdown" *ngIf="activeMenu === order.id">
                         <button (click)="openDetails(order)">

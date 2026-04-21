@@ -107,6 +107,205 @@
     }
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-btn {
+    position: relative;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+    }
+}
+
+.icon {
+    color: #ffffffa9;
+}
+
+.dot {
+    position: absolute;
+    top:  -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    background: #da555f;
+    border-radius: 50%;
+    border: 2px solid #300e33;
+}
+
+.badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: #b6ff2e;
+    border-radius: 50%;
+    font-size: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 💥 O SEGREDO ESTÁ AQUI */
+.dropdown {
+    position: absolute;
+
+    top: calc(100% + 10px); // exatamente abaixo
+    right: 0; // alinhado com botão
+
+    width: 360px;
+
+    background: #3a0d3f;
+    border-radius: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    overflow: hidden;
+
+    z-index: 9999;
+}
+
+/* HEADER */
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    h3 {
+        color: white;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 2px;
+    }
+
+    span {
+        color: #b6ff2e;
+        font-size: 11px;
+        font-weight: 900;
+    }
+}
+
+/* LIST */
+.list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+/* ITEM */
+.item {
+    width: 100%;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+
+    background: transparent;
+    border: none;
+    text-align: left;
+
+    position: relative;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    &.unread {
+        background: rgba(255, 255, 255, 0.02);
+    }
+}
+
+/* barra lateral */
+.item.unread::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #b6ff2e;
+}
+
+/* TEXT */
+.text p {
+    font-weight: 900;
+    color: white;
+}
+
+.text small {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.time {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* CART */
+.cart-body {
+    padding: 20px;
+}
+
+.product {
+    display: flex;
+    gap: 12px;
+
+    img {
+        width: 60px;
+        border-radius: 12px;
+    }
+}
+
+.btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary {
+    background: #b6ff2e;
+}
+
+.danger {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+.empty {
+    padding: 40px;
+    text-align: center;
+    opacity: 0.4;
+}
+
+
 .cta {
     display: flex;
     gap: 16px;

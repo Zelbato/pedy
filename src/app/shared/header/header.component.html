@@ -12,11 +12,79 @@
                     CARDÁPIO
                 </a>
                 <a routerLink="/orders" routerLinkActive="active" class="menu-item">
-                    <lucide-icon name="receipt_long" [size]="20"></lucide-icon>
                     MEUS PEDIDOS
+                </a>
+                <a routerLink="/account/loyalty" routerLinkActive="active">
+                    CARTÃO FIDELIDADE
                 </a>
                 <span class="underline"></span>
             </div>
+
+            <div class="actions" *ngIf="isLoggedIn">
+                <div class="dropdown-wrapper" #notificationsRef>
+                    <button class="icon-btn" (click)="toggleNotifications()">
+                        <lucide-icon [name]="Bell" [size]="20" class="icon"></lucide-icon>
+                        <span *ngIf="unreadNotifications > 0" class="dot"></span>
+                    </button>
+
+                    <div *ngIf="isNotificationsOpen" @dropdownAnim class="dropdown notifications">
+                        <div class="header">
+                            <h3>NOTIFICAÇÕES</h3>
+                            <span *ngIf="notifications.length">
+                                {{ unreadNotifications }} NOVAS
+                            </span>
+                        </div>
+
+                        <div class="list">
+                            <button *ngFor="let n of notifications" (click)="markNotificationRead(n.id)" class="item"
+                                [class.unread]="!n.read">
+
+                                <div class="item-icon"></div>
+
+                                <div class="text">
+                                    <p>{{ n.title }}</p>
+                                    <small>{{ n.message }}</small>
+                                    <span class="time">{{ n.time }}</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-wrapper" #cartRef>
+                    <button class="icon-btn" (click)="toggleCart()">
+                        <lucide-icon [name]="ShoppingCart" [size]="20" class="icon"></lucide-icon>
+                        <span *ngIf="pendingOrder" class="badge">1</span>
+                    </button>
+
+                    <div *ngIf="isCartOpen" @dropdownAnim class="dropdown cart">
+                        <div class="header">
+                            <h3>CARRINHO</h3>
+                        </div>
+
+                        <div *ngIf="pendingOrder; else emptyCart" class="cart-body">
+                            <div class="product">
+                                <img [src]="pendingOrder.image">
+                                <div class="info">
+                                    <p>{{ pendingOrder.name }}</p>
+                                    <span>R$ {{ pendingOrder.price }}</span>
+                                </div>
+                            </div>
+
+                            <button class="btn primary" (click)="continueOrder()">
+                                CONTINUAR →
+                            </button>
+                            <button class="btn danger" (click)="clearCart()">
+                                CANCELAR
+                            </button>
+                        </div>
+                        <ng-template #emptyCart>
+                            <div class="empty">Carrinho vazio</div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
             <div class="cta">
                 <div *ngIf="isLoggedIn; else loginButton" class="profile-container">
                     <button class="profile-btn" (click)="toggleProfile()">

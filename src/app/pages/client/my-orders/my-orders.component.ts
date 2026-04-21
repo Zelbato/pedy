@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { INITIAL_ORDERS } from '../../../core/constants/my-orders';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule, EllipsisVertical } from 'lucide-angular';
 
 @Component({
   selector: 'app-my-orders',
@@ -20,6 +20,8 @@ export class MyOrdersComponent implements OnInit {
   orderToDeleteId: string | null = null;
   selectedOrder: any = null;
   activeMenu: string | null = null;
+
+  readonly EllipsisVertical = EllipsisVertical;
 
   filter: 'todos' | 'andamento' | 'concluidos' = 'todos';
   mode: 'view' | 'edit' = 'view';
